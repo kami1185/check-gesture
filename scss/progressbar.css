@@ -1,0 +1,271 @@
+
+/*********************************** progress bar orizontale *******************************/
+
+
+.row-progress {
+  width: 100%;
+}
+
+.container-progress-bar{
+  width: 70%;
+  height: 40px;
+  position: absolute;
+  top: 10%;
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+  background: #28BF71;
+  left: 15%;
+}
+
+#progress-bar-fase {
+  height: 30px;
+}
+
+.progress-bar-fase-label {
+    font-size: 20px;
+    color: black;
+}
+
+/*********************************** progress bar laterale sinistro *******************************/
+
+.progressbar-fase {
+  top: 20%;
+  position: relative;
+}
+
+.card1 {
+    margin-left: 140px;
+    z-index: 0;
+    border-right: 1px solid #F5F5F5
+  }
+ 
+/***** posizione del progressbar *****/ 
+ 
+#progressbar {
+  position: absolute;
+  left: 10px;
+  overflow: hidden;
+  color: #E53935
+}
+
+#progressbar li {
+  list-style-type: none;
+  font-size: 8px;
+  font-weight: 400;
+  margin-bottom: 36px /*spazio tra le fasi*/ 
+}
+
+#progressbar li:nth-child(3) {
+  margin-bottom: 88px
+}
+
+#progressbar .step0:before {
+  content: "";
+  color: #fff
+}
+
+#progressbar li:before {
+  /* width: 30px;
+  height: 30px; */
+  width: 60px;
+  height: 60px;
+  line-height: 30px;
+  display: block;
+  font-size: 30px;
+  background: #fff;
+  border: 2px solid #28A3BF;
+  /* border: 2px solid #E53935; */
+  border-radius: 50%;
+  margin: auto;
+
+  line-height: 50px;
+}
+
+/****** ultima pallina fase completata *******/
+#progressbar li:last-child:before {
+  /* width: 40px;
+  height: 40px */
+  width: 60px;
+  height: 60px
+}
+
+/********************/
+.mb-5, .my-5 {
+  margin-bottom: 4.5rem !important;
+}
+h5, .h5 {
+  font-size: 1.65rem;
+  color: #6e6b6b;
+}
+
+.fase-terminata{
+  color: #323233;
+}
+/********************/
+
+/**** linea grigia del progresbar ****/
+#progressbar li:after {
+  content: '';
+  width: 5px;
+  height: 300px;
+  background: #D2D1D1;
+  position: absolute;
+  left: 68px;
+  top: 15px;
+  z-index: -1;
+  /* content: '';
+  width: 3px;
+  height: 66px;
+  background: #BDBDBD;
+  position: absolute;
+  left: 58px;
+  top: 15px;
+  z-index: -1 */
+}
+/*************************************/
+
+
+#progressbar li:last-child:after {
+  top: 197px;
+  height: 102px;
+}
+
+#progressbar li:nth-child(3):after {
+  top: 100px;
+}
+
+#progressbar li:nth-child(2):after {
+  top: 0px;
+}
+
+#progressbar li:first-child:after {
+  position: absolute;
+  top: -100px;
+}
+
+#progressbar li.active:after {
+  /* background: #E53935; */
+  background: #28A3BF;
+}
+
+#progressbar li.active:before {
+  background: #28A3BF;
+  /* background: #E53935; */
+  font-family: "Font Awesome 5 Free";
+  content: "\f00c";
+  
+  line-height: 50px;
+}
+
+.tick {
+  width: 100px;
+  height: 100px
+}
+
+
+@media screen and (max-width: 912px) {
+  .card00 {
+      padding-top: 30px;
+  }
+
+  .card1 {
+      border: none;
+      margin-left: 50px;
+  }
+
+  .card2 {
+      border-bottom: 1px solid #F5F5F5;
+      margin-bottom: 25px;
+  }
+
+  .social {
+      height: 30px;
+      width: 30px;
+      font-size: 15px;
+      padding-top: 8px;
+      margin-top: 7px;
+  }
+
+  .get-bonus {
+      margin-top: 40px !important;
+      margin-left: 75px;
+  }
+
+  #progressbar {
+      left: -25px
+  }
+}
+
+
+
+/* #progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey
+}
+
+#progressbar .active {
+    color: #673AB7
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400
+}
+
+#progressbar #account:before {
+    font-family: FontAwesome;
+    content: "\f13e"
+}
+
+#progressbar #personal:before {
+    font-family: FontAwesome;
+    content: "\f007"
+}
+
+#progressbar #payment:before {
+    font-family: FontAwesome;
+    content: "\f030"
+}
+
+#progressbar #confirm:before {
+    font-family: FontAwesome;
+    content: "\f00c"
+}
+
+#progressbar li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    color: #ffffff;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #673AB7
+} */
+
+
+

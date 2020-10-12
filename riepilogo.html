@@ -1,0 +1,339 @@
+
+<html>
+
+  <link rel="stylesheet" href="scss/riepilogo.css">
+  <script type="text/javascript" src="script/riepilogo.js"></script>
+      
+  <div id="wrapper" class="hide-content">
+    <div >
+      <ul>
+          <li>some content here</li>
+          <li>some content here</li>
+          <li>some content here</li>
+          <li>some content here</li>
+          <li>some content here</li>
+          <li>some content here</li>
+          <li>some content here</li>
+          <li>some content here</li>
+          <li>some content here</li>
+          <li>some content here</li>
+          <li>some content here</li>
+          <li>some content here</li>
+          <li>some content here</li>
+          <li>some content here</li>
+          <li>some content here</li>
+          <li>some content here</li>
+          <li>some content here</li>
+          <li>some content here</li>            
+      </ul>
+    </div>
+
+    <a id="scrollUp" href="#">up</a>
+    <a id="scrollDown" href="#">down</a>
+
+    <div id="json" class="json"></div>
+
+  </div>
+    
+
+  <div id="content" class="row">
+
+    <div class="col-11">
+
+      <div class="row">
+        <div class="titolo-div text-center">
+          <p class="titolo-checklist">Riepilogo Fase Sign Out</p>
+        </div>
+      </div>
+      <hr>
+
+      <div id="container-riepilogo" class="box">
+
+        <div>
+          <ol  id="fase_signin" class='check-list'>
+            <div class="row">
+              <li class="col-6 colum">
+                <label class="label-data">Nome e Cognome : <span id="paziente-nome"></span></label>
+                <label class="label-data">data di nascita: <span id="paziente-eta"></span></label>
+                <label class="label-data">Sesso          : <span id="paziente-sesso"></span></label>
+                <label class="label-data">Numero cartella: <span id="num-cartella"></span></label>
+                <label class="label-data">Inizio della Fase Sign In: <span id="signin-inizio"></span></label>
+                <label class="label-data">Fine della Fase Sign In: <span id="signin-fine"></span></label>
+              </li>
+            </div>
+          </ol>
+        </div>
+
+        <hr>
+        <div class="row">
+          <div class="titolo-div text-center">
+            <p class="titolo-checklist">Riepilogo Fase Time Out</p>
+          </div>
+        </div>
+        <hr>
+        
+
+        <div>
+          <ol  id="fase_timeout" class='check-list'>
+            <div class="row">
+              <li class="col-6 colum">
+                <label class="label-data">Inizio della Fase Time Out: <span id="timeout-inizio"></span></label><label class="label-data">Fine della Fase Time Out :<span id="timeout-fine"></span></label>
+              </li>
+            </div>
+          </ol>
+        </div>
+        <hr>
+
+        <div class="row">
+          <div class="titolo-div text-center">
+            <p class="titolo-checklist">Riepilogo Fase Sign Out</p>
+          </div>
+        </div>
+        <hr>
+
+        <div>
+          <ol  id="fase_signout" class='check-list'>
+            <div class="row">
+              <li class="col-6 colum">
+                <label class="label-data">Inizio della Fase Sign Out: <span id="signout-inizio"></span></label><label class="label-data" >Fine della Fase Sign Out:  <span id="signout-fine"></span></label>
+              </li>
+            </div>
+          </ol>
+        </div>
+        <hr>
+
+      </div>
+    </div>
+
+    <div class="col-1">
+      <div>
+        <button type="button" id="up" class="btn btn-warning btn-circle btn-lg button-top">
+          <i class="fas fa-arrow-up"></i>
+        </button>
+      </div>
+      <div>
+        <button type="button" id="down" class="btn btn-warning btn-circle btn-lg button-bottom">
+          <i class="fas fa-arrow-down"></i>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hide-content">
+    <div class="row">
+      <li class="col-6 colum">
+        <div class="riepilogo-domanda">
+          <div class="row">
+            <div class="col-9"><span class="title">1. Hai verificato con il paziente l'identità</span></div>
+            <div class="col riepilogo-buttons"><i class="fas fa-check-circle"></i> Verificato</div>
+          </div>
+        </div>
+        <hr>
+        <div class="riepilogo-conformita">
+          <div class="row">
+            <div class="col-9 riepilogo-buttons">
+              <i class="fas fa-exclamation-triangle"></i> Hai rilevato delle non conformità:
+            </div>
+            <div class="col-1">
+              <div class="button-non-conformita"><span class="si">Si</span></div>
+            </div>
+          </div>
+          <div class="row">
+            <ol>
+              <li>Chirurgico</li>
+              <li>Non corretto posizionamento del pulsossimetro</li>
+              <li>Componenti equipe modificati rispetto alla lista operatoria</li>
+            </ol>
+          </div>
+        </div>
+      </li>
+
+      <li class="col-6 colum">
+        <div class="riepilogo-domanda">
+          <div class="row">
+            <div class="col-9"><span class="title">2. Confermare la sede di Intervento</span></div>
+            <div class="col riepilogo-buttons"><i class="fas fa-check-circle"></i> Verificato</div>
+          </div> 
+        </div>
+        <hr>
+        <div class="riepilogo-conformita">
+          <div class="row">
+            <div class="col-4 riepilogo-buttons">
+              Hai rilevato delle non conformità
+              <!-- <div class="button-non-conformita"><span class="si">Si</span></div> -->
+            </div>
+            <div class="col">
+              <ul>
+                <li>Chirurgico</li>
+                <li>Non corretto posizionamento del pulsossimetro</li>
+                <li>Componenti equipe modificati rispetto alla lista operatoria</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+    </div>
+
+    <div class="row">
+      <li class="col-6 colum">
+        <div class="riepilogo-domanda">
+          <div class="row">
+            <div class="col-9"><span class="title">3. Conferma nome della Procedura</span></div>
+            <div class="col riepilogo-buttons"><i class="fas fa-check-circle"></i> Verificato</div>
+          </div>  
+          
+          <!-- <div class="col"><div class="button-non-conformita"><span class="no">No</span></div></div> -->
+        </div>
+        <hr>
+        <div class="riepilogo-conformita">
+          <div class="row">
+            <div class="col-5 riepilogo-buttons">
+              <i class="fas fa-exclamation-triangle"></i>  Hai rilevato delle non conformità
+
+              <div class="button-non-conformita"><span class="si">Si</span></div>
+            </div>
+            <div class="col">
+              <ol>
+                <li>Chirurgico</li>
+                <li>Non corretto posizionamento del pulsossimetro</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="col-6 colum">
+        <div class="riepilogo-domanda">
+          <div class="row">
+            <div class="col-9"><span class="title">4. Consensi</span></div>
+            <div class="col riepilogo-buttons"><i class="fas fa-check-circle"></i> Verificato</div>
+          </div> 
+        </div>
+        <hr>
+        <div class="riepilogo-conformita">
+          <div class="row">
+            <div class="col-9 riepilogo-buttons">
+              <i class="fas fa-exclamation-triangle"></i>  Hai rilevato delle non conformità
+            </div>
+            <div class="col-1">
+              <div class="button-non-conformita"><span class="si">No</span></div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </div>
+
+    <div class="row">
+      <li class="col-6 colum">
+        <div class="riepilogo-domanda">
+          <div class="row">
+            <div class="col-9"><span class="title">5. Conferma marcatura del sito di intervento</span></div>
+            <div class="col riepilogo-buttons">Non applicabile</div>
+          </div>  
+          
+          <!-- <div class="col"><div class="button-non-conformita"><span class="no">No</span></div></div> -->
+        </div>
+        <hr>
+        <div class="riepilogo-conformita">
+          <div class="row">
+            <div class="col-5 riepilogo-buttons">
+              <i class="fas fa-exclamation-triangle"></i>  Hai rilevato delle non conformità
+
+              <div class="button-non-conformita"><span class="si">Si</span></div>
+            </div>
+            <div class="col">
+              <ol>
+                <li>Chirurgico</li>
+                <li>Non corretto posizionamento del pulsossimetro</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="col-6 colum">
+        <div class="riepilogo-domanda">
+          <div class="row">
+            <div class="col-9"><span class="title">6. Conferma dei controlli per la sicurezza dell'anestesia?</span></div>
+            <div class="col riepilogo-buttons"><i class="fas fa-check-circle"></i> Verificato</div>
+          </div> 
+        </div>
+        <hr>
+        <div class="riepilogo-conformita">
+          <div class="row">
+            <div class="col-9 riepilogo-buttons">
+              <i class="fas fa-exclamation-triangle"></i> Hai rilevato delle non conformità
+            </div>
+            <div class="col-1">
+              <div class="button-non-conformita"><span class="si">No</span></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <ol>
+              <li>Chirurgico</li>
+              <li>Non corretto posizionamento del pulsossimetro</li>
+              <li>Componenti equipe modificati rispetto alla lista operatoria</li>
+            </ol>
+          </div>
+
+        </div>
+      </li>
+    </div>
+
+    <div class="row">
+      <li class="col-6 colum">
+        <div class="riepilogo-domanda">
+          <div class="row">
+            <div class="col-9"><span class="title">7. Il paziente presenta un tipo di allergia?</span></div>
+            <div class="col riepilogo-buttons"><i class="fas fa-check-circle"></i> Verificato</div>
+          </div>  
+          
+          <!-- <div class="col"><div class="button-non-conformita"><span class="no">No</span></div></div> -->
+        </div>
+        <hr>
+        <div class="riepilogo-conformita">
+          <div class="row">
+            <div class="col-5 riepilogo-buttons">
+              <i class="fas fa-exclamation-triangle"></i>  Hai rilevato delle non conformità
+
+              <div class="button-non-conformita"><span class="si">Si</span></div>
+            </div>
+            <div class="col">
+              <ol>
+                <li>Chirurgico</li>
+                <li>Non corretto posizionamento del pulsossimetro</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="col-6 colum">
+        <div class="riepilogo-domanda">
+          <div class="row">
+            <div class="col-9"><span class="title">8. Difficoltà di gestione delle vie aeree o rischio di aspirazione</span></div>
+            <div class="col riepilogo-buttons"><i class="fas fa-check-circle"></i> Verificato</div>
+          </div> 
+        </div>
+        <hr>
+        <div class="riepilogo-conformita">
+          <div class="row">
+            <div class="col-6 riepilogo-buttons">
+              <i class="fas fa-exclamation-triangle"></i>  Hai rilevato delle non conformità
+            </div>
+            <div class="col-1">
+              <div class="button-non-conformita"><span class="si">No</span></div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </div>
+    
+  </div>
+
+</html>
+
+
+  
