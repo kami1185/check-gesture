@@ -1,0 +1,1104 @@
+<html>
+    <head>
+        <script src="script/checklist.js"></script>
+        <script src="script/form-check-data.js"></script>
+    </head>
+
+    <div id="div-checklist" class="show-content">
+
+        <div class="row">
+            <div class="titolo-div text-center">
+                <p class="titolo-checklist">Checklist per la sicurezza in sala operatoria
+                <span class="titolo-fase"></span>
+                <button id="button-fasi-terminate" class="btn btn-primary btn-circle ">
+                    go
+                </button>
+                </p>
+            </div>
+        </div>
+
+        <div id="check-list-fasi" class="row row-column-height">
+            <div class="col-3">
+                <div class="progressbar-fase">
+                    <div class="card1">
+                        <ul id="progressbar" class="text-center">
+                            <li class="step0 fase1 inactive"></li>
+                            <li class="step0 fase2"></li>
+                            <li class="step0 fase3 "></li>
+                            <li class="step0 fase4 ultima-fase"></li>
+                        </ul>
+                        <h5 class="mb-5">Sign In</h5>
+                        <h5 class="mb-5">Time Out</h5>
+                        <h5 class="mb-5">Sign Out</h5>
+                        <h5 class="mb-5 hide-content">Completato</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-9">
+
+                <div class="row row-progress">
+                    <div class="container container-progress-bar">
+                        <div id="progress-bar-fase" class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuemax="100" >
+                                <span class="progress-bar-fase-label"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-formulario">
+
+                    <form id="form-checklist" action="#" method="POST" class="needs-validation" novalidate>
+
+                        <div id="content_fasi" class="content">
+
+                            <div id="SignIn" class="SignIn fase_active">
+
+                            <input type="text" class="form-control hide-content" name="signin_ora_inizio" id="signin_ora_inizio" value="">
+                            <input type="text" class="form-control hide-content" name="signin_ora_fine" id="signin_ora_fine" value="">
+
+                            <!-- Inzio fase Sign In -->
+                            <div id="fieldset0" class="show-content initcheck">
+                                <div class="row">
+                                <div class="col-md-12">
+                                    <h3>Prima Fase Sign In</h3>
+                                </div>
+                                </div>
+                                <div class="inizio-fase">
+                                <p class="font-weight-normal text-center">Stai per effettuare i sette controlli prima dell'induzione
+                                    dell'anestesia.
+                                </p>
+                                </div>
+                                <div class="div-init-fase">
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <button type="button" id="button-signin" class="btn btn-primary btn-circle btn-xl button-init-fase">
+                                        <i class="fas fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- 1.1 il paziente -->
+                            <div id="fieldset1" class="hide-content non-conformita-paziente">
+                                <div class="row">
+                                <div class="col-md-12">
+                                    <h3>1.1 Identità del Paziente</h3>
+                                </div>
+                                </div>
+                                <div id="checkbox-paziente" class="div-dati-paziente checkboxes">
+                                <div class="row form-group ">
+                                    <label for="paziente_nome" class="col-md-4 col-form-label">Nome e Cognome</label>
+                                    <div class="col-md-8">
+                                    <input type="text" class="form-control" name="paziente_nome" id="paziente_nome" value="Vincenzo Rodriguez">
+                                    </div>
+                                </div>
+                                <!-- <div class="row form-group">
+                                    <label for="paziente_nome" class="col-md-4 form-label2">Nome e Cognome</label>
+                                    <div class="col-md-8">
+                                    <input type="text" name="paziente_nome" id="paziente_nome" />
+                                    <label for="paziente_nome" class="">Vincenzo rodriguez</label>
+                                    </div>
+                                </div> -->
+                                <div class="row form-group">
+                                    <label for="paziente_eta" class="col-md-4 col-form-label">Data di nascita</label>
+                                    <div class="col-md-3">
+                                    <input type="text" class="form-control" name="paziente_eta" id="paziente_eta" value="12/03/1985" />
+                                    <!-- <label for="paziente_eta" class="">11/01/1985</label> -->
+                                    </div>
+                                    <label for="paziente_sesso" class="col-md-2 col-form-label">Sesso</label>
+                                    <div class="col-md-3">
+                                    <input type="text" class="form-control" name="paziente_sesso" id="paziente_sesso" value="M"/>
+                                    <!-- <label for="paziente_eta" class="">Maschile</label> -->
+                                    </div>
+                                </div>
+                                <!-- <div class="row form-group">
+                                    <label for="paziente_sesso" class="col-md-4 col-form-label">Sesso</label>
+                                    <div class="col-md-3">
+                                    <input type="text" class="form-control" name="paziente_sesso" id="paziente_sesso" value="M"/>
+                                    </div>
+                                </div> -->
+                                <div class="row form-group">
+                                    <label for="paziente_cartella" class="col-md-4 col-form-label">Numero Cartella</label>
+                                    <div class="col-md-3">
+                                    <input type="text" class="form-control" name="paziente_cartella" id="paziente_cartella" value="56870"/>
+                                    <!-- <label for="paziente_eta" class="">Numero cartella clinica</label> -->
+                                    </div>
+                                </div>
+                                <div class="row form-group non-conformita-paziente">
+                                    <label for="paziente_cartella" class="col-md-6 col-form-label label-conformita-paziente">Hai rilevato delle non conformità?</label>
+                                    <div class="col-md-3 button-conformita-paziente">
+                                    <button type="button" id="modal_popup_paziente" class="btn btn-warning btn-circle btn-lg" data-toggle="modal" data-target="#non-conformita-paziente">
+                                        <i class="fas fa-clipboard-list"></i>
+                                    </button>
+                                    </div>
+                                </div>
+                                <input type="checkbox" name="paziente_conformita[]" class="hide-content check-true" value="true">
+                                <input type="text" name="paziente_domanda" class="hide-content form-control" value="Hai verificato con il paziente l'identità"/>
+                                <div id="div-hide-paziente" class="hide-content">
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- 1.2 sito di intervento Ospedale -->
+                            <div id="fieldset2" class="hide-content non-conformita-paziente-hide">
+                                <div class="row form-group">
+                                <div class="col-md-12">
+                                    <h3>1.2 Confermare la sede di Intervento</h3>
+                                </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                <div class="col-12">
+                                    <div class="label-div">
+                                    <label for="paziente_sede" class="label-form">Policlinico</label>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-6 mx-auto imagini-margini">
+                                    <img class="imagini-fase-3 mx-auto d-block" src="img/ospedale11.png">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="div-non-conformita">
+                                    <p class="titolo-non-conformita">Se c'è questa non conformita scegli:</p>
+                                    <div id="checkbox-sede" class="form-check row checkboxes">
+                                        <input type="checkbox" name="sede[]" class="form-check-input asa4" id="check-sede" value="Non conferma la sede">
+                                        <label class="form-check-label" for="check-sede">Non conferma la sede</label>
+                                        <input type="checkbox" name="sede[]" class="hide-content check-true" value="true">
+                                        <input type="text" name="sede_domanda" class="hide-content form-control" value="Hai verificato con il paziente la sede dellintervento?"/>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- 1.3 Nome della procedura -->
+                            <div id="fieldset3" class="hide-content">
+                                <div class="row form-group">
+                                <div class="col-md-12">
+                                    <h3>1.3 Conferma nome della Procedura</h3>
+                                </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                <div class="col-12">
+                                    <div class="label-div">
+                                    <label for="paziente_procedura" class="label-form">Tipo di intervento</label>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-6 mx-auto imagini-margini">
+                                    <img class="imagini-fase-3 mx-auto d-block" src="img/procedura2.png">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="div-non-conformita">
+                                    <p class="titolo-non-conformita">Se c'è questa non conformita scegli:</p>
+                                    <div id="checkbox-procedura" class="form-check row checkboxes">
+                                        <input type="checkbox" name="procedura[]" class="form-check-input asa4" id="check-procedura" value="Non conferma della procedura">
+                                        <label class="form-check-label" for="check-procedura">Non conferma della procedura</label>
+                                        <input type="checkbox" name="procedura[]" class="hide-content check-true" value="true" >
+                                        <input type="text" name="procedura_domanda" class="hide-content form-control" value="Hai verificato con il paziente la procedura?"/>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- 1.4 Consensi checkbox -->
+                            <div id="fieldset4" class="hide-content ">
+                                <div class="row">
+                                <div class="col-12">
+                                    <h3>1.4 Consensi</h3>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-md-6">
+                                    <div id="checkbox-consensi" class="custom-control checkboxes">
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="consensi[]" class="form-check-input asa4" id="checkbox-1" value="Anestesiologico">
+                                        <label class="form-check-label" for="checkbox-1">Anestesiologico</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="consensi[]" class="form-check-input asa4" id="checkbox-2" value="Chirurgico">
+                                        <label class="form-check-label" for="checkbox-2">Chirurgico</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="consensi[]" class="form-check-input asa4" id="checkbox-3" value="Emocomponenti">
+                                        <label class="form-check-label" for="checkbox-3">Emocomponenti</label>
+                                    </div>
+                                    <input type="checkbox" name="consensi_conformita[]" class="hide-content check-true" value="true">
+                                    <input type="text" name="consensi_domanda" class="hide-content form-control" value="Hai verificato con il paziente i consensi (Anestesiologico, Chirurgico, Emocomponenti)?"/>
+                                    <div id="div-hide-consensi" class="hide-content">
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="col-md-3">
+                                    <div class="row form-group imagini-margini">
+                                    <img class="imagini-fase mx-auto d-block" src="img/consensi5.png">
+                                    </div>
+                                </div> -->
+
+                                <div class="col-md-6">
+                                    <div class="div-non-conformita">
+                                    <p class="titolo-non-conformita">Hai rilevato delle non conformità?</p>
+                                        <button type="button" id="modal_popup_sensi" class="btn btn-warning btn-circle btn-xl" data-toggle="modal" data-target="#non-conformita-sensi">
+                                        <i class="fas fa-clipboard-list"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                </div>
+                            </div>
+
+                            <!-- 2 marcatura dell'intervento -->
+                            <div id="fieldset5" class="hide-content ">
+                                <div class="row ">
+                                <div class="col-md-12">
+                                    <h3>2. Conferma marcatura del sito di intervento</h3>
+                                    <!-- <input type="text" name="paziente_consensi" id="paziente_consensi" />
+                                    <label for="paziente_consensi" class="form-label">Conferma marcatura del sito di intervento</label> -->
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-md-5 mx-auto imagini-margini">
+                                    <img class="imagini-fase-2 mx-auto d-block" src="img/marcatura.png">
+                                </div>
+
+                                <div class="col-md-7">
+                                    <div id="checkbox-marcatura" class="div-non-conformita checkboxes">
+                                    <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli una opzione</p>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="marcatura[]" class="form-check-input asa4" id="check-non-marcato" value="Sito non marcato">
+                                        <label class="form-check-label" for="check-non-marcato">Sito non marcato</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="marcatura[]" class="form-check-input asa4" id="check-errata-marcatura" value="Errata marcatura sito">
+                                        <label class="form-check-label" for="check-errata-marcatura">Errata marcatura sito</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="marcatura[]" class="form-check-input asa4" id="check-non-applicato" value="Non applicabile">
+                                        <label class="form-check-label" for="check-errata-marcatura">Non applicabile</label>
+                                    </div>
+                                    <input type="checkbox" name="marcatura[]" class="hide-content check-true" value="true">
+                                    <input type="text" name="marcatura_domanda" class="hide-content form-control" value="Hai verificato la corretta marcatura del sito dell'intervento?"/>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- 3 controlli x la sicurezza dell'anestesia -->
+                            <div id="fieldset6" class="hide-content">
+                                <div class="row">
+                                <div class="col-md-12">
+                                    <h3>3. Conferma dei controlli per la sicurezza dell'anestesia?</h3>
+                                    <!-- <input type="text" name="paziente_consensi" id="paziente_consensi" />
+                                    <label for="paziente_consensi" class="form-label">
+                                    Conferma dei controlli per la sicurezza dell'anestesia
+                                    </label> -->
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-5 mx-auto imagini-margini">
+                                    <img class="imagini-fase-4 mx-auto d-block" src="img/anestesia3.png">
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="div-non-conformita">
+                                    <p class="titolo-non-conformita">Se ci sono delle non conformita scegliere una opzione:</p>
+                                    <div id="checkbox-anestesia" class="form-check row checkboxes">
+                                        <input type="checkbox" name="anestesia[]" class="form-check-input asa4" id="check-anestesia" value="Test apparecchiature non effettuati">
+                                        <label class="form-check-label" for="check-anestesia">Test apparecchiature non effettuati</label>
+                                        <input type="checkbox" name="anestesia[]" class="hide-content check-true" value="true" >
+                                        <input type="text" name="anestesia_domanda" class="hide-content form-control" value="Hai effettuato il controllo delle apparecchiature di anestesia?"/>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- 4 posizionamento del pulsossimetro -->
+                            <div id="fieldset7" class="hide-content">
+                                <div class="row">
+                                <div class="col-md-12">
+                                    <h3>4. Conferma posizionamento del pulsossimetro e verfica del corretto funzionamento?</h3>
+                                    <!-- <input type="text" name="paziente_consensi" id="paziente_consensi" />
+                                    <label for="paziente_consensi" class="form-label">
+                                    Conferma posizionamento del pulsossimetro e verfica del corretto funzionamento
+                                    </label> -->
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-md-6 mx-auto imagini-margini">
+                                    <img class="imagini-fase-6 mx-auto d-block" src="img/pulsossimetro.png">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="div-non-conformita">
+                                    <p class="titolo-non-conformita">Se hai trovato questa non conformita scegli:</p>
+                                    <div id="checkbox-pulsossimentro" class="form-check row checkboxes">
+                                        <input type="checkbox" name="pulsossimentro[]" class="form-check-input asa4" id="check-pulsossimentro" value="Non corretto posizionamento del pulsossimetro">
+                                        <label class="form-check-label" for="check-pulsossimentro">Non corretto posizionamento del pulsossimetro</label>
+                                        <input type="checkbox" name="pulsossimentro[]" class="hide-content check-true" value="true">
+                                        <input type="text" name="pulsossimentro_domanda" class="hide-content form-control" value="Hai effettuato il controllo delle apparecchiature di anestesia?"/>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- 5 allergia -->
+                            <div id="fieldset8" class="hide-content">
+                                <div class="row form-group">
+                                <div class="col-md-12">
+                                    <h3>Identificazione dei rischi del paziente</h3>
+                                </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                <div class="col-12">
+                                    <!-- <input type="text" name="paziente_consensi" id="paziente_consensi" /> -->
+                                    <div class="label-div">
+                                    <label for="paziente_consensi" class="label-form">5. Il paziente presenta un tipo di allergia?</label>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-4 mx-auto imagini-margini">
+                                    <img class="imagini-fase mx-auto d-block" src="img/allergie.png">
+                                </div>
+                                <div class="col-md-8">
+                                    <div id="checkbox-allergia" class="div-non-conformita checkboxes">
+                                    <p class="titolo-non-conformita">Se ci sono delle non conformita scegliere una opzione:</p>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="allergia[]" class="form-check-input asa4" id="check-allergia-sanitaria" value="Mancata segnalazione in documentazione sanitaria">
+                                        <label class="form-check-label" for="check-allergia-sanitaria">Mancata segnalazione in documentazione sanitaria</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="allergia[]" class="form-check-input asa4" id="check-allergia-anestesiologica" value="Mancata visita anestesiologica">
+                                        <label class="form-check-label" for="check-allergia-anestesiologica">Mancata visita anestesiologica</label>
+                                        <input type="checkbox" name="allergia[]" class="hide-content check-true" value="true">
+                                        <input type="text" name="allergia_domanda" class="hide-content form-control" value="Il paziente presenta allergie?"/>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- 6 gestione delle vie aeree o rischio aspirazione -->
+                            <div id="fieldset9" class="hide-content">
+                                <div class="row form-group">
+                                <div class="col-md-12">
+                                    <h3>Identificazione dei rischi del paziente </h3>
+                                </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                <div class="col-12">
+                                    <!-- <input type="text" name="paziente_consensi" id="paziente_consensi" /> -->
+                                    <div class="label-div">
+                                    <label for="paziente_consensi" class="label-form">6. Difficoltà di gestione delle vie aeree o rischio di aspirazione</label>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-md-4 mx-auto imagini-margini">
+                                    <img class="imagini-fase mx-auto d-block" src="img/vieaeree.png">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="div-non-conformita">
+                                    <p class="titolo-non-conformita">Se ci sono delle non conformita scegliere una opzione:</p>
+                                    <div id="checkbox-aeere" class="form-check row checkboxes">
+                                        <input type="checkbox" name="rischi[]" class="form-check-input asa4" id="check-aeere-criticita" value="Mancata segnalazione di criticità">
+                                        <label class="form-check-label" for="check-aeere-criticita">Mancata segnalazione di criticità</label>
+                                        <input type="checkbox" name="rischi[]" class="hide-content check-true" value="true">
+                                        <input type="text" name="rischi_domanda" class="hide-content form-control" value="Il paziente presenta difficoltà di gestione delle vie aeree o rischio di aspirazione?"/>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- 7 Rischio de perdita ematica -->
+                            <div id="fieldset10" class="hide-content">
+                                <div class="row form-group">
+                                <div class="col-md-12">
+                                    <h3>Identificazione dei rischi del paziente </h3>
+                                </div>
+                                </div>
+                                <div class="row justify-content-end">
+                                <div class="col-md-12">
+                                    <!-- <input type="text" name="paziente_consensi" id="paziente_consensi" /> -->
+                                    <div class="label-div">
+                                    <label for="paziente_consensi" class="label-form">7. Identificazione rischio di perdita ematica</label>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-4 mx-auto imagini-margini">
+                                    <img class="imagini-fase mx-auto d-block" src="img/perditaematica.png">
+                                </div>
+                                <div class="col-md-8">
+                                    <div id="checkbox-ematiche" class="div-non-conformita checkboxes">
+                                    <p class="titolo-non-conformita">Se ci sono delle non conformita scegliere una opzione:</p>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="ematica[]" class="form-check-input asa4" id="check-ematiche-disposizione" value="Mancata richiesta di unità a disposizione">
+                                        <label class="form-check-label" for="check-ematiche-disposizione">Mancata richiesta di unità a disposizione</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="ematica[]" class="form-check-input asa4" id="check-ematiche-emorragicho" value="Mancata valutazione rischio emorragico">
+                                        <label class="form-check-label" for="check-ematiche-emorragicho">Mancata valutazione rischio emorragico</label>
+                                    </div>
+                                    <input type="checkbox" name="ematica[]" class="hide-content check-true" value="true">
+                                    <input type="text" name="ematica_domanda" class="hide-content form-control" value="Il paziente presenta rischio perdite ematiche > 500ml(7ml/kg bambini)?"/>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- 8 rischio classe ASA -->
+                            <div id="fieldset11" class="hide-content">
+                                <div class="row form-group">
+                                <h3 class="col-md-12">8. Identificazione dei rischi del paziente (ASA) </h3>
+                                </div>
+                                <div class="row">
+                                <div class="col-md-4">
+                                    <div id="checkbox-asa" class="custom-control checkboxes">
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="asa[]" class="form-check-input asa4" id="asa1" value="ASA1">
+                                        <label class="form-check-label" for="asa1">ASA 1</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="asa[]" class="form-check-input asa4" id="asa2" value="ASA2">
+                                        <label class="form-check-label" for="asa2">ASA 2</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="asa[]" class="form-check-input asa4" id="asa3" value="ASA3">
+                                        <label class="form-check-label" for="asa3">ASA 3</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="asa[]" class="form-check-input asa4" id="asa4" value="ASA4">
+                                        <label class="form-check-label" for="asa4">ASA 4</label>
+                                    </div>
+                                    <input type="checkbox" name="asa[]" class="hide-content check-true" value="true">
+                                    <input type="text" name="asa_domanda" class="hide-content form-control" value="Ha identificato dei rischi del paziente ASA?"/>
+                                    </div>
+                                </div>
+                                <div class="col-8 mx-auto imagini-margini">
+                                    <img class="imagini-fase mx-auto d-block" src="img/alert-health.png">
+                                </div>
+                                </div>
+                            </div>
+
+                            <div id="fieldset12" class="hide-content fase_completata">
+                                <div class="row">
+                                <div class="col-md-12">
+                                    <h3 class="text-center" for="paziente_consensi" >Fase Sign In completata!</h3>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-4 mx-auto imagini-margini">
+                                    <img class="imagini-fase mx-auto d-block" src="img/success5.png">
+                                </div>
+                                </div>
+                                <div class="div-init-fase">
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <button type="button"  class="btn btn-primary btn-circle btn-xl next">
+                                        <i class="fas fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            </div>
+                            <!-- ****************** FASE TIME OUT ****************** -->
+
+                            <div id="TimeOut" class="TimeOut ">
+                            
+                            <!-- Inzio fase Time Out -->
+                            <div setora="timeout_ora_inizio" class=" hide-content primocheck fase-init">
+                                <div class="row">
+                                <div class="col-md-12">
+                                    <h3>Seconda Fase Time Out</h3>
+                                </div>
+                                </div>
+                                <div class="inizio-fase">
+                                <p class="font-weight-normal text-center">Stai per effettuare i sette controlli prima dell'incisione
+                                    della cute.
+                                </p>
+                                </div>
+                                <!-- <div class="div-init-fase">
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <button type="button" id="timeout-init" class="btn btn-primary btn-circle btn-xl next">
+                                        <i class="fas fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                </div> -->
+                            </div>
+
+                            <!-- 2.1 componenti equipe sono presentati -->
+                            <div id="fieldset13" class="hide-content hide-prev">
+                                <div class="form-group row">
+                                <div class="col-md-12">
+                                    <h3>2.1 Tutti componenti dell'équipe si sono presentati con il proprio nome e ruolo?</h3>
+                                    <!-- <input type="text" name="timeout_equipe" id="timeout_equipe" />
+                                    <label for="timeout_equipe" class="form-label">
+                                    Tutti componenti dell'équipe si sono presentati con il proprio nome e funzione
+                                    </label> -->
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-5 mx-auto imagini-margini">
+                                    <img class="imagini-fase-8 mx-auto d-block" src="img/equipe.png">
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="div-non-conformita">
+                                    <p class="titolo-non-conformita">Se ci sono delle non conformita scegliere una opzione:</p>
+                                    <div id="checkbox-equipe" class="form-check row checkboxes">
+                                        <input type="checkbox" name="componentiequipe[]" class="form-check-input asa4" id="check-equipe-modificati" value="Componenti equipe modificati rispetto alla lista operatoria">
+                                        <label class="form-check-label" for="check-equipe-modificati">Componenti equipe modificati rispetto alla lista operatoria</label>
+                                        
+                                        <input type="checkbox" name="componentiequipe[]" class="hide-content check-true" value="true">
+                                        <input type="text" name="componentiequipe_domanda" class="hide-content form-control" value="Tutti componenti dell'équipe si sono presentati con il proprio nome e ruolo?"/>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- 2.2 Il chirurgo, l'anestesista e l'infermiere hanno confermato: -->
+                            <div id="fieldset14" class="hide-content activate-prev">
+                                <div class="form-group row">
+                                <div class="col-md-12">
+                                    <h3>
+                                    2.2 Il chirurgo, l'anestesista e l'infermiere hanno confermato del paziente:
+                                    </h3>
+                                </div>
+                                </div>
+
+                                <div class="row">
+                                <div class="col-md-6">
+                                    <div id="checkbox-asa-equipe" class="custom-control checkboxes">
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="equipe[]" class="form-check-input asa4" id="checkbox-paziente" value="Anestesiologico">
+                                        <label class="form-check-label" for="checkbox-paziente">Anestesiologico</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="equipe[]" class="form-check-input asa4" id="checkbox-intervento" value="Sede intervento">
+                                        <label class="form-check-label" for="checkbox-intervento">Sede intervento</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="equipe[]" class="form-check-input asa4" id="checkbox-procedura" value="Procedura">
+                                        <label class="form-check-label" for="checkbox-procedura">Procedura</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="equipe[]" class="form-check-input asa4" id="checkbox-posizionamento" value="Corretto posizionamento">
+                                        <label class="form-check-label" for="checkbox-posizionamento">Corretto posizionamento</label>
+                                    </div>
+                                    <input type="checkbox" name="equipe[]" class="hide-content check-true" value="true">
+                                    <input type="text" name="equipe_domanda" class="hide-content form-control" value="Chirurgo, Anestesista e Infermiere confermano identità del paziente, procedura, sito chirurgico e posizionamento?"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row form-group imagini-margini">
+                                    <img class="imagini-fase-4 mx-auto d-block" src="img/conferma.png">
+                                    </div>
+                                </div>
+                                </div>
+
+                            </div>
+
+                            <!-- 2.3 Chirurgo Anticipazione di eventuali criticità o preoccupazioni  -->
+                            <div id="fieldset15" class="hide-content">
+                                <div class="row">
+                                <div class="col-md-12">
+                                    <h3> 2.3 Anticipazione di eventuali criticità o preoccupazioni: </h3>
+                                </div>
+                                </div>
+                                <!-- <div class="row justify-content-end">
+                                <div class="col-11">
+                                    <input type="text" name="paziente_procedura" id="paziente_procedura" />
+                                    <label for="paziente_procedura" class="form-label">procedura</label>
+                                </div>
+                                </div> -->
+                                <div class="row justify-content-end">
+                                <div class="col-12">
+                                    <div class="label-div">
+                                    <label for="paziente_procedura" class="label-form">Chirurgo: durata dell'intervento, rischio di perdita di sangue, altro?</label>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-7 mx-auto imagini-margini">
+                                    <img class="imagini-fase-4 mx-auto d-block" src="img/chirurgo1.png">
+                                </div>
+                                <div id="checkbox-chirurgo" class="checkboxes">
+                                    <input type="checkbox" name="chirurgo[]" class="hide-content check-true" value="true">
+                                </div>
+                                <input type="text" name="chirurgo_domanda" class="hide-content form-control" value="Il chirurgo ha informato l'equipe sulla durata prevista, rischi de perdite ematiche e di altre criticità?"/>
+                                </div>
+                            </div>
+
+                            <!-- 2.3.1 Anestesista Anticipazione di eventuali criticità o preoccupazioni  -->
+                            <div id="fieldset16" class="alert-asa hide-content">
+                                <div class="row">
+                                <div class="col-md-12">
+                                    <h3>
+                                    2.3.1 Anticipazione di eventuali criticità o preoccupazioni:
+                                    </h3>
+                                </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                <div class="col-12">
+                                    <div class="label-div">
+                                    <label for="paziente_id" class="label-form">
+                                        Anestesista: specifica riguardanti il paziente, scala ASA, Altro?
+                                    </label>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div id="div-alert-asa-image" class="col-5 mx-auto imagini-margini">
+                                    <img class="imagini-fase mx-auto d-block" src="img/alert-health.png">
+                                </div>
+                                </div>
+                                <div class="row justify-content-center" id="div-alert-asa">
+                                </div>
+                                <div id="checkbox-asa2" class="checkboxes">
+                                <input type="checkbox" name="asa_timeout[]" class="hide-content check-true" value="true">
+                                </div>
+                                <input type="text" name="asa_timeout_domanda" class="hide-content form-control" value="L'anestesista ha informato l'equipe sulle specificità del paziente, rischio ASA ed altre criticità?"/>
+                            </div>
+
+                            <!-- 2.3.2 Infermiere Anticipazione di eventuali criticità o preoccupazioni  -->
+                            <div id="fieldset17" class="hide-content">
+                                <div class="row">
+                                <div class="col-md-12">
+                                    <h3>
+                                    2.3.2 Anticipazione di eventuali criticità o preoccupazioni:
+                                    </h3>
+                                </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                <div class="col-12">
+                                    <div class="label-div">
+                                    <label for="paziente_id" class="label-form">
+                                        Infermiere: è stata verificata la sterilità, e ci sono eventuali problemi relativi ai dispositivi e/o altre preoccupazioni?
+                                    </label>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-4 mx-auto imagini-margini">
+                                    <img class="imagini-fase-9 mx-auto d-block" src="img/dispositivi.png">
+                                </div>
+                                <div class="col-md-8">
+                                    <div id="checkbox-infermiere" class="div-non-conformita checkboxes">
+                                    <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli un'opzione</p>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="infermiere_criticita[]" class="form-check-input asa4" id="check-criticita-sterelita" value="Problemi di sterelità DM/strumentario">
+                                        <label class="form-check-label" for="check-criticità-sterelita">Problemi di sterelità DM/strumentario</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="infermiere_criticita[]"  class="form-check-input asa4" id="check-criticita-funzionalita" value="Problemi di funzionalità DM/strumentario">
+                                        <label class="form-check-label" for="check-criticità-funzionalita">Problemi di funzionalità DM/strumentario</label>
+                                    </div>
+                                    <input type="checkbox" name="infermiere_criticita[]" class="hide-content check-true" value="true">
+                                    <input type="text" name="infermiere_domanda" class="hide-content form-control" value="L'infermiere ha comunicato all'equipe la verifica di sterilità, integrità e eventuali problemi con i dispositivi medici e altre criticità?"/>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- 2.4 profilassi antibiotica -->
+                            <div id="fieldset18" class="hide-content non-applicabile-hide">
+                                <div class="row">
+                                <div class="col-12">
+                                    <h3>2.4 La profilassi antibiotica è stata eseguita negli ultimi 60 minuti?</h3>
+                                </div>
+                                </div>
+                                <div class="row justify-content-center imagini-margini">
+                                <div class=" col-md-4">
+                                    <img class="imagini-fase-4 mx-auto d-block" src="img/orologio.png">
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <img class="imagini-fase-4 mx-auto d-block" src="img/antibiotico.png">
+                                </div> -->
+                                <div class="col-md-8">
+                                    <div id="checkbox-profilassi" class="checkboxes">
+                                    <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli un'opzione</p>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="profilassi[]" class="form-check-input asa4" id="check-profilassi-eseguita" value="Profilassi non eseguita quando necessario">
+                                        <label class="form-check-label" for="check-profilassi-eseguita">Profilassi non eseguita quando necessario</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="profilassi[]" class="form-check-input asa4" id="check-profilassi-prescritta" value="Profilassi non prescritta correttamente quando necessario">
+                                        <label class="form-check-label" for="check-profilassi-prescritta">Profilassi non prescritta correttamente quando necessario</label>
+                                    </div>                                                              
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="profilassi[]" class="form-check-input asa4" id="check-profilassi-farmaci" value="Mancanza farmaci">
+                                        <label class="form-check-label" for="check-profilassi-farmaci">Mancanza farmaci</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="profilassi[]" class="form-check-input asa4" id="check-profilassi-applicabile" value="Non applicabile">
+                                        <label class="form-check-label" for="check-profilassi-applicabile">Non applicabile</label>
+                                    </div>
+                                    <input type="checkbox" name="profilassi[]" class="hide-content check-true" value="true">
+                                    <input type="text" name="profilassi_domanda" class="hide-content form-control" value="La profilassi antibiotica è stata eseguita negli ultimi 60 minuti?"/>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- 2.5 immagini diagnostiche -->
+                            <div id="fieldset19" class="hide-content non-applicabile">
+                                <div class="row">
+                                <div class="col-12">
+                                    <h3>2.5 Le immagini radio diagnostiche sono state visualizzate?</h3>
+                                    <!-- <input type="text" name="paziente_id" id="paziente_id" />
+                                    <label for="paziente_id" class="form-label">
+                                    le immagini diagnostiche sono state visualizzate?
+                                    </label> -->
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-md-5 mx-auto imagini-margini">
+                                    <img class="imagini-fase mx-auto d-block" src="img/immagini-diagno2.png">
+                                </div>
+                                <div class="col-md-7">
+                                    <div id="checkbox-immagini" class="div-non-conformita checkboxes">
+                                    <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli un'opzione </p>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="immagini[]" class="form-check-input asa4" id="check-immagini-disponibili" value="Immagini non disponibili">
+                                        <label class="form-check-label" for="check-immagini-disponibili">Immagini non disponibili</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="immagini[]" class="form-check-input asa4" id="check-immagini-applicabile" value="Non applicabile">
+                                        <label class="form-check-label" for="check-immagini-applicabile">Non applicabile</label>
+                                    </div>
+                                    <input type="checkbox" name="immagini[]" class="hide-content check-true" value="true">
+                                    <input type="text" name="immagini_domanda" class="hide-content form-control" value="Le immagini diagnostiche sono state visualizzate?"/>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- fase completata -->
+                            <div id="fieldset20" class="hide-content non-applicabile-hide fase_completata">
+                                <div class="row">
+                                <div class="col-md-12">
+                                <!-- <input type="text" name="paziente_consensi" id="paziente_consensi" /> -->
+                                    <h3> Fase Time Out completata!</h3>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-4 mx-auto imagini-margini">
+                                    <img class="imagini-fase mx-auto d-block" src="img/success5.png">
+                                </div>
+                                </div>
+                                <div class="div-init-fase">
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-primary btn-circle btn-xl next">
+                                        <i class="fas fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <input type="text" class="form-control hide-content" name="timeout_ora_inizio" id="timeout_ora_inizio" value="">
+                            <input type="text" class="form-control hide-content" name="timeout_ora_fine" id="timeout_ora_fine" value="">
+
+                            </div>
+
+                            <!-- ****************** FASE SIGN OUT ****************** -->
+
+                            <div id="SignOut" class="SignOut ">
+                            
+                            <!-- Inzio fase Sign Out -->
+                            <div setora="signout_ora_inizio" class=" hide-content primocheck fase-init">
+                                <div class="row">
+                                <div class="col-md-12">
+                                    <h3>Ultima Fase Sign Out</h3>
+
+                                </div>
+                                </div>
+                                <div class="inizio-fase">
+                                <p class="font-weight-normal text-center">Stai per effettuare i sei controlli prima che il
+                                    paziente abbandoni la sala operatoria.
+                                </p>
+                                </div>
+                                <!-- <div class="div-init-fase">
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <button type="button" id="button-signout" class="btn btn-primary btn-circle btn-xl next">
+                                        <i class="fas fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                </div> -->
+                            </div>
+
+                            <!-- 3.1 L'infermiere conferma verbalmente procedura effettuata -->
+                            <div id="fieldset21" class="hide-content modal-popup-hide hide-prev">
+                                <div class="row">
+                                <div class="col-md-12">
+                                    <h3>
+                                    3.1 L'infermiere conferma verbalmente insieme ai componenti dell'équipe:
+                                    </h3>
+                                </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                <div class="col-12">
+                                    <div class="label-div">
+                                    <label for="paziente_id" class="label-form">
+                                        Conferma nome della procedura effettuata e sua registrazione
+                                    </label>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-5 mx-auto imagini-margini">
+                                    <img class="imagini-fase-5 mx-auto d-block" src="img/infermiere.jpg">
+                                </div>
+                                </div>
+                                <div id="checkbox-infermiere" class="checkboxes">
+                                <input type="checkbox" name="infermiere_conferma[]" class="hide-content check-true" value="true">
+                                </div>
+                                <input type="text" name="infermiere_conferma_domanda" class="hide-content form-control" value="Conferma nome della procedura effettuata e sua registrazione?"/>
+                            </div>
+
+                            <!-- 3.2 L'infermiere conferma verbalmente procedura effettuata -->
+                            <div id="fieldset22" class="hide-content modal-popup activate-prev">
+                                <div class="row">
+                                <div class="col-md-12">
+                                    <h3 class="titolo-3-2">
+                                    3.2 L'infermiere conferma verbalmente insieme ai componenti dell'équipe:
+                                    </h3>
+                                </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                <div class="col-12">
+                                    <div class="label-div">
+                                    <label for="paziente_id" class="label-form label-3-2">
+                                        Conferma il conteggio finale di garze, bisturi, aghi altro stumentario chirurgico, è risultato corretto?
+                                    </label>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-5 mx-auto imagini-margini">
+                                    <img class="imagini-fase mx-auto d-block" src="img/istrumenti.png">
+                                </div>
+                                <div class="col-md-7">
+                                    <div id="checkbox-conta" class="div-non-conformita checkboxes">
+                                    <p class="titolo-non-conformita">Hai rilevato delle non conformità? nuova conta</p>
+                                    <div class="modal-popup-conta">
+                                        <button type="button" id="modal_popup_conta" class="btn btn-warning btn-circle btn-xl" data-toggle="modal" data-target="#non-conformita-conta">
+                                        <i class="fas fa-clipboard-list"></i>
+                                        </button>
+                                    </div>
+                                    <input type="checkbox" class="check-true hide-content" name ="conta[]" value="true">
+                                    <input type="text" name="conta_domanda" class="hide-content form-control" value="Conferma il conteggio finale di garze, bisturi, aghi altro stumentario chirurgico, è risultato corretto?"/>
+                                    <div id="div-hide-conta" class="hide-content"></div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- 3.3 Conferma etichettatura del campione chirurgo -->
+                            <div id="fieldset23" class="hide-content modal-popup-hide">
+                                <div class="row">
+                                <div class="col">
+                                    <h3>3.3 Il campione chirurgico risulta correttamente etichettato?</h3>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-md-5 mx-auto imagini-margini">
+                                    <img class="imagini-fase-4 mx-auto d-block" src="img/provette.png">
+                                </div>
+                                <div class="col-md-7">
+                                    <div id="checkbox-etichettatura" class="div-non-conformita checkboxes">
+                                    <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli un'opzione</p>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="etichettatura[]" class="form-check-input asa4" id="check-etichettatura-identificazione" value="Errata identificazione del campione">
+                                        <label class="form-check-label" for="check-etichettatura-identificazione">Errata identificazione del campione</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="etichettatura[]" class="form-check-input asa4" id="check-etichettatura-preparazione" value="Errata preparazione del campione">
+                                        <label class="form-check-label" for="check-etichettatura-preparazione">Errata preparazione del campione</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="etichettatura[]" class="form-check-input asa4" id="check-etichettatura-applicabie" value="Non applicabile">
+                                        <label class="form-check-label" for="check-etichettatura-applicabie">Non applicabile</label>
+                                    </div>
+                                    <input type="checkbox" name="etichettatura[]" class="hide-content check-true" value="true">
+                                    <input type="text" name="etichettatura_domanda" class="hide-content form-control" value="Il campione chirurgico risulta correttamente etichettato?"/>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- 3.4 Conferma problemi relativamente all'uso di dispositivi medici? -->
+                            <div id="fieldset24" class="hide-content">
+                                <div class="row">
+                                <div class="col">
+                                    <h3>3.4 Vi sono stati problemi relativi all'uso di dispositivi medici?</h3>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-5 mx-auto imagini-margini">
+                                    <img class="imagini-fase-2 mx-auto d-block" src="img/anestesia4.png">
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="div-non-conformita">
+                                    <p class="titolo-non-conformita">Hai rilevato delle non conformità?</p>
+                                    <div id="checkbox-dispositivi" class="form-check row checkboxes">
+                                        <input type="checkbox" name="dispositivi[]" class="form-check-input asa4" id="check-dispositivi" value="Riscontro di difetti nell'uso dei DM">
+                                        <label class="form-check-label" for="check-dispositivi">Riscontro di difetti nell'uso dei DM</label>
+                                        <input type="checkbox" name="dispositivi[]" class="hide-content check-true" value="true">
+                                        <input type="text" name="dispositivi_domanda" class="hide-content form-control" value="Vi sono stati problemi relativi all'uso di dispositivi medici?"/>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- 3.5 Chirurgo, anestesista e infermiere revisionano -->
+                            <div id="fieldset25" class="hide-content">
+                                <div class="row">
+                                <div class="col">
+                                    <h3>3.5 Chirurgo, anestesista e infermiere hanno revisionato gli aspetti importanti e gli elementi
+                                    critici per la gestione dell'assistenza post operatoria?</h3>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-5 mx-auto imagini-margini">
+                                    <img class="imagini-fase-4 mx-auto d-block" src="img/team_medical.png">
+                                </div>
+                                </div>
+                                <div id="checkbox-team" class="checkboxes">
+                                <input type="checkbox" name="team_medical[]" class="hide-content check-true" value="true">
+                                </div>
+                                <input type="text" name="team_medical_domanda" class="hide-content form-control" value="Chirurgo, anestesista e infermiere hanno revisionato gli aspetti importanti e gli elementi
+                                critici per la gestione dell'assistenza post operatoria?"/>
+                            </div>
+
+                            <!-- 3.6 Conferma del piano per la profilassi del tromboembolismo venoso? -->
+                            <div id="fieldset26" class="hide-content">
+                                <div class="row">
+                                <div class="col">
+                                    <h3>3.6 è stato redatto ed allegato in cartella il piano per la profilassi del tromboembolismo venoso?</h3>
+                                    <!-- <input type="text" name="paziente_id" id="paziente_id" />
+                                    <label for="paziente_id" class="form-label">
+                                    Conferma del piano per la profilassi del tromboembolismo venoso
+                                    </label> -->
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-5 mx-auto imagini-margini">
+                                    <img class="imagini-fase-4 mx-auto d-block" src="img/profilasi.png">
+                                </div>
+                                <div class="col-md-7">
+                                    <div id="checkbox-tromboembolismo" class="div-non-conformita checkboxes">
+                                    <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli una opzione</p>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="tromboembolismo[]" class="form-check-input asa4" id="check-tromboembolismo-eseguito" value="Piano profilassi non eseguito">
+                                        <label class="form-check-label" for="check-tromboembolismo-eseguito">Piano profilassi non eseguito</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="tromboembolismo[]" class="form-check-input asa4" id="check-tromboembolismo-prescritta" value="Profilassi non prescritta correttamente">
+                                        <label class="form-check-label" for="check-tromboembolismo-prescritta">Profilassi non prescritta correttamente</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="tromboembolismo[]" class="form-check-input asa4" id="check-tromboembolismo-farmaci" value="Mancanza di farmaci">
+                                        <label class="form-check-label" for="check-tromboembolismo-farmaci">Mancanza di farmaci</label>
+                                    </div>
+                                    <div class="form-check row">
+                                        <input type="checkbox" name="tromboembolismo[]" class="form-check-input asa4" id="check-tromboembolismo-applicabie" value="Non applicabile">
+                                        <label class="form-check-label" for="check-tromboembolismo-applicabie">Non applicabile</label>
+                                    </div>
+                                    <input type="checkbox" name="tromboembolismo[]" class="hide-content check-true" value="true">
+                                    <input type="text" name="tromboembolismo_domanda" class="hide-content form-control" value="E' presente un piano profilassi del tromboembolismo postoperatorio?"/>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <!-- fase completata -->
+                            <div id="fieldset27" class="hide-content last-fase fase_completata">
+                                <div class="row">
+                                <div class="col-md-12">
+                                    <!-- <input type="text" name="paziente_consensi" id="paziente_consensi" /> -->
+                                    <h3>Fase Sign Out completata!</h3>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-4 mx-auto imagini-margini">
+                                    <img class="imagini-fase mx-auto d-block" src="img/success5.png">
+                                </div>
+                                </div>
+                                <div class="div-init-fase">
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <button type="button" id="button-fasi-terminate" class="btn btn-primary btn-circle btn-xl">
+                                        <i class="fas fa-arrow-left"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <input type="text" class="form-control hide-content" name="signout_ora_inizio" id="signout_ora_inizio" value="">
+                            <input type="text" class="form-control hide-content" name="signout_ora_fine" id="signout_ora_fine" value="">
+
+                        </div>
+
+                    <!-- ******************************** PREV - NEXT ********************************* -->
+                    
+                        <div class="actions hide-content">
+
+                            <div class="row  justify-content-center align-items-center">
+
+                                <!-------------------------  Button Prev <--     ------------------------>
+                                <div class="col-6 col-md-4">
+                                    <div class="text-center">
+                                    <button type="button" id="prev" class="btn btn-success btn-circle btn-xl prev">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </button>
+                                    </div>
+                                </div>
+                                <!----------------------------------------------------------------------->
+
+                                <!----------------------------------------------------------------------->
+                                <div class="col-6 col-md-4">
+                                </div>
+                                <!----------------------------------------------------------------------->
+
+                                <!-----------------------------  Button Next     ------------------------>
+                                <div class="col-6 col-md-4">
+                                    <div class="text-center">
+                                    <button type="button" id="next" class="btn btn-success btn-circle btn-xl next">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                    </div>
+                                </div>
+                                <!----------------------------------------------------------------------->
+
+                            </div>
+
+                        </div>
+
+                    <!-- ***************************************************************************** -->
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</html>
