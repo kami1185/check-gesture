@@ -198,6 +198,9 @@ $(document).ready(function(){
             if(first_show_element.hasClass('last-fase'))
                 $(".actions").removeClass("show-content").addClass("hide-content");
 
+            // questa validazione ci serve a cambiare il progress o le fasi del lato sinistro
+            // a settare l'ora d'inizio di ogni fase
+            // nascondere i button de avanti e indietro
             if(first_show_element.hasClass("fase_completata")){
 
                 // settare l'inzio di ogni fase con l'ora e data 
@@ -224,14 +227,19 @@ $(document).ready(function(){
                 // cerchiamo l'ulitma classe inactive 
                 var progress_fase = $("#progressbar").find('.inactive:last');
                 
-                // aggiungiamo la classe active 
+                progress_fase.find( "h5" ).addClass('label-phase');
+
+                // aggiungiamo la classe active
                 progress_fase.addClass("active");
-                progress_fase.addClass("fase-terminata");
+
+                //progress_fase.addClass("fase-terminata");
 
                 if(progress_fase.next().hasClass('ultima-fase')){
                     progress_fase.next().addClass('active');
-                    progress_fase.next().addClass('show-content');
-                    progress_fase.addClass("fase-terminata");
+
+                    progress_fase.next().find( "h5" ).addClass('label-phase');
+                    //progress_fase.next().addClass('show-content');
+                    //progress_fase.addClass("fase-terminata");
                 }
 
                 // aggiungiamo la classe inactive, per cercare l'ultima classe inactive nuovamente 
@@ -254,7 +262,6 @@ $(document).ready(function(){
         // quando si inizia una nuova fase Time Out e Sign Out
         init_fase = $(fase_element).children('.primocheck:first-child');
         if(init_fase.hasClass('primocheck') && init_fase.hasClass('hide-content')){
-
 
             //alert(fase_element.attr('id'));
             // impostiamo il titolo x una nuova fase

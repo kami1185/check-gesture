@@ -1,5 +1,6 @@
 <html>
     <head>
+        <link rel="stylesheet" href="scss/progressbar.css">
         <script src="script/checklist.js"></script>
         <script src="script/form-check-data.js"></script>
     </head>
@@ -18,24 +19,30 @@
         </div>
 
         <div id="check-list-fasi" class="row row-column-height">
-            <div class="col-3">
+            <div class="col-2">
                 <div class="progressbar-fase">
                     <div class="card1">
                         <ul id="progressbar" class="text-center">
-                            <li class="step0 fase1 inactive"></li>
+
+                            <!-- <li class="step0 fase1 inactive"></li>
                             <li class="step0 fase2"></li>
                             <li class="step0 fase3 "></li>
-                            <li class="step0 fase4 ultima-fase"></li>
+                            <li class="step0 fase4 ultima-fase"></li> -->
+
+                            <li class="step0 fase1 inactive"><h5>Sign In</h5></li>
+                            <li class="step0 fase2"><h5>Time Out</h5></li>
+                            <li class="step0 fase3 "><h5>Sign Out</h5></li>
+                            <li class="step0 fase4 ultima-fase"><h5>Completato</h5></li>
                         </ul>
-                        <h5 class="mb-5">Sign In</h5>
+                        <!-- <h5 class="mb-5">Sign In</h5>
                         <h5 class="mb-5">Time Out</h5>
                         <h5 class="mb-5">Sign Out</h5>
-                        <h5 class="mb-5 hide-content">Completato</h5>
+                        <h5 class="mb-4 show-content">Completato</h5> -->
                     </div>
                 </div>
             </div>
 
-            <div class="col-9">
+            <div class="col-10">
 
                 <div class="row row-progress">
                     <div class="container container-progress-bar">
