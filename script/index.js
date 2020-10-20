@@ -4,7 +4,7 @@ $(document).ready(function(){
 
         //$("#div-checklist").removeClass('show-content').addClass('hide-content');
 
-        $(".menu-init").removeClass('show-content').addClass('hide-content');
+        $("#menu-main").removeClass('show-content').addClass('hide-content');
         
         $("#data").load("inserire_paziente.html", function( response, status, xhr ) {
             if ( status === "error" ) {
@@ -23,7 +23,7 @@ $(document).ready(function(){
         
         //$("#div-checklist").removeClass('hide-content').addClass('show-content');
 
-        $(".menu-init").removeClass('show-content').addClass('hide-content');
+        $("#menu-main").removeClass('show-content').addClass('hide-content');
 
         $("#data").load("checklist.html", function( response, status, xhr ) {
             if ( status === "error" ) {
