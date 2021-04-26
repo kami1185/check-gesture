@@ -1,48 +1,88 @@
-/*$(function () {
 
-    // init the validator
-    // validator files are included in the download package
-    // otherwise download from http://1000hz.github.io/bootstrap-validator
+var riepilogo = [];
 
-    $('#form-checklist').validator();
+function risposte(risposta,idDomanda){
+
+    jQuery.each( risposta, function( i, val ) {
+
+        console.log('idNoconformita : ',val);
+        console.log('iddddddd : ',val.split(',')[0]);
+        console.log('resppppp : ',val.split(',')[1]);
+        // risposte2.push({
+            
+        //     idDomande: idDomanda,
+        //     idNoconformita: val.split(',')[0],
+        //     risposta: val.split(',')[1]
+        // });
+        var id_Noconformita = "";
+        var risposta_string = "";
+
+        id_Noconformita = val.split(',')[0];
+        risposta_string = val.split(',')[1];
+
+        riepilogo.push({
+            idDomande: idDomanda,
+            idNoconformita: id_Noconformita,
+            risposta: risposta_string
+        });
+    });
+	// return noconformita;
+}
 
 
-    // when the form is submitted
-    $('#form-checklist').on('submit', function (e) {
+function save_data_server(jsonArray){
 
-        // if the validator does not prevent form submit
-        if (!e.isDefaultPrevented()) {
-            var url = "contact.php";
+	var results = JSON.parse(jsonArray);
 
-            // POST values in the background the the script URL
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: $(this).serialize(),
-                success: function (data)
-                {
-                    // data = JSON object that contact.php returns
+	var save_data = {}
+	
+	var checklist = [];
 
-                    // we recieve the type of the message: success x danger and apply it to the 
-                    var messageAlert = 'alert-' + data.type;
-                    var messageText = data.message;
+	checklist.push({ signinInit : results.signin_ora_inizio,
+                    signinEnd : results.signin_ora_fine,
+                    timeoutInit : results.timeout_ora_inizio,
+                    timeoutEnd : results.timeout_ora_fine,
+                    signoutInit : results.signout_ora_inizio,
+                    signoutEnd : results.signout_ora_fine });
 
-                    // let's compose Bootstrap alert box HTML
-                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
-                    
-                    // If we have messageAlert and messageText
-                    if (messageAlert && messageText) {
-                        // inject the alert to .messages div in our form
-                        $('#contact-form').find('.messages').html(alertBox);
-                        // empty the form
-                        $('#contact-form')[0].reset();
-                    }
-                }
-            });
-            return false;
-        }
-    })
-});*/
+    risposte(results.risposta1,results.idDomande1);
+    risposte(results.risposta2,results.idDomande2);
+    risposte(results.risposta3,results.idDomande3);
+    risposte(results.risposta4,results.idDomande4);
+    risposte(results.risposta5,results.idDomande5);
+    risposte(results.risposta6,results.idDomande6);
+    risposte(results.risposta7,results.idDomande7);
+    risposte(results.risposta8,results.idDomande8);
+    risposte(results.risposta9,results.idDomande9);
+    risposte(results.risposta10,results.idDomande10);
+    risposte(results.risposta11,results.idDomande11);
+    risposte(results.risposta12,results.idDomande12);
+    risposte(results.risposta13,results.idDomande13);
+    risposte(results.risposta14,results.idDomande14);
+    risposte(results.risposta15,results.idDomande15);
+    risposte(results.risposta16,results.idDomande16);
+    risposte(results.risposta17,results.idDomande17);
+    risposte(results.risposta18,results.idDomande18);
+    risposte(results.risposta19,results.idDomande19);
+    risposte(results.risposta20,results.idDomande20);
+    risposte(results.risposta21,results.idDomande21);
+    risposte(results.risposta22,results.idDomande22);
+    risposte(results.risposta23,results.idDomande23);
+    risposte(results.risposta24,results.idDomande24);
+
+    save_data ["checklist"] = checklist;
+    save_data ["riepilogo"] = riepilogo;
+
+	console.log('111111111 :',save_data);
+
+	//var jsonSerialize = $(riepilogo).serializeObject();
+    var jsonString = JSON.stringify(save_data);
+
+    console.log('22222222 :',jsonString);
+
+	return jsonString;
+}
+
 $(document).ready(function(){
 
     $("#top").click(function(){
@@ -54,37 +94,6 @@ $(document).ready(function(){
 	});
 
     // if($.trim($('#idelement').val()).lenght==0)
-
-    function ajaxCallRequest(f_method, f_url, f_data) {
-
-        $.ajax({
-            url: '',
-            type: 'post',
-            dataType: 'json',
-            contentType: 'application/json',
-            success: function (data) {
-                var jsonResult = JSON.stringify(data);
-                //$('#target').html(data.msg);
-            }
-            //data: JSON.stringify(person)
-        });
-
-        $("#dataSent").val(unescape(f_data));
-        var f_contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
-        $.ajax({
-          url: f_url,
-          type: f_method,
-          contentType: f_contentType, //'application/json'
-          dataType: 'json',
-          data: f_data,
-          success: function(data) {
-            var jsonResult = JSON.stringify(data);
-            $("#results").val(unescape(jsonResult));
-            
-          }
-          
-        });
-      }
 
     $("#button-fasi-terminate").click(function(){
         validateForm();
@@ -100,37 +109,57 @@ $(document).ready(function(){
 
         var form = $('#form-checklist');
 
-        var data = $(form).serialize();
+        // var jsonArray = $('#form-checklist').serializeArray();
+        // var jsonArraySerialize = JSON.stringify(jsonArray);
+        // console.log('jsonArraySerialize: ',jsonArraySerialize);
 
-        var data2 = $(form).serializeArray();
+        var jsonSerialize = $('#form-checklist').serializeJSON();
+        var jsonString = JSON.stringify(jsonSerialize);
 
-        var jsonArray = $('#form-checklist').serializeJSON();
-        var jsonString = JSON.stringify(jsonArray);
-
-        console.log('stringify-array: ',JSON.stringify(data2));
-
-        //console.log('serialize: ',data);
-
-        console.log('serializeArray :',data2);
-
-        console.log('serializeJSON :',jsonArray);
+        console.log('jsonSerialize :',jsonSerialize);
 
         console.log('stringify :',jsonString);
 
-        $('#data').empty();
+        var saveDataServer = save_data_server(jsonString);
+        console.log('saveDataServer :',saveDataServer);
 
-        $("#data").load("riepilogo.html", function( response, status, xhr ) {
-            if ( status === "error" ) {
-                var msg = "Sorry but there was an error: ";
-                //$( "#error" ).html( msg + xhr.status + " " + xhr.statusText );
-                alert(msg + xhr.status + " " + xhr.statusText);
-            }				
-            var parent = $(this);
-            parent.fadeIn();
+        $.ajax({
+            'url': 'https://localhost:44366/check/save',
+            //'url':'http://127.0.0.1:8080/crud/save',
+            'method':'POST',
+            'dataType': 'json',
+             //processData: false,
+            'contentType': 'application/json',
+            'data': saveDataServer,
+            success: function (data) {
+                
+                var answer_server = JSON.parse(data);
+                alert(answer_server.successful);
 
-            creare_riepilogo(jsonString);
-            
+                $('#data').empty();
+
+                $("#data").load("riepilogo.html", function( response, status, xhr ) {
+                    if ( status === "error" ) {
+                        var msg = "Sorry but there was an error: ";
+                        //$( "#error" ).html( msg + xhr.status + " " + xhr.statusText );
+                        alert(msg + xhr.status + " " + xhr.statusText);
+                    }				
+                    var parent = $(this);
+                    parent.fadeIn();
+
+                    creare_riepilogo(jsonString);
+                });
+            },
+            error: function (xhRequest, ErrorText, thrownError) {
+                //alert("Errore al caricare la telecamera");
+                console.log('xhRequest: ' + xhRequest + "\n");
+                console.log('ErrorText: ' + ErrorText + "\n");
+                console.log('thrownError: ' + thrownError + "\n");
+            }
         });
+
+
+        
     }
 
 });

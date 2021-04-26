@@ -92,6 +92,8 @@ h4, .h4 {
 .content {
   width: 100%;
   padding-top: 20px;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 /****** messaggio iniziale x ogni fase *********/
@@ -101,6 +103,8 @@ h4, .h4 {
   font-size: 26px;
   color: #222;
   font-weight: bold;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .alert-messaggio {
@@ -160,6 +164,10 @@ h3 {
 
 h3.titolo-3-2 {
   font-size: 24px;
+}
+
+#domanda20 > h3 {
+  font-size: 1.4rem;
 }
 
 input[type=text]{
@@ -324,6 +332,13 @@ select {
 
 .form-check{
   padding-bottom: 30px;
+}
+
+#checkbox-20 > .form-check {
+  padding-bottom: 12px;
+}
+#checkbox-20 {
+  padding-top: 2%;
 }
 
 .custom-control {

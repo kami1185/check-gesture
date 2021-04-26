@@ -24,13 +24,14 @@
     <link rel="stylesheet" href="scss/menu-animation.css">
     <!-- <link rel="stylesheet" href="scss/inserire-paziente.css"> -->
 
+    
+
     <!-- Font Icon -->
     <link href="fontawesome5.13.0/css/fontawesome.css" rel="stylesheet">
     <link href="fontawesome5.13.0/css/brands.css" rel="stylesheet">
     <link href="fontawesome5.13.0/css/solid.css" rel="stylesheet">
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
-    
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" integrity="sha256-dHf/YjH1A4tewEsKUSmNnV05DDbfGN3g7NMq86xgGh8=" crossorigin="anonymous"></script> -->
     <script src="dist/js/bootstrapValidator.min.js"></script>
     <!-- validation.js-->
@@ -103,58 +104,58 @@
   <!----------------------------------non conformita paziente --------------------------------------->
   <div class="modal " id="non-conformita-paziente" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="staticBackdropLabel">Non conformità con i dati del paziente</h3>
-          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button> -->
-          <button type="button" class="btn btn-secondary close_popup" id="close_popup_paziente" data-dismiss="modal">Chiudi</button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="staticBackdropLabel">Non conformità con i dati del paziente</h3>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+                <button type="button" class="btn btn-secondary close_popup" id="close_popup_paziente" data-dismiss="modal">Chiudi</button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- <div id="checkbox-modal-paziente" class="container-fluid"> -->
+                <div id="checkbox-modal-paziente" class="container-fluid">
+                    <div class="row">
+                        <div class="form-check">
+                            <input type="checkbox" name ="paziente_conformita[]" class="form-check-input asa4"  value="Identità non corrisponde con braccialetto" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                            Identità non corrisponde con braccialetto
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="form-check">
+                            <input type="checkbox" name ="paziente_conformita[]" class="form-check-input paziente asa4" value="Identità non corrisponde con la cartella" id="defaultCheck2">
+                            <label class="form-check-label" for="defaultCheck2">
+                            Identità non corrisponde con la cartella
+                            </label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="form-check">
+                            <input type="checkbox" name ="paziente_conformita[]" class="form-check-input paziente asa4" value="Identità non corrisponde con barcode/nosologico" id="defaultCheck3">
+                            <label class="form-check-label" for="defaultCheck3">
+                            Identità non corrisponde con barcode/nosologico
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-check">
+                            <input type="checkbox" name ="paziente_conformita[]" class="form-check-input paziente asa4" value="Identità non corrisponde con nosologico" id="defaultCheck4">
+                            <label class="form-check-label" for="defaultCheck4">
+                            Identità non corrisponde con nosologico
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-secondary close_popup" id="close_popup_paziente" data-dismiss="modal">Chiudere</button> -->
+                <button type="button" class="btn btn-primary salva-dati" id="salva-dati-paziente">Salva Dati</button>
+            </div>
         </div>
-        
-        <div class="modal-body">
-          <div id="checkbox-modal-paziente" class="container-fluid">
-            <div class="row">
-              <div class="form-check">
-                <input type="checkbox" name ="paziente_conformita[]" class="form-check-input asa4"  value="Identità non corrisponde con braccialetto" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                  Identità non corrisponde con braccialetto
-                </label>
-              </div>
-            </div>
-            <div class="row ">
-              <div class="form-check">
-                <input type="checkbox" name ="paziente_conformita[]" class="form-check-input paziente asa4" value="Identità non corrisponde con la cartella" id="defaultCheck2">
-                <label class="form-check-label" for="defaultCheck2">
-                  Identità non corrisponde con la cartella
-                </label>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="form-check">
-                <input type="checkbox" name ="paziente_conformita[]" class="form-check-input paziente asa4" value="Identità non corrisponde con barcode/nosologico" id="defaultCheck3">
-                <label class="form-check-label" for="defaultCheck3">
-                  Identità non corrisponde con barcode/nosologico
-                </label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-check">
-                <input type="checkbox" name ="paziente_conformita[]" class="form-check-input paziente asa4" value="Identità non corrisponde con nosologico" id="defaultCheck4">
-                <label class="form-check-label" for="defaultCheck4">
-                  Identità non corrisponde con nosologico
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <!-- <button type="button" class="btn btn-secondary close_popup" id="close_popup_paziente" data-dismiss="modal">Chiudere</button> -->
-          <button type="button" class="btn btn-primary salva-dati" id="salva-dati-paziente">Salva Dati</button>
-        </div>
-        
-      </div>
     </div>
   </div>
 
@@ -247,11 +248,11 @@
                   <label class="form-check-label" for="Controllo Radiologico">Controllo Radiologico</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <label class="form-check-label" for="inlineCheckbox2">Si</label>
+                  <label class="form-check-label" for="inlineCheckbox2">Si: <span style="color:white"> s </span></label>
                   <input class="form-check-input asa4" type="checkbox" name ="conta[]" id="inlineCheckbox2" value="Controllo Radiologico: si">
                 </div>
                 <div class="form-check form-check-inline">
-                  <label class="form-check-label" for="inlineCheckbox2">No</label>
+                  <label class="form-check-label" for="inlineCheckbox2">No: <span style="color:white"> s </span></label>
                   <input class="form-check-input asa4" type="checkbox" name ="conta[]" id="inlineCheckbox2" value="Controllo Radiologico: no">
                 </div>
             </div>
