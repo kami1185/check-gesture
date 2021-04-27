@@ -1,5 +1,13 @@
 
 function creare_riepilogo(jsonArray){
+
+	$("#button-back-home").click(function(){
+        window.location.reload('true');
+    });
+
+    $("#button-back-home").on("mouseover", function () {
+        window.location.reload('true');
+    });
 	
 	//$("#json").append(jsonArray);
 

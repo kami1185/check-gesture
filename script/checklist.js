@@ -13,6 +13,14 @@ $(document).ready(function(){
     var init_fase;
     var prev_fase;
 
+    $("#button-back-home").click(function(){
+        window.location.reload('true');
+    });
+
+    $("#button-back-home").on("mouseover", function () {
+        window.location.reload('true');
+    });
+
     // faccio un select e deselect dei checkbox
     // eccetto uno, quando non trova un problema o non conformità
     $(" input[type=checkbox]").mouseenter(function(){
@@ -444,13 +452,13 @@ $(document).ready(function(){
             var asa = "";
             // $("input:checkbox[name=1asa:checked").each(function() {
             $("input[name='risposta11[]']:checked").each(function () {
-
                 if($(this).val() == "34,ASA 3" || $(this).val() == "35,ASA 4"){
                     //array.push($(this).val().split(',')[1]);
                     asa = $(this).val().split(',')[1];
                     $('#div-alert-asa').append("<label class='text-center alert-messaggio ' for='paziente_id' ><i class='fas fa-exclamation-triangle fa-2x icon-alert'></i> Atenzione nella fase Sign In il paziente è un "+asa+" </label>" );
-                    $('#checkbox-asa').append('<input type="checkbox" name="risposta15[]" class="form-check-input"  checked="true" value="'+ $(this).val() +'"></input>').prop('checked',true);
+                    //$('#checkbox-asa').append('<input type="checkbox" name="risposta15[]" class="form-check-input"  checked="true" value="'+ $(this).val() +'"></input>').prop('checked',true);
                 }
+                $('#checkbox-asa').append('<input type="checkbox" name="risposta15[]" class="form-check-input"  checked="true" value="'+ $(this).val() +'"></input>').prop('checked',true);
             });
 
             if(asa.length > 0 ){
