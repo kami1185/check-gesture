@@ -14,7 +14,8 @@
   z-index: 1;
   margin-left: auto;
   margin-right: auto;
-  background: #28BF71;
+  /* background: #28BF71; */
+  background: #007bffd9;
   left: 15%;
 }
 
@@ -158,7 +159,8 @@ h5, .h5 {
 }
 
 #progressbar li.active:before {
-  background: #28A3BF;
+  background: #32c682;
+  /* background: #28A3BF; */
   /* background: #E53935; */
   font-family: "Font Awesome 5 Free";
   content: "\f00c";

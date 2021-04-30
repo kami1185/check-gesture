@@ -105,6 +105,8 @@ $(document).ready(function(){
 
     function validateForm(){
 
+        Notiflix.Loading.Hourglass('Generando riepilogo della checklist...');
+
         $('.titolo-checklist').text('Riepilogo della Checklist Fase Sign In');
 
         var form = $('#form-checklist');
@@ -134,7 +136,6 @@ $(document).ready(function(){
             success: function (data) {
                 
                 var answer_server = JSON.parse(data);
-                alert(answer_server.successful);
 
                 $('#data').empty();
 
@@ -143,12 +144,17 @@ $(document).ready(function(){
                         var msg = "Sorry but there was an error: ";
                         //$( "#error" ).html( msg + xhr.status + " " + xhr.statusText );
                         alert(msg + xhr.status + " " + xhr.statusText);
-                    }				
+                    }
+                    
+                    Notiflix.Loading.Remove();
+                    
                     var parent = $(this);
                     parent.fadeIn();
 
                     creare_riepilogo(jsonString);
                 });
+
+
             },
             error: function (xhRequest, ErrorText, thrownError) {
                 //alert("Errore al caricare la telecamera");

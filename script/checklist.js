@@ -1,25 +1,37 @@
 $(document).ready(function(){
 
-    var cont_field = 2;
+    var cont_field = 0;
     var cont_timeout = 0;
     var cont_signout = 0;
-    var current = 1;
     var id_fase;
     var fase_element;
-    var fase_terminata =0;
 
     var first_hide_element;
     var first_show_element;
     var init_fase;
     var prev_fase;
 
+    // button per tornare al menu principale 
     $("#button-back-home").click(function(){
-        window.location.reload('true');
+        confirm_popup();
     });
 
     $("#button-back-home").on("mouseover", function () {
-        window.location.reload('true');
+        confirm_popup();
     });
+
+    function confirm_popup(){
+        Notiflix.Confirm.Show(
+			'CheckList Sala Operatoria','Vuole abbandonare la checklist?','Si','No', 
+			function(){
+				window.location.reload('true');
+			}, 
+			function(){
+				var cancelButton = window.document.getElementById('NXConfirmButtonCancel');
+				$(cancelButton).addClass('back-cancel');
+            }
+        );
+    }
 
     // faccio un select e deselect dei checkbox
     // eccetto uno, quando non trova un problema o non conformità
@@ -51,14 +63,6 @@ $(document).ready(function(){
         this.checked = ! this.checked;
     });
 
-    // $("#button-fasi-terminate").click(function(){
-    //     finishcheck();
-    // });
-
-    // $("#button-fasi-terminate").mouseenter(function( event ){
-    //     finishcheck();
-    // });
-
     $(".button-init-fase").click(function(){
         var id = $(this).attr('id');
         initcheck(id);
@@ -69,61 +73,16 @@ $(document).ready(function(){
         initcheck(id);
     });
 
-
-    // button x aprire la popup del paziente
-    $("#modal_popup_paziente").mouseenter(function( event ){
-        $("#non-conformita-paziente").modal('show');
+    $(".next").click(function(){
+        next_step_checklist();
     });
 
-    $("#modal_popup_sensi").mouseenter(function( event ){
-        $("#non-conformita-sensi").modal('show');
-    });
 
-    $("#modal_popup_conta").mouseenter(function( event ){
-        $("#non-conformita-conta").modal('show');
-    });
-
-    // button x chiudere tutte le popup
-    $('.close_popup').mouseenter(function( event ){
-
-        if($(this).attr('id') == "close_popup_paziente"){
-            $('input[name=paziente]').prop('checked', false);
-            $("#non-conformita-paziente").modal('hide');
-        }
-        if($(this).attr('id') == "close_popup_sensi"){
-            $('input[name=consensi]').prop('checked', false);
-            $("#non-conformita-sensi").modal('hide');
-        }
-
-        if($(this).attr('id') == "close_popup_conta"){
-            $('input[name=conta]').prop('checked', false);
-            $("#non-conformita-conta").modal('hide');
-        }
-    });
-
-    $('.salva-dati').mouseenter(function( event ){
-
-        if($(this).attr('id') == "salva-dati-paziente"){
-            validatecheckbox('div-hide-paziente','checkbox-modal-paziente');
-            $("#non-conformita-paziente").modal('hide');
-        }
-        if($(this).attr('id') == "salva-dati-consensi"){
-            validatecheckbox('div-hide-consensi','checkbox-modal-consensi');
-            $("#non-conformita-sensi").modal('hide');
-        }
-
-        if($(this).attr('id') == "salva-dati-conta"){
-            validatecheckbox('div-hide-conta','checkbox-modal-conta');
-            $("#non-conformita-conta").modal('hide');
-        }
-    });
-
-    //$(".next").click(function(){
     $(".next").mouseenter(function( event ){
+        next_step_checklist();
+    });
 
-        //var cont = 0;
-        //cont = cont_field -1;
-
+    function next_step_checklist(){
         id_fase = $('#content_fasi').children('.fase_active').attr('id');
         //console.log("id_fase::::::: ", id_fase);
         fase_element = $('#content_fasi').children('.fase_active');
@@ -137,22 +96,7 @@ $(document).ready(function(){
 
         // conta il numero di div per ogni fase
         var numItems = $('#'+id_fase).children().length;
-        ///alert(numItems);
-
-        if(id_fase == "SignIn"){
-            cont_field ++;
-            setProgressBar(cont_field, numItems);
-        }
-
-        if(id_fase == "TimeOut"){
-            cont_timeout++;
-            setProgressBar(cont_timeout, numItems);
-        }
-
-        if(id_fase == "SignOut"){
-            cont_signout++;
-            setProgressBar(cont_signout, numItems);
-        }
+        //alert(numItems);
 
         $('.'+id_fase).each(function(){
 
@@ -187,6 +131,21 @@ $(document).ready(function(){
                 // se trova uno o più di uno checkbox > 0
 
                 if (checked1 > 0 || check === 'checkbox-paziente') {
+
+                    if(id_fase == "SignIn"){
+                        cont_field ++;
+                        setProgressBar(cont_field, 12);
+                    }
+            
+                    if(id_fase == "TimeOut"){
+                        cont_timeout++;
+                        setProgressBar(cont_timeout, 8);
+                    }
+            
+                    if(id_fase == "SignOut"){
+                        cont_signout++;
+                        setProgressBar(cont_signout, 7);
+                    }
 
                     console.log(checked1 + " CheckBoxe(s) are checked. vane: "+checked1);
                     // cerco il checkbox creato nell'index con la classe check-true
@@ -317,8 +276,8 @@ $(document).ready(function(){
             // si inizia una fase, non c'è bisogno del button prev
             $('.prev').hide();
         }
+    }
 
-    });
 
     $(".prev").mouseenter(function( event ){
     //$(".prev").click(function(){
@@ -330,17 +289,17 @@ $(document).ready(function(){
 
         if(id_fase == "SignIn"){
             cont_field --;
-            setProgressBar(cont_field, numItems);
+            setProgressBar(cont_field, 12);
         }
 
         if(id_fase == "TimeOut"){
             cont_timeout --;
-            setProgressBar(cont_timeout, numItems);
+            setProgressBar(cont_timeout, 8);
         }
 
         if(id_fase == "SignOut"){
             cont_signout --;
-            setProgressBar(cont_signout, numItems);
+            setProgressBar(cont_signout, 7);
         }
 
         $('.'+id_fase).each(function(){
@@ -422,7 +381,6 @@ $(document).ready(function(){
             init_fase.next().removeClass("hide-content").addClass("show-content");
             $(".actions").removeClass("hide-content").addClass("show-content");
         }
-
     }
 
     function setProgressBar(curStep,num_passi) {
@@ -445,7 +403,6 @@ $(document).ready(function(){
     }
 
     function alert_asa(){
-        
 
         if(!$('#div-alert-asa-image').hasClass('asa-selezionati')){
 
@@ -493,21 +450,54 @@ $(document).ready(function(){
             + currentdate.getSeconds();
 
         $('#'+fase_set_ora+'').val(datetime);
-
-        // if(fase_set_ora == 'SignIn_inizio')
-        //     $('#signin-ora-inizio').val(datetime);
-
-        // if(fase_set_ora == 'signin-ora-fine')
-        //     $('#signin-ora-fine').val(datetime);
-
-        // if(fase_set_ora == 'timeout-ora-fine')
-        //     $('#timeout-ora-fine').val(datetime)
-
-        // if(fase_set_ora == 'signout-ora-fine')
-        //     $('#signout-ora-fine').val(datetime)
-
-
     }
 
+    // button x aprire la popup del paziente
+    // $("#modal_popup_paziente").mouseenter(function( event ){
+    //     $("#non-conformita-paziente").modal('show');
+    // });
+
+    // $("#modal_popup_sensi").mouseenter(function( event ){
+    //     $("#non-conformita-sensi").modal('show');
+    // });
+
+    // $("#modal_popup_conta").mouseenter(function( event ){
+    //     $("#non-conformita-conta").modal('show');
+    // });
+
+    // button x chiudere tutte le popup
+    // $('.close_popup').mouseenter(function( event ){
+
+    //     if($(this).attr('id') == "close_popup_paziente"){
+    //         $('input[name=paziente]').prop('checked', false);
+    //         $("#non-conformita-paziente").modal('hide');
+    //     }
+    //     if($(this).attr('id') == "close_popup_sensi"){
+    //         $('input[name=consensi]').prop('checked', false);
+    //         $("#non-conformita-sensi").modal('hide');
+    //     }
+
+    //     if($(this).attr('id') == "close_popup_conta"){
+    //         $('input[name=conta]').prop('checked', false);
+    //         $("#non-conformita-conta").modal('hide');
+    //     }
+    // });
+
+    // $('.salva-dati').mouseenter(function( event ){
+
+    //     if($(this).attr('id') == "salva-dati-paziente"){
+    //         validatecheckbox('div-hide-paziente','checkbox-modal-paziente');
+    //         $("#non-conformita-paziente").modal('hide');
+    //     }
+    //     if($(this).attr('id') == "salva-dati-consensi"){
+    //         validatecheckbox('div-hide-consensi','checkbox-modal-consensi');
+    //         $("#non-conformita-sensi").modal('hide');
+    //     }
+
+    //     if($(this).attr('id') == "salva-dati-conta"){
+    //         validatecheckbox('div-hide-conta','checkbox-modal-conta');
+    //         $("#non-conformita-conta").modal('hide');
+    //     }
+    // });
 
 });

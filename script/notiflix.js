@@ -1164,10 +1164,7 @@
       var okButton = window.document.getElementById('NXConfirmButtonOk');
 	  
 	  $("#NXConfirmButtonOk").on("mouseover", function (){
-			if(!$('#NXConfirmButtonCancel').hasClass('back-home')){
-				//alert('vane');
-				//window.location.reload('true');
-			}
+			window.location.reload('true');
 	  });
 
       // validation input listener: begin
@@ -1231,23 +1228,20 @@
         var cancelButton = window.document.getElementById('NXConfirmButtonCancel');
 		
 		
-		 $("#NXConfirmButtonCancel").on("mouseover", function (){
-			if(!$('#NXConfirmButtonCancel').hasClass('back-cancel')){
-				
-				//alert('cami!');
-				
-				if (typeof cancelButtonCallback === 'function') {
-				 cancelButtonCallback();
-				}
-				confirmCloseWrap.classList.add('remove');
-
-				var timeout = setTimeout(function () {
-					if (confirmCloseWrap.parentNode !== null) {
-					  confirmCloseWrap.parentNode.removeChild(confirmCloseWrap);
-					  clearTimeout(timeout);
-					}
-				}, newConfirmSettings.cssAnimationDuration);
+		$("#NXConfirmButtonCancel").on("mouseover", function (){
+        
+			if (typeof cancelButtonCallback === 'function') {
+			 cancelButtonCallback();
 			}
+			confirmCloseWrap.classList.add('remove');
+
+			var timeout = setTimeout(function () {
+				if (confirmCloseWrap.parentNode !== null) {
+				  confirmCloseWrap.parentNode.removeChild(confirmCloseWrap);
+				  clearTimeout(timeout);
+				}
+			}, newConfirmSettings.cssAnimationDuration);
+					
 		});
 		
 		

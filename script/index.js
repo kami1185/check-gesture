@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+    Notiflix.Loading.Init({clickToClose:false,});
+
     function insertDataChecklist(jsonString){
     
         var checklist = JSON.parse(jsonString);
@@ -51,14 +53,7 @@ $(document).ready(function(){
                     $tmpl_elements += '    <label class="form-check-label" for="risposta'+elem.id+'">'+ elem.testo+'</label>';
                     $tmpl_elements += '</div>';
 
-                    // $tmpl_elements += '<div class="form-check row">';
-                    // $tmpl_elements += '    <input type="checkbox" name="risposta[]" class="form-check-input asa4" id="risposta'+elem.id+'" value="'+ elem.id +','+ elem.testo +'">';
-                    // $tmpl_elements += '    <label class="form-check-label" for="risposta'+elem.id+'">'+ elem.testo+'</label>';
-                    // $tmpl_elements += '</div>';
                 });
-
-                //$tmpl_elements += '<input type="checkbox" name="risposta'+checklist[i].id+'[]" class="hide-content check-true" value="true"></input>';
-                //$tmpl_elements += '<input type="checkbox" name="risposta[]" class="hide-content check-true" value="true"></input>';
             }
             
             $("#checkbox-"+checklist[i].id+"").append($tmpl_elements);
@@ -89,7 +84,8 @@ $(document).ready(function(){
         }
     });
 
-    $("#edit-pazienti").mouseenter(function( event ){
+    $("#edit-pazienti").click(function(){
+    // $("#edit-pazienti").mouseenter(function( event ){
 
         //$("#div-checklist").removeClass('show-content').addClass('hide-content');
 
@@ -128,7 +124,8 @@ $(document).ready(function(){
 
     // apre la lista dei pazienti
     // comprobiamo 
-    $("#lista-pazienti").mouseenter(function( event ){
+    $("#lista-pazienti").click(function(){
+    //$("#lista-pazienti").mouseenter(function( event ){
 
         $.ajax({
             

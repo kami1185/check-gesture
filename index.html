@@ -22,9 +22,10 @@
     <link rel="stylesheet" href="scss/button.css">
     <!-- <link rel="stylesheet" href="scss/riepilogo.css"> -->
     <link rel="stylesheet" href="scss/menu-animation.css">
-    <!-- <link rel="stylesheet" href="scss/inserire-paziente.css"> -->
+    <!-- notiflix plugin notifiche, alert, loader -->
+    <link rel="stylesheet" href="scss/notiflix.css">
 
-    
+    <link rel="stylesheet" href="scss/index-menu.css">
 
     <!-- Font Icon -->
     <link href="fontawesome5.13.0/css/fontawesome.css" rel="stylesheet">
@@ -39,44 +40,21 @@
     <!-- <script src="script/form-check-data.js"></script> -->
     <!-- <script src="script/riepilogo.js"></script> -->
     <script src="script/jquery.serializejson.js"></script>
-    <!-- <script src="script/inserire-paziente.js"></script> -->
+    <!-- notiflix plugin notifiche, alert, loader -->
+    <script src="script/notiflix.js"></script>
 
 </head>
 <!-- <body class="row align-items-center justify-content-center vh-100"> -->
 <body>
   <div class="container-lg">
 
-    <!-- <div id="verfica-pazienti"> -->
-
-      <!-- <div class="navigation">
-        <input type="checkbox">
-          <span></span>
-          <span></span>
-          <div class="menu-init">
-            <li><a href="#">home</a></li>
-            <li><a href="#">about</a></li>
-            <li><a href="#">cursos</a></li>
-            <li><a href="#">blog</a></li>
-            <li><a href="#">contactos</a></li>
-          </div>
-      </div> -->
-
       <div id="menu-main" class="show-content">
         <div class="div-title-menu">
-          <!-- <div class="row "> -->
-            <!-- <div class="col-2">
-              
-            </div> -->
-              <!-- <h5 class="title-main-menu text-center">Azienda Ospedaliera Universitaria "Policlinico Paolo Giaccone di Palermo"</h5>-->
-              <!-- <div class="col-10"> -->
-                
             <h5 class="title-main-menu text-center">Check List in Sala Operatoria </h5> 
             <img style="width: 300px; height: 70px;" class=" mx-auto d-block" src="img/title-main-menu.png">
-              <!-- </div> -->
-          <!-- </div>     -->
         </div>
 
-        <nav class="menu-init" >
+        <!-- <nav class="menu-init" >
           <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
           <label class="menu-open-button" for="menu-open">
           <span class="lines line-1"></span>
@@ -90,10 +68,29 @@
           <a href="#" id="lista-pazienti" class="menu-item green"> <i class="fas fa-clipboard-list"></i> </a>
           <a href="#" class="menu-item orange" style="display:none"> <i class="fa fa-star"></i> </a>
           <a href="#" class="menu-item lightblue" style="display:none"> <i class="fa fa-diamond"></i> </a>
-        </nav>
-      </div>
+        </nav> -->
 
-    <!-- </div> -->
+        <ul class="menu-ul">
+          <li class="menu-li"><a id="lista-pazienti" href="#">
+              <div class="icon"><i class="fas fa-home" aria-hidden="true"></i><i class="fas fa-home" aria-hidden="true"></i></div>
+              <div class="name"><span data-text="Lista Pazienti">Lista Pazienti</span></div>
+            </a></li>
+          <li class="menu-li"><a id="edit-pazienti" href="#">
+              <div class="icon"><i class="fas fa-file-alt" aria-hidden="true"></i><i class="fas fa-file-alt" aria-hidden="true"></i></div>
+              <div class="name"><span data-text="Inserire Paziente">Inserire Paziente</span></div>
+            </a></li>
+          <li class="menu-li"><a id="lista-riepilogo" href="#">
+              <div class="icon"><i class="fas fa-cogs" aria-hidden="true"></i><i class="fas fa-cogs" aria-hidden="true"></i></div>
+              <div class="name"><span data-text="Riepilogo">Riepilogo</span></div>
+            </a></li>
+          <li class="menu-li"><a href="#">
+              <div class="icon"><i class="far fa-image" aria-hidden="true"></i><i class="far fa-image" aria-hidden="true"></i></div>
+              <div class="name"><span data-text="作品">作品</span></div>
+            </a></li>
+          
+        </ul>
+
+      </div>
 
     <div id="data">
 
