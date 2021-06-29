@@ -35,15 +35,24 @@ function save_data_server(jsonArray){
 	var results = JSON.parse(jsonArray);
 
 	var save_data = {}
+
+    var paziente = [];
 	
 	var checklist = [];
+
+    paziente.push({ nome : results.paziente_nome,
+                    cognome : results.paziente_cognome,
+                    datanascita : results.paziente_data_nascita
+                     });
 
 	checklist.push({ signinInit : results.signin_ora_inizio,
                     signinEnd : results.signin_ora_fine,
                     timeoutInit : results.timeout_ora_inizio,
                     timeoutEnd : results.timeout_ora_fine,
                     signoutInit : results.signout_ora_inizio,
-                    signoutEnd : results.signout_ora_fine });
+                    signoutEnd : results.signout_ora_fine,
+                    diagnosi : results.paziente_diagnosi,
+                    percorso : results.paziente_percorso });
 
     risposte(results.risposta1,results.idDomande1);
     risposte(results.risposta2,results.idDomande2);
@@ -70,6 +79,7 @@ function save_data_server(jsonArray){
     risposte(results.risposta23,results.idDomande23);
     risposte(results.risposta24,results.idDomande24);
 
+    save_data ["paziente"] = paziente;
     save_data ["checklist"] = checklist;
     save_data ["riepilogo"] = riepilogo;
 
@@ -107,7 +117,7 @@ $(document).ready(function(){
 
         Notiflix.Loading.Hourglass('Generando riepilogo della checklist...');
 
-        $('.titolo-checklist').text('Riepilogo della Checklist Fase Sign In');
+        //$('.titolo-checklist').text('Riepilogo della Checklist Fase Sign In');
 
         var form = $('#form-checklist');
 
@@ -150,6 +160,14 @@ $(document).ready(function(){
                     
                     var parent = $(this);
                     parent.fadeIn();
+
+                    //aggiungiamo una classe al button che torna alla home, serve x verficare il 
+                    //messaggio della popup quando l'utente vuole tornare al menu principale
+                    $("#button-back-home").addClass("riepilogo");
+                    //facciamo apparire la bara nav-bar (titolo e pulsante esci) impostata 
+                    //in index.html
+                    $("#icon-back-home").removeClass("fa-times").addClass("fa-home");
+                    $(".titolo-checklist").html("Riepilogo Checklist in Sala Operatoria");
 
                     creare_riepilogo(jsonString);
                 });

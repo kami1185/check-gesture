@@ -2,14 +2,50 @@ $(document).ready(function(){
 
     Notiflix.Loading.Init({clickToClose:false,});
 
+    // button per tornare al menu principale
+    $("#button-back-home").click(function(){
+        var msg="";
+        if($(this).hasClass('check'))
+            msg="Vuole abbandonare la checklist?";
+            
+        if($(this).hasClass('riepilogo') || $(this).hasClass('insert'))
+            msg="Vuole tornare al menu principale?";
+
+        confirm_popup(msg);
+    });
+    // button per tornare al menu principale
+    $("#button-back-home").on("mouseover", function () {
+        var msg="";
+        if($(this).hasClass('check'))
+            msg="Vuole abbandonare la checklist?";
+            
+        if($(this).hasClass('riepilogo') || $(this).hasClass('insert'))
+            msg="Vuole tornare al menu principale?";
+
+        confirm_popup(msg);
+    });
+
+    function confirm_popup(msg){
+        Notiflix.Confirm.Show(
+			'CheckList Sala Operatoria',msg,'Si','No', 
+			function(){
+                //alert('aa');
+				//window.location.reload('true');
+			}, 
+			function(){
+				var cancelButton = window.document.getElementById('NXConfirmButtonCancel');
+				$(cancelButton).addClass('back-cancel');
+            }
+        );
+    }
+
     function insertDataChecklist(jsonString){
     
         var checklist = JSON.parse(jsonString);
         //var checklist = JSON.parse(JSON.stringify(jsonString));
         console.log("Response: ",checklist);
         
-        for (var i = 0; i < checklist.length; ++i) {            
-    
+        for (var i = 0; i < checklist.length; ++i) { 
             //console.log("id-domanda: "+ checklist[i].id + " length: "+ checklist[i].risposte.length+ " dom: "+ checklist[i].domanda);
 
             var $tmpl = "";
@@ -40,9 +76,7 @@ $(document).ready(function(){
             }
 
             if(checklist[i].risposte.length > 1 ){
-                
                 $.each(checklist[i].risposte, function(index, elem) {
-                    
                     $tmpl_elements += '<div class="form-check row">';
                     if(elem.level === 2){
                         $tmpl_elements += '<input type="checkbox" name="risposta'+checklist[i].id+'[]" idnnc="'+checklist[i].id+'" class="form-check-input verify'+checklist[i].id+' asa4" id="risposta'+elem.id+'" value="'+ elem.id +','+ elem.testo +'">';
@@ -52,12 +86,9 @@ $(document).ready(function(){
                     }
                     $tmpl_elements += '    <label class="form-check-label" for="risposta'+elem.id+'">'+ elem.testo+'</label>';
                     $tmpl_elements += '</div>';
-
                 });
             }
-            
             $("#checkbox-"+checklist[i].id+"").append($tmpl_elements);
-                
         }
     }
 
@@ -84,49 +115,13 @@ $(document).ready(function(){
         }
     });
 
-    $("#edit-pazienti").click(function(){
-    // $("#edit-pazienti").mouseenter(function( event ){
-
-        //$("#div-checklist").removeClass('show-content').addClass('hide-content');
-
-        $("#menu-main").removeClass('show-content').addClass('hide-content');
-        
-        $("#data").load("inserire_paziente.html", function( response, status, xhr ) {
-            if ( status === "error" ) {
-                var msg = "Sorry but there was an error: ";
-                //$( "#error" ).html( msg + xhr.status + " " + xhr.statusText );
-                alert(msg + xhr.status + " " + xhr.statusText);
-            }	
-            var parent = $(this);
-            parent.fadeIn();
-        });
-        
-
-        $.ajax({
-            'url':'http://127.0.0.1:8080/crud/save',
-            'method':'POST',
-            'dataType': 'json',
-             //processData: false,
-            'contentType': 'application/json',
-            'data': jsondata,
-            success: function (data) {
-                alert(data);
-            },
-            error: function (xhRequest, ErrorText, thrownError) {
-                //alert("Errore al caricare la telecamera");
-                console.log('xhRequest: ' + xhRequest + "\n");
-                console.log('ErrorText: ' + ErrorText + "\n");
-                console.log('thrownError: ' + thrownError + "\n");
-            }
-        });
-        
-    });
+    
 
     // apre la lista dei pazienti
     // comprobiamo 
     $("#lista-pazienti").click(function(){
     //$("#lista-pazienti").mouseenter(function( event ){
-
+        
         $.ajax({
             
             url: 'http://127.0.0.1:8080/devices/start/?id=6&streamsName=SKELETON&mode=SHARED',
@@ -151,10 +146,10 @@ $(document).ready(function(){
                                 var msg = "Sorry but there was an error: ";
                                 alert(msg + xhr.status + " " + xhr.statusText);
                             }
-
+                            
                             var parent = $(this);
                             parent.fadeIn();
-                            
+                            //$(".nav-bar-checklist").removeClass("hide-content").addClass("show-content");
                         });
                     }
                     else{
@@ -164,16 +159,25 @@ $(document).ready(function(){
                 							
             },
             error: function (xhRequest, ErrorText, thrownError) {
-
+                
                 $("#menu-main").removeClass('show-content').addClass('hide-content');
 
                 $("#data").load("checklist.html", function( response, status, xhr ) {
+                //$("#data").load("lista_pazienti.html", function( response, status, xhr ) {
                     if ( status === "error" ) {
                         var msg = "Sorry but there was an error: ";
                         alert(msg + xhr.status + " " + xhr.statusText);
                     }	
                     var parent = $(this);
                     parent.fadeIn();
+                    
+                    //aggiungiamo una classe al button che torna alla home, serve x verficare il 
+                    //messaggio della popup quando l'utente vuole tornare al menu principale
+                    $("#button-back-home").addClass("check");
+                    //facciamo apparire la bara nav-bar (titolo e pulsante esci) impostata 
+                    //in index.html
+                    $(".titolo-checklist").html("Checklist per la sicurezza in sala operatoria");
+                    $(".nav-bar-checklist").removeClass("hide-content").addClass("show-content");
 
                     insertDataChecklist(datajson);
                     
@@ -186,6 +190,59 @@ $(document).ready(function(){
             }
         });
         //$("#div-checklist").removeClass('hide-content').addClass('show-content');
+    });
+
+    $("#edit-pazienti").click(function(){
+        // $("#edit-pazienti").mouseenter(function( event ){
+        $("#menu-main").removeClass('show-content').addClass('hide-content');
+        $("#data").load("inserire_paziente.html", function( response, status, xhr ) {
+            if ( status === "error" ) {
+                var msg = "Sorry but there was an error: ";
+                //$( "#error" ).html( msg + xhr.status + " " + xhr.statusText );
+                alert(msg + xhr.status + " " + xhr.statusText);
+            }	
+            var parent = $(this);
+            parent.fadeIn();
+            //aggiungiamo una classe al button che torna alla home, serve x verficare il 
+            //messaggio della popup quando l'utente vuole tornare al menu principale
+            $("#button-back-home").addClass("insert");
+            //facciamo apparire la bara nav-bar (titolo e pulsante esci) impostata 
+            //in index.html
+            $(".titolo-checklist").html("Inserire Paziente");
+            $(".nav-bar-checklist").removeClass("hide-content").addClass("show-content");
+        });
+    });
+
+    // apriamo la lista di tutti riepiloghi dei paziente che hanno fatto una checklist
+    $("#lista-riepilogo").click(function(){
+        $("#menu-main").removeClass('show-content').addClass('hide-content');
+        $("#data").load("lista_riepilogo.html", function( response, status, xhr ) {
+            if ( status === "error" ) {
+                var msg = "Sorry but there was an error: ";
+                alert(msg + xhr.status + " " + xhr.statusText);
+            }	
+            var parent = $(this);
+            parent.fadeIn();
+            //aggiungiamo una classe al button che torna alla home, serve x verficare il 
+            //messaggio della popup quando l'utente vuole tornare al menu principale
+            $("#button-back-home").addClass("riepilogo");
+            //facciamo apparire la bara nav-bar (titolo e pulsante esci) impostata 
+            //in index.html
+            $(".titolo-checklist").html("Riepiloghi Checklist in Sala Operatoria");
+            $(".nav-bar-checklist").removeClass("hide-content").addClass("show-content");
+        });
+    });
+
+    $("#lista-temporal").click(function(){
+        $("#menu-main").removeClass('show-content').addClass('hide-content');
+        $("#data").load("lista_pazienti.html", function( response, status, xhr ) {
+            if ( status === "error" ) {
+                var msg = "Sorry but there was an error: ";
+                alert(msg + xhr.status + " " + xhr.statusText);
+            }	
+            var parent = $(this);
+            parent.fadeIn();
+        });
     });
 
 });

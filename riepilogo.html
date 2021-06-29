@@ -1,8 +1,8 @@
-
 <html>
-
-  <link rel="stylesheet" href="scss/riepilogo.css">
-  <script type="text/javascript" src="script/riepilogo.js"></script>
+  <head>
+    <link rel="stylesheet" href="scss/riepilogo.css">
+    <script type="text/javascript" src="script/riepilogo.js"></script>
+  </head>
       
   <div id="wrapper" class="hide-content">
     <div >
@@ -40,42 +40,63 @@
 
     <div class="col-11">
 
-      <div class="row">
+      <!-- <div class="row">
         <div class="titolo-div text-center">
-          <p class="titolo-checklist">Riepilogo Fase Sign Out
+          <p class="titolo-checklist">Riepilogo Fase Sign In
             <button id="button-back-home" type="button" class="btn btn-success btn-circle btn-sl float-left">
-              <i class="fas fa-home"></i>
+              <i id="icon-back-home" class="fas fa-home"></i>
             </button>
           </p>
         </div>
       </div>
-      <hr>
+      <hr> -->
 
       <div id="container-riepilogo" class="box">
 
         <div>
-          <ol  id="fase_signin" class='check-list'>
+          <hr>
             <div class="row">
-              <li class="col-6 colum">
-                <label class="label-data">Nome e Cognome : <span id="paziente-nome"></span></label>
-                <label class="label-data">data di nascita: <span id="paziente-eta"></span></label>
-                <label class="label-data">Sesso          : <span id="paziente-sesso"></span></label>
-                <label class="label-data">Numero cartella: <span id="num-cartella"></span></label>
+              <div class="titolo-div text-center">
+                <p class="titolo-fase-riepilogo">Riepilogo Fase Sign In</p>
+              </div>
+            </div>
+          <hr>
+
+          <div id ="div-data-paziente" class="row">
+            <div class="col-12 colum">
+              <label class="label-data">Nome: <span id="paziente-nome"></span></label><br>
+              <label class="label-data">Cognome: <span id="paziente-cognome"></span></label><br>
+              <label class="label-data">data di nascita: <span id="paziente-eta"></span></label><br>
+              <label class="label-data">Percorso: <span id="paziente-percorso"></span></label><br>
+              <label class="label-data">Diagnosi: <span id="paziente-diagnosi"></span></label><br>
+              <label class="label-data">Inizio della Fase Sign In: <span id="signin-inizio"></span></label>
+              <label class="label-data">Fine della Fase Sign In: <span id="signin-fine"></span></label>
+            </div>
+          </div>
+
+          <ol  id="fase_signin" class='check-list'>
+            <!-- <div class="row">
+              <li class="col-12 colum">
+                <label class="label-data">Nome: <span id="paziente-nome"></span></label><br>
+                <label class="label-data">Cognome: <span id="paziente-cognome"></span></label><br>
+                <label class="label-data">data di nascita: <span id="paziente-eta"></span></label><br>
+                <label class="label-data">Percorso: <span id="paziente-percorso"></span></label><br>
+                <label class="label-data">Diagnosi: <span id="paziente-diagnosi"></span></label><br>
                 <label class="label-data">Inizio della Fase Sign In: <span id="signin-inizio"></span></label>
                 <label class="label-data">Fine della Fase Sign In: <span id="signin-fine"></span></label>
               </li>
-            </div>
+            </div> -->
           </ol>
         </div>
+
 
         <hr>
         <div class="row">
           <div class="titolo-div text-center">
-            <p class="titolo-checklist">Riepilogo Fase Time Out</p>
+            <p class="titolo-fase-riepilogo">Riepilogo Fase Time Out</p>
           </div>
         </div>
         <hr>
-        
 
         <div>
           <ol id="fase_timeout" class='check-list'>
@@ -90,7 +111,8 @@
 
         <div class="row">
           <div class="titolo-div text-center">
-            <p class="titolo-checklist">Riepilogo Fase Sign Out</p>
+            <p class="titolo-fase-riepilogo">Riepilogo Fase Sign Out</p>
+            <!-- titolo-checklist -->
           </div>
         </div>
         <hr>

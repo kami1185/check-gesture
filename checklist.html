@@ -3,26 +3,60 @@
         <link rel="stylesheet" href="scss/progressbar.css">
         <!-- Alert Box popup  toastr-->
         <link rel="stylesheet" href="scss/toastr.min.css">
+        <link rel="stylesheet" href="scss/datatables.css">
 
         <script src="script/checklist.js"></script>
         <script src="script/form-check-data.js"></script>
         <!-- Alert Box popup toastr -->
         <script src="script/toastr.js"></script>
+        <script src="script/datatables.js"></script>
 
     </head>
 
-    <div id="div-checklist" class="show-content">
+    <div id="div-listapazienti" class="show-content" style="padding-top: 40px;">
+        
+        <div class="row form-group div-cerca-paziente">
+            <div class="col-6"></div>
+            <div class="col-6">
+                <label class="label-datatable" for="text1">Cerca per data:  
+                <!-- <div class="col-3"> -->
+                    <div id="sandbox-listapaziente" style="display: inline-block;">
+                        <div class="input-group date">
+                            <input id="data1" name="text1" type="text" class="form-control"> 
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <table id="table-lista-paziente" class="table table-striped table-bordered dt-responsive nowrap">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Data Ricovero</th>
+                    <th>Percorso</th>
+                    <th>Checklist</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
 
-        <div class="row">
+    <div id="div-checklist" class="hide-content">
+
+        <!-- <div class="row">
             <div class="titolo-div text-center">
                 <p class="titolo-checklist">Checklist per la sicurezza in sala operatoria
-                    <!-- <span class="titolo-fase"></span> -->
                     <button id="button-back-home" type="button" class="btn btn-success btn-circle btn-sl float-left">
                         <i class="fas fa-times"></i>
                     </button>
                 </p>
             </div>
-        </div>
+        </div> -->
 
         <div id="check-list-fasi" class="row row-column-height">
             <div class="col-2">
@@ -104,9 +138,15 @@
                                     </div>
                                     <div id="checkbox-paziente" class="div-dati-paziente checkboxes">
                                         <div class="row form-group ">
-                                            <label for="paziente_nome" class="col-md-4 col-form-label">Nome e Cognome</label>
-                                            <div class="col-md-8">
-                                                <input type="text" class="form-control" name="paziente_nome" id="paziente_nome" value="Vincenzo Rodriguez">
+                                            <label for="paziente_nome" class="col-md-3 col-form-label">Nome</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control anagrafica" name="paziente_nome" id="paziente_nome" value="">
+                                            </div>
+                                        </div>
+                                        <div class="row form-group ">
+                                            <label for="paziente_cognome" class="col-md-3 col-form-label">Cognome</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control anagrafica" name="paziente_cognome" id="paziente_cognome" value="">
                                             </div>
                                         </div>
                                     <!-- <div class="row form-group">
@@ -117,38 +157,35 @@
                                         </div>
                                     </div> -->
                                         <div class="row form-group">
-                                            <label for="paziente_eta" class="col-md-4 col-form-label">Data di nascita</label>
+                                            <label for="paziente_data_nascita" class="col-md-3 col-form-label">Data di nascita</label>
                                             <div class="col-md-3">
-                                                <input type="text" class="form-control" name="paziente_eta" id="paziente_eta" value="12/03/1985" />
+                                                <input type="text" class="form-control anagrafica" name="paziente_data_nascita" id="paziente_data_nascita" value="" />
                                             <!-- <label for="paziente_eta" class="">11/01/1985</label> -->
                                             </div>
-                                            <label for="paziente_sesso" class="col-md-2 col-form-label">Sesso</label>
-                                            <div class="col-md-3">
-                                                <input type="text" class="form-control" name="paziente_sesso" id="paziente_sesso" value="M"/>
+                                            <label for="paziente_percorso" class="col-md-2 col-form-label">Percorso</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control anagrafica" name="paziente_percorso" id="paziente_percorso" value=""/>
                                             <!-- <label for="paziente_eta" class="">Maschile</label> -->
                                             </div>
                                         </div>
-                                    <!-- <div class="row form-group">
-                                        <label for="paziente_sesso" class="col-md-4 col-form-label">Sesso</label>
-                                        <div class="col-md-3">
-                                        <input type="text" class="form-control" name="paziente_sesso" id="paziente_sesso" value="M"/>
-                                        </div>
-                                    </div> -->
+
                                         <div class="row form-group">
-                                            <label for="paziente_cartella" class="col-md-4 col-form-label">Numero Cartella</label>
+                                            <label for="paziente_cartella" class="col-md-3 col-form-label">Numero Cartella</label>
                                             <div class="col-md-3">
-                                            <input type="text" class="form-control" name="paziente_cartella" id="paziente_cartella" value="56870"/>
+                                            <input type="text" class="form-control anagrafica" name="paziente_cartella" id="paziente_cartella" value="56870"/>
                                             <!-- <label for="paziente_eta" class="">Numero cartella clinica</label> -->
                                             </div>
                                         </div>
-                                        <!-- <div class="row form-group non-conformita-paziente">
-                                            <label for="paziente_cartella" class="col-md-6 col-form-label label-conformita-paziente">Hai rilevato delle non conformità?</label>
-                                            <div class="col-md-3 button-conformita-paziente">
-                                                <button type="button" id="modal_popup_paziente" class="btn btn-warning btn-circle btn-lg" data-toggle="modal" data-target="#non-conformita-paziente">
-                                                    <i class="fas fa-clipboard-list"></i>
-                                                </button>
+
+                                        <div class="row form-group">
+                                            <label for="paziente_diagnosi" class="col-md-3 col-form-label">Diagnosi</label>
+                                            <div class="col-md-9">
+                                                <textarea id="paziente_diagnosi" class="form-control anagrafica" name="paziente_diagnosi" rows="3" cols="100%"></textarea>
+                                                <!-- <input type="text" class="form-control anagrafica" name="paziente_cartella" id="paziente_cartella" value="56870"/> -->
+                                            <!-- <label for="paziente_eta" class="">Numero cartella clinica</label> -->
                                             </div>
-                                        </div> -->
+                                        </div>
+
                                     <!-- <input type="checkbox" name="paziente_conformita[]" class="hide-content check-true" value="true"> -->
                                     <input type="text" name="paziente_domanda" class="hide-content form-control" value="Hai verificato con il paziente l'identità"/>
                                     <div id="div-hide-paziente" class="hide-content">
@@ -163,7 +200,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-5 mx-auto imagini-margini">
-                                            
+                                            <img class="imagini-fase-2 mx-auto d-block" src="img/identita-paziente2.png">
                                         </div>
                                         <div class="col-md-7">
                                             <div class="div-non-conformita">
@@ -198,7 +235,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="div-non-conformita">
-                                                <p class="titolo-non-conformita">Hai rilevato delle non conformità?</p>
+                                                <!-- <p class="titolo-non-conformita">Hai rilevato delle non conformità?</p> -->
                                                 <div id="checkbox-2" class="form-check row checkboxes">
                                                     <!-- <input type="checkbox" name="risposta2[]" class="form-check-input asa4" id="risposta2" value="5,Non conferma la sede">
                                                     <label class="form-check-label" for="risposta2">Non conferma la sede</label>
@@ -231,7 +268,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="div-non-conformita">
-                                                <p class="titolo-non-conformita">Hai rilevato delle non conformità?</p>
+                                                <!-- <p class="titolo-non-conformita">Hai rilevato delle non conformità?</p> -->
                                                 <div id="checkbox-3" class="form-check row checkboxes">
                                                     <!-- <input type="checkbox" name="procedura[]" class="form-check-input asa4" id="check-procedura" value="6,Non conferma della procedura">
                                                     <label class="form-check-label" for="check-procedura">Non conferma della procedura</label>
@@ -252,7 +289,7 @@
                                     </div>
                                     <div class="row"> 
                                         <div class="col-md-5 mx-auto imagini-margini">
-                                            <img class="imagini-fase-2 mx-auto d-block" src="img/marcatura.png">
+                                            <img class="imagini-fase-4 mx-auto d-block" src="img/consensi5.png">
                                         </div>
                                         <div class="col-md-7">
                                             <!-- <div id="checkbox-consensi" class="custom-control checkboxes"> -->
@@ -300,7 +337,7 @@
                                         <div class="col-md-7">
                                             <!-- <div id="checkbox5" class="div-non-conformita checkboxes"> -->
                                             <div id="checkbox-5" class="div-non-conformita checkboxes">
-                                                <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli una opzione</p>
+                                                <!-- <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli una opzione</p> -->
                                                 <!-- <div class="form-check row">
                                                     <input type="checkbox" name="marcatura[]" class="form-check-input asa4" id="check-non-marcato" value="14,Sito non marcato">
                                                     <label class="form-check-label" for="check-non-marcato">Sito non marcato</label>
@@ -337,7 +374,7 @@
                                         </div>
                                         <div class="col-md-7">
                                             <div class="div-non-conformita">
-                                                <p class="titolo-non-conformita">Se ci sono delle non conformita scegliere una opzione:</p>
+                                                <!-- <p class="titolo-non-conformita">Se ci sono delle non conformita scegliere una opzione:</p> -->
                                                 <div id="checkbox-6" class="form-check row checkboxes">
                                                     <!-- <input type="checkbox" name="anestesia[]" class="form-check-input asa4" id="check-anestesia" value="Test apparecchiature non effettuati">
                                                     <label class="form-check-label" for="check-anestesia">Test apparecchiature non effettuati</label>
@@ -366,7 +403,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="div-non-conformita">
-                                        <p class="titolo-non-conformita">Se hai trovato questa non conformita scegli:</p>
+                                        <!-- <p class="titolo-non-conformita">Se hai trovato questa non conformita scegli:</p> -->
                                         <div id="checkbox-7" class="form-check row checkboxes">
                                             <!-- <input type="checkbox" name="pulsossimentro[]" class="form-check-input asa4" id="check-pulsossimentro" value="Non corretto posizionamento del pulsossimetro">
                                             <label class="form-check-label" for="check-pulsossimentro">Non corretto posizionamento del pulsossimetro</label>
@@ -398,7 +435,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <div id="checkbox-8" class="div-non-conformita checkboxes">
-                                                <p class="titolo-non-conformita">Se ci sono delle non conformita scegliere una opzione:</p>
+                                                <!-- <p class="titolo-non-conformita">Se ci sono delle non conformita scegliere una opzione:</p> -->
                                                 <!-- <div class="form-check row">
                                                     <input type="checkbox" name="allergia[]" class="form-check-input asa4" id="check-allergia-sanitaria" value="Mancata segnalazione in documentazione sanitaria">
                                                     <label class="form-check-label" for="check-allergia-sanitaria">Mancata segnalazione in documentazione sanitaria</label>
@@ -435,7 +472,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <div class="div-non-conformita">
-                                                <p class="titolo-non-conformita">Se ci sono delle non conformita scegliere una opzione:</p>
+                                                <!-- <p class="titolo-non-conformita">Se ci sono delle non conformita scegliere una opzione:</p> -->
                                                 <div id="checkbox-9" class="form-check row checkboxes">
                                                     <!-- <input type="checkbox" name="rischi[]" class="form-check-input asa4" id="check-aeere-criticita" value="Mancata segnalazione di criticità">
                                                     <label class="form-check-label" for="check-aeere-criticita">Mancata segnalazione di criticità</label>
@@ -467,7 +504,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <div id="checkbox-10" class="div-non-conformita checkboxes">
-                                                <p class="titolo-non-conformita">Se ci sono delle non conformita scegliere una opzione:</p>
+                                                <!-- <p class="titolo-non-conformita">Se ci sono delle non conformita scegliere una opzione:</p> -->
                                                 <!-- <div class="form-check row">
                                                     <input type="checkbox" name="ematica[]" class="form-check-input asa4" id="check-ematiche-disposizione" value="Mancata richiesta di unità a disposizione">
                                                     <label class="form-check-label" for="check-ematiche-disposizione">Mancata richiesta di unità a disposizione</label>
@@ -587,7 +624,7 @@
                                         </div>
                                         <div class="col-md-7">
                                             <div class="div-non-conformita">
-                                                <p class="titolo-non-conformita">Se ci sono delle non conformita scegliere una opzione:</p>
+                                                <!-- <p class="titolo-non-conformita">Se ci sono delle non conformita scegliere una opzione:</p> -->
                                                 <div id="checkbox-12" class="form-check row checkboxes">
                                                     <!-- <input type="checkbox" name="componentiequipe[]" class="form-check-input asa4" id="check-equipe-modificati" value="Componenti equipe modificati rispetto alla lista operatoria">
                                                     <label class="form-check-label" for="check-equipe-modificati">Componenti equipe modificati rispetto alla lista operatoria</label>
@@ -724,7 +761,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <div id="checkbox-16" class="div-non-conformita checkboxes">
-                                                <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli un'opzione</p>
+                                                <!-- <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli un'opzione</p> -->
                                                 <!-- <div class="form-check row">
                                                     <input type="checkbox" name="infermiere_criticita[]" class="form-check-input asa4" id="check-criticita-sterelita" value="Problemi di sterelità DM/strumentario">
                                                     <label class="form-check-label" for="check-criticità-sterelita">Problemi di sterelità DM/strumentario</label>
@@ -756,7 +793,7 @@
                                     </div> -->
                                     <div class="col-md-8">
                                         <div id="checkbox-17" class="checkboxes">
-                                            <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli un'opzione</p>
+                                            <!-- <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli un'opzione</p> -->
                                             <!-- <div class="form-check row">
                                                 <input type="checkbox" name="profilassi[]" class="form-check-input asa4" id="check-profilassi-eseguita" value="Profilassi non eseguita quando necessario">
                                                 <label class="form-check-label" for="check-profilassi-eseguita">Profilassi non eseguita quando necessario</label>
@@ -797,7 +834,7 @@
                                         </div>
                                         <div class="col-md-7">
                                             <div id="checkbox-18" class="div-non-conformita checkboxes">
-                                                <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli un'opzione </p>
+                                                <!-- <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli un'opzione </p> -->
                                                 <!-- <div class="form-check row">
                                                     <input type="checkbox" name="immagini[]" class="form-check-input asa4" id="check-immagini-disponibili" value="Immagini non disponibili">
                                                     <label class="form-check-label" for="check-immagini-disponibili">Immagini non disponibili</label>
@@ -949,7 +986,7 @@
                                         </div>
                                         <div class="col-md-7">
                                             <div id="checkbox-21" class="div-non-conformita checkboxes">
-                                                <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli un'opzione</p>
+                                                <!-- <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli un'opzione</p> -->
                                                 <!-- <div class="form-check row">
                                                     <input type="checkbox" name="etichettatura[]" class="form-check-input asa4" id="check-etichettatura-identificazione" value="Errata identificazione del campione">
                                                     <label class="form-check-label" for="check-etichettatura-identificazione">Errata identificazione del campione</label>
@@ -1034,7 +1071,7 @@
                                     </div>
                                     <div class="col-md-7">
                                         <div id="checkbox-24" class="div-non-conformita checkboxes">
-                                            <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli una opzione</p>
+                                            <!-- <p class="titolo-non-conformita">Hai rilevato delle non conformità? scegli una opzione</p> -->
                                             <!-- <div class="form-check row">
                                                 <input type="checkbox" name="tromboembolismo[]" class="form-check-input asa4" id="check-tromboembolismo-eseguito" value="Piano profilassi non eseguito">
                                                 <label class="form-check-label" for="check-tromboembolismo-eseguito">Piano profilassi non eseguito</label>

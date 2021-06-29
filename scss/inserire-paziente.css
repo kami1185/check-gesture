@@ -106,19 +106,26 @@
   }
   
   .input-paziente {
+
+    -webkit-border-radius: 13px;
+    -o-border-radius: 13px;
+    -ms-border-radius: 13px;
+
     font-family: 'Lato', sans-serif;
-    font-size: 0.875em;
-    width: 470px;
+    font-size: 1.7em;
+    width: 90%;
     height: 50px;
     padding: 0px 15px 0px 15px;
     
     background: transparent;
     outline: none;
-    color: #28BF8D;
-    /* color: #726659; */
+    color: #222222;
+    /* color: #32c682; */
     
-    border: solid 1px #b3aca7;
-    border-bottom: none;
+    border: solid 2px #007bff;
+    /* border-bottom: none; */
+
+    font-weight: bold;
     
     transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
@@ -128,8 +135,8 @@
   
   .input-paziente:hover {
     background: #34b4aa9a;
-    color: #e2dedb;
-    /* color: #fff; */
+    /* color: #e2dedb; */
+    color: #000;
   }
   
   textarea {
@@ -146,13 +153,22 @@
     font-family: 'Lato', sans-serif;
     font-size: 0.875em;
     
-    border: solid 1px #b3aca7;
+    border: solid 2px #b3aca7;
     
     transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
   }
+
+  .asterisco-form {
+    color:red;
+  }
+
+  .input-group-text > i.fas, i.fab {
+    border: 0px solid #007bff;
+    color: #007bff;
+}
   
   textarea:hover {
     /* background: #b3aca7; */

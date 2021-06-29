@@ -1,3 +1,48 @@
+function InitChevklist(data){
+
+
+    var data_paziente = data.split(',');
+
+    var nome = data_paziente[0];
+    var cognome = data_paziente[1];
+    var data_ricovero = data_paziente[2];
+
+    var paziente = {
+        "nome": nome,
+        "cognome": cognome,
+        "data_ricovero": data_ricovero
+      }
+
+    var jsonString = JSON.stringify(paziente);
+
+    $.ajax({
+        'url': 'https://localhost:44366/lista/paziente', // richiesta con checklist web api
+        'dataType': "json",
+        'type': "POST",
+        'contentType': "application/json",
+        'data': jsonString,
+        success: function (data) {
+
+            $("#paziente_nome").val(data.nome);
+            $("#paziente_cognome").val(data.cognome);
+            $("#paziente_data_nascita").val(data.dataNascista);
+            $("#paziente_percorso").val(data.percorso);
+            $("#paziente_diagnosi").val(data.diagnosi);
+
+            $("#div-listapazienti").fadeOut();
+            $("#div-checklist").fadeIn(1000);
+           
+        },
+        error: function (xhRequest, ErrorText, thrownError) {
+            //alert("Errore al caricare la telecamera");
+            console.log('xhRequest: ' + xhRequest + "\n");
+            console.log('ErrorText: ' + ErrorText + "\n");
+            console.log('thrownError: ' + thrownError + "\n");
+        }
+    });
+
+}
+
 $(document).ready(function(){
 
     var cont_field = 0;
@@ -11,27 +56,96 @@ $(document).ready(function(){
     var init_fase;
     var prev_fase;
 
+    // var table = $('#table-lista-paziente').DataTable();
+ 
+    // $('#table-lista-paziente tbody').on( 'click', 'tr', function () {
+    //     console.log( table.row( this ).data() );
+    // } );
+
+    $('#table-lista-paziente').DataTable({
+        // DataTable solo usa POST come metodo x inviare i parametri
+        //"paging": false,
+        //"searching": false,
+        "destroy": true,
+        // "searching": false,
+        "processing": true,
+        "serverSide": true,
+        "filter": true,
+        
+        "language": {
+            "paginate": {
+                "previous": "indietro",
+                "next": "avanti"
+            },
+            "search": "Cerca Paziente per Nome o Cognome o Codice Fiscale:",
+            "show": "Numero di registri",
+            "emptyTable": "Non ci sono dati disponibili per questa data"
+        },
+        "ajax": {
+            "url": 'https://localhost:44366/lista/checklist',
+            "type": "POST",
+            "dataType": "JSON",
+            // passiamo i parametri x la query 
+            // "data": { "dateinit": "01/05/2021", 
+            //           "dateend":"05/05/2021"
+            "data": { "dateinit": null }
+        },
+        "pageLength": 10,
+        "responsivePriority": 1,
+        
+        //"data": null,
+        // "columnDefs": [{
+        //     "targets": [0],
+        //     "visible": false,
+        //     "searchable": true
+        // }],
+        "columnDefs": [
+            { "width": '20%', targets: 0 }
+          ],
+        "fixedColumns": true,
+        "columns": [
+            //{ "data": "id","name": "Id", "autoWidth": true },
+            { "data": "nome", "name": "Nome", "autoWidth": true },
+            { "data": "cognome", "name": "Cognome", "autoWidth": true },
+            { "data": "dataRicovero", "name": "Data Ricovero", "autoWidth": true },
+            // { "data": "diagnosi", "name": "Diagnosi", "autoWidth": true },
+            { "data": "percorso", "name": "Percorso", "autoWidth": true },
+            {
+                // prendiamo il valore id dell'oggetto data impostato in columns 
+                // { "data": "id","name": "Id", "autoWidth": true } passando il 
+                // valore dell'id al metodo ViewRiepilogo
+                // con render impostiamo un button con l'id 
+                "data": 'identifier',
+                "render": function (data, type, row, meta) { return "<a href='#' class='btn btn-success' onclick=InitChevklist(\'" + data + "\'); >Inizia Checklist</a>";   }
+            },
+        ]
+    } );
+
     // button per tornare al menu principale 
-    $("#button-back-home").click(function(){
-        confirm_popup();
-    });
+    // $("#button-back-home").click(function(){
+    //     confirm_popup();
+    // });
+    // // button per tornare al menu principale
+    // $("#button-back-home").on("mouseover", function () {
+    //     confirm_popup();
+    // });
 
-    $("#button-back-home").on("mouseover", function () {
-        confirm_popup();
-    });
+    // function confirm_popup(){
+    //     Notiflix.Confirm.Show(
+	// 		'CheckList Sala Operatoria','Vuole abbandonare la checklist?','Si','No', 
+	// 		function(){
+	// 			window.location.reload('true');
+	// 		}, 
+	// 		function(){
+	// 			var cancelButton = window.document.getElementById('NXConfirmButtonCancel');
+	// 			$(cancelButton).addClass('back-cancel');
+    //         }
+    //     );
+    // }
 
-    function confirm_popup(){
-        Notiflix.Confirm.Show(
-			'CheckList Sala Operatoria','Vuole abbandonare la checklist?','Si','No', 
-			function(){
-				window.location.reload('true');
-			}, 
-			function(){
-				var cancelButton = window.document.getElementById('NXConfirmButtonCancel');
-				$(cancelButton).addClass('back-cancel');
-            }
-        );
-    }
+
+
+
 
     // faccio un select e deselect dei checkbox
     // eccetto uno, quando non trova un problema o non conformità
@@ -237,7 +351,7 @@ $(document).ready(function(){
                     // se nessuno dei checkbox sono stati selezionati compare un alert
                     // indicando che deveno selezionare una opzione 
                     // usando il plugin toastr
-                    toastr["error"]("Selezionare una opzione <i class='fas fa-check-square'></i>", "Atenzione!")
+                    toastr["error"]("Selezionare una opzione <i class='fas fa-check-square'></i>", "Attenzione!")
                     toastr.options = {
                         "closeButton": false,
                         "debug": false,
@@ -412,10 +526,11 @@ $(document).ready(function(){
                 if($(this).val() == "34,ASA 3" || $(this).val() == "35,ASA 4"){
                     //array.push($(this).val().split(',')[1]);
                     asa = $(this).val().split(',')[1];
-                    $('#div-alert-asa').append("<label class='text-center alert-messaggio ' for='paziente_id' ><i class='fas fa-exclamation-triangle fa-2x icon-alert'></i> Atenzione nella fase Sign In il paziente è un "+asa+" </label>" );
+                    $('#div-alert-asa').append("<label class='text-center alert-messaggio ' for='paziente_id' ><i class='fas fa-exclamation-triangle fa-2x icon-alert'></i> Attenzione nella fase Sign In il paziente è un "+asa+" </label>" );
                     //$('#checkbox-asa').append('<input type="checkbox" name="risposta15[]" class="form-check-input"  checked="true" value="'+ $(this).val() +'"></input>').prop('checked',true);
                 }
-                $('#checkbox-asa').append('<input type="checkbox" name="risposta15[]" class="form-check-input"  checked="true" value="'+ $(this).val() +'"></input>').prop('checked',true);
+                // si creano i checkboxes per inviare al database, i checkbox sono nascosti
+                $('#checkbox-asa').append('<input type="checkbox" name="risposta15[]" class="form-check-input hide-content"  checked="true" value="'+ $(this).val() +'"></input>').prop('checked',true);
             });
 
             if(asa.length > 0 ){
@@ -426,7 +541,7 @@ $(document).ready(function(){
 
             // $.each(array, function (index, value)
             // {
-            //     $('#div-alert-asa').append("<label class='text-center alert-messaggio ' for='paziente_id' ><i class='fas fa-exclamation-triangle fa-2x icon-alert'></i> Atenzione nella fase Sign In il paziente è un "+value+" </label>" );
+            //     $('#div-alert-asa').append("<label class='text-center alert-messaggio ' for='paziente_id' ><i class='fas fa-exclamation-triangle fa-2x icon-alert'></i> Attenzione nella fase Sign In il paziente è un "+value+" </label>" );
             // });
 
             $('#div-alert-asa-image').addClass('asa-selezionati');

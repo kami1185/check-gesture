@@ -1,13 +1,13 @@
 
 function creare_riepilogo(jsonArray){
 
-	$("#button-back-home").click(function(){
-        window.location.reload('true');
-    });
+	// $("#button-back-home").click(function(){
+    //     window.location.reload('true');
+    // });
 
-    $("#button-back-home").on("mouseover", function () {
-        window.location.reload('true');
-    });
+    // $("#button-back-home").on("mouseover", function () {
+    //     window.location.reload('true');
+    // });
 	
 	//$("#json").append(jsonArray);
 
@@ -24,9 +24,10 @@ function creare_riepilogo(jsonArray){
 	// console.log(results.paziente_conformita);
 
 	$('#paziente-nome').text(results.paziente_nome);
-	$('#paziente-eta').text(results.paziente_eta);
-	$('#paziente-sesso').text(results.paziente_sesso);
-	$('#num-cartella').text(results.paziente_cartella);
+	$('#paziente-cognome').text(results.paziente_cognome);
+	$('#paziente-eta').text(results.paziente_data_nascita);
+	$('#paziente-percorso').text(results.paziente_percorso);
+	$('#paziente-diagnosi').text(results.paziente_diagnosi);
 
 	// $(results.sede).each(function( i, val ) {
 	// 	console.log('i: ',+i+ 'val: ',+val);

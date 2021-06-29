@@ -7,7 +7,7 @@
 
     <div id="container-formulario">
 
-        <div class="row text-center">
+        <!-- <div class="row text-center">
             <div class="col-2">
                 <button type="button" id="button-inserire-paziente" class="btn btn-primary btn-circle btn-lg button-pazienti">
                 <i class="fas fa-arrow-left"></i>
@@ -16,42 +16,114 @@
             <div class="col-8">
                 <header>Inserire dati del Paziente</header>
             </div>
-        </div>
+        </div> -->
 
-        <form id="form-dati-pazienti" class="topBefore">
-            
-            <div class="row form-group ">
-                <label for="paziente_nome" class="col-md-3 col-form-label">Nome</label>
+        <form id="form-dati-pazienti" action="#" method="POST" class="needs-validation" novalidate>
+
+            <div class="row form-group">
+                <label for="paziente_nome" class="col-md-4 col-form-label">Nome <span class="asterisco-form">*</span></label>
                 <div class="col-md-8">
-                    <input id="name" type="text" placeholder="Inserire nome" class="input-paziente">
+                    <input id="paziente_nome" name="paziente_nome" type="text" placeholder="Inserire nome del paziente" class="input-paziente">
                 </div>
             </div>
+            <hr>
 
             <div class="row form-group ">
-                <label for="paziente_nome" class="col-md-3 col-form-label">Cognome</label>
+                <label for="paziente_cognome" class="col-md-4 col-form-label">Cognome <span class="asterisco-form">*</span></label>
                 <div class="col-md-8">
-                    <input id="cognome" type="text" placeholder="Inserire cognome" class="input-paziente">
+                    <input id="paziente_cognome" name="paziente_cognome" type="text" placeholder="Inserire cognome del paziente" class="input-paziente">
                 </div>
             </div>
+            <hr>
 
             <div class="row form-group ">
-                <label for="paziente_nome" class="col-md-3 col-form-label">Sesso</label>
+                <label for="paziente_nascita" class="col-md-4 col-form-label">Data di Nascita <span class="asterisco-form">*</span></label>
                 <div class="col-md-8">
-                    <input id="sesso" type="text" placeholder="Inserire sesso del paziete" class="input-paziente">
+                    <!-- <input id="paziente_nascita" name="paziente_nascita" type="text" placeholder="Inserire data di nascita del paziente" class="input-paziente"> -->
+                    <div id="paziente-nascita-div" style="display: inline-block;">
+                        <div class="input-group date">
+                            <input id="paziente_nascita" name="paziente_nascita" placeholder="Inserire data di nascita del paziente" type="text" class="input-paziente"> 
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <hr>
 
             <div class="row form-group ">
-                <label for="paziente_nome" class="col-md-3 col-form-label">Nome procedura</label>
+                <label for="paziente_sesso" class="col-md-4 col-form-label">Sesso <span class="asterisco-form">*</span></label>
                 <div class="col-md-8">
-                    <input id="nome_procedura" type="text" placeholder="Inserire nome della procedura" class="input-paziente">
+                    <input id="paziente_sesso" name="paziente_sesso" type="text" placeholder="Inserire sesso del paziente" class="input-paziente">
                 </div>
             </div>
+            <hr>
 
             <div class="row form-group ">
-                <label for="paziente_nome" class="col-md-3 col-form-label">Numero di cartella</label>
+                <label for="paziente_codicefiscale" class="col-md-4 col-form-label">Codice Fiscale <span class="asterisco-form">*</span></label>
                 <div class="col-md-8">
-                    <input id="numero_cartella" type="text" placeholder="Inserire numero di cartella" class="input-paziente">
+                    <input id="paziente_codicefiscale" name="paziente_codicefiscale" type="text" placeholder="Inserire Codice Fiscale del paziente" class="input-paziente">
+                </div>
+            </div>
+            <hr>
+
+            <div class="row form-group ">
+                <label for="paziente_cartella" class="col-md-4 col-form-label">Numero di cartella <span class="asterisco-form">*</span></label>
+                <div class="col-md-8">
+                    <input id="paziente_cartella" name="paziente_cartella" type="text" placeholder="Inserire numero di cartella del paziente" class="input-paziente">
+                </div>
+            </div>
+            <hr>
+
+            <div class="row form-group ">
+                <label for="paziente_unitaoperativa" class="col-md-4 col-form-label">Unità Operativa <span class="asterisco-form">*</span></label>
+                <div class="col-md-8">
+                    <input id="paziente_unitaoperativa" name="paziente_unitaoperativa" type="text" placeholder="Inserire Unità Operativa" class="input-paziente">
+                </div>
+            </div>
+            <hr>
+
+            <div class="row form-group ">
+                <label for="paziente_percorso" class="col-md-4 col-form-label">Percorso Assistenziale <span class="asterisco-form">*</span></label>
+                <div class="col-md-8">
+                    <input id="paziente_percorso" name="paziente_percorso" type="text" placeholder="Inserire Percorso Assistenziale" class="input-paziente">
+                </div>
+            </div>
+            <hr>
+
+            <div class="row form-group ">
+                <label for="paziente_dataricovero" class="col-md-4 col-form-label">Data Pianificata <span class="asterisco-form">*</span></label>
+                <div class="col-md-8">
+                    <!-- <input id="paziente_dataricovero" name="paziente_dataricovero" type="text" placeholder="Inserire Data Pianificata" class="input-paziente"> -->
+                    <div id="paziente-ricovero-div" style="display: inline-block;">
+                        <div class="input-group date">
+                            <input id="paziente_dataricovero" name="paziente_dataricovero" placeholder="Inserire Data Pianificata" type="text" class="input-paziente"> 
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row form-group ">
+                <label for="paziente_indicazioni" class="col-md-4 col-form-label">Indicazioni al Ricovero <span class="asterisco-form">*</span></label>
+                <div class="col-md-8">
+                    <input id="paziente_indicazioni" name="paziente_indicazioni" type="text" placeholder="Inserire Indicazioni al Ricovero" class="input-paziente">
+                </div>
+            </div>
+            <hr>
+
+            <div class="row form-group ">
+                <label for="paziente_diagnosi" class="col-md-4 col-form-label">Diagnosi <span class="asterisco-form">*</span></label>
+                <div class="col-md-8">
+                    <input id="paziente_diagnosi" name="paziente_diagnosi" type="text" placeholder="Inserire la Diagnosi" class="input-paziente">
                 </div>
             </div>
 
@@ -61,7 +133,7 @@
             <!-- <textarea id="message" type="text" placeholder="MESSAGE"></textarea> -->
 
             <div class="row justify-content-center">
-                <input id="submit" type="submit" value="Salva!">
+                <input id="button-inserire-paziente" type="button" value="Salva paziente">
             </div>
 
         </form>

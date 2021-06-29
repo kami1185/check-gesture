@@ -1,0 +1,15 @@
+.div-cerca-paziente {
+    padding-top: 50px;
+}
+
+#table-riepilogo_wrapper {
+    padding-bottom: 50px;
+}
+
+/****** classe del label cerca data paziente******/
+.label-datatable {
+    display: inline-block;
+      width: 100%;
+      text-align: right;
+}
+/**************************************************/

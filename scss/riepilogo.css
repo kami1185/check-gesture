@@ -1,6 +1,22 @@
 #container-riepilogo{
-    padding-top: 25px;
+    padding-top: 30px;
     overflow:hidden;
+}
+
+#div-data-paziente{
+    border: 1.5px solid #333;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    box-sizing: border-box;
+    display: block;
+    margin: 10px 10px;
+    padding: 10px 10px;
+    text-decoration: none;
+    max-width: 100%;
+    background: #fdfdfd;
 }
   
 ol.check-list li {
@@ -87,4 +103,9 @@ hr {
     color: #222222;
     font-size: 16px;
     padding-left: 5px;
+}
+
+.titolo-fase-riepilogo{
+    font-size: 2.0rem;
+    color: #007bff;
 }

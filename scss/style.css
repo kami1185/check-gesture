@@ -170,8 +170,8 @@ h3.titolo-3-2 {
   font-size: 1.4rem;
 }
 
-input[type=text]{
-  width: 90%;
+input.anagrafica[type=text] {
+  width: 100%;
   border: none;
       border-bottom-color: currentcolor;
       border-bottom-style: none;
@@ -212,7 +212,7 @@ label.label-3-2 {
 
 /* label: dei dati paziente */
 .col-form-label {
-  padding-left: 60px;
+  padding-left: 30px;
   font-size: 22px;
 }
 

@@ -24,6 +24,8 @@
     -o-border-radius: 50%;
     -ms-border-radius: 50%;
     font-size: 25px;
+    background-color: #32c682;
+    border-color: #32c682;
 }
 /**************************************/
 
@@ -38,6 +40,8 @@
     -ms-border-radius: 50%;
     font-size: 40px;
     line-height: 1.33;
+    background-color: #32c682;
+    border-color: #32c682;
 }
 
 .btn-circle.btn-lg {
@@ -51,6 +55,8 @@
     -ms-border-radius: 50%;
     font-size: 40px;
     line-height: 1.33;
+    background-color: #32c682;
+    border-color: #32c682;
 }
 
 .btn-circle.btn-lg.button-pazienti {
