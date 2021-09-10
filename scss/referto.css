@@ -1,0 +1,69 @@
+#paziente-referti tr.row th, tr.row td {
+padding-top: 20px;
+}
+
+.table-spacing {
+  padding-top: 20px;
+}
+
+/* #paziente-referti > .modal-dialog{
+    position: relative;
+    overflow-y: auto;
+    overflow-x: auto;
+    height: 95%;
+} */
+
+
+.modal-dialog {
+  /* position: relative;
+  width: auto;
+  margin: 0.5rem;
+  pointer-events: none; */
+  max-width: 90%;
+  height: 95vh;
+}
+
+#div-table-referti{
+  font-size: 2.1vh;
+}
+
+/* .modal-dialog, .modal-content {
+  max-height: 95vh;
+  overflow: scroll;
+} */
+
+/*Sets the maximum height of the modal body to 90% of the screen height*/
+/* .modal-body {
+  max-height: 90vh;
+} */
+
+/* @media screen and (min-width: 1200px) {
+  .modal-dialog { 
+    width: 1440px; 
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .modal-dialog {
+    width: 1740px;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .modal-dialog {
+    width: 2040px;
+  }
+}
+
+@media  screen and (min-width: 2560px) {
+  .modal-dialog {
+    width: 99vw;
+  }
+} */
+
+/* (3840×2160) Full HD Display */  
+/* @media screen and (min-width: 3440px) {
+  .modal-dialog {
+    width: 99vw;
+  }
+}  */
+

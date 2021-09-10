@@ -1,4 +1,3 @@
-
 function creare_riepilogo(jsonArray){
 
 	// $("#button-back-home").click(function(){
@@ -26,6 +25,7 @@ function creare_riepilogo(jsonArray){
 	$('#paziente-nome').text(results.paziente_nome);
 	$('#paziente-cognome').text(results.paziente_cognome);
 	$('#paziente-eta').text(results.paziente_data_nascita);
+	$('#paziente-codicefiscale').text(results.paziente_codicefiscale);
 	$('#paziente-percorso').text(results.paziente_percorso);
 	$('#paziente-diagnosi').text(results.paziente_diagnosi);
 
@@ -35,7 +35,6 @@ function creare_riepilogo(jsonArray){
 
 	$('#signin-inizio').text(results.signin_ora_inizio);
 	$('#signin-fine').text(results.signin_ora_fine);
-
 
 	// jQuery.each( results.consensi, function( i, val ) {
 	// 	console.log('CONSENSIII ID : ',val.split(',')[0]);
@@ -103,7 +102,6 @@ function generareFasi(domanda1,conformita1,domanda2,conformita2, div_fase){
 	//console.log('fasi : ',$dom_row);
 	
 }
-
 
 // function generareRiepilogo_ol_li(colum1,colum2){
 // 	var dom_row = "";
@@ -229,7 +227,6 @@ function animateContent(direction) {
 }
 
 $(document).ready(function(){
-	
 
 	var step = 25;
 	var scrolling = false;
@@ -248,7 +245,6 @@ $(document).ready(function(){
 	}).on("mouseout", function(event) {
 		scrolling = false;
 	});
-
 
 	$("#down").on("click", function(event) {
 		event.preventDefault();
@@ -273,62 +269,6 @@ $(document).ready(function(){
 			}
 		});
 	}
-
-	// function animateContent(direction) {  
-	// 	var animationOffset = $('html, body').height() - $('html, body').height();
-	// 	if (direction == 'up') {
-	// 		animationOffset = 0;
-	// 	}
-	
-	// 	$('html, body').animate({ "marginTop": animationOffset + "px" }, "fast");
-	// }
-
-    // //$(document).on('mouseenter', '.ca-top', function() {
-	// $(document).on('mouseover', '.button-top', function() {
-		
-    // 	//debugger;
-	// 	//var div = $('#container-riepilogo');
-	// 	var div = $('.box');
-
-    //     interval = setInterval(function(){
-    //         count = count || 1;
-    //         var pos = div.scrollTop();
-    //         div.scrollTop(pos + count);
-	// 	}, 10);
-		
-	// 	console.log('interval', interval);
-
-    // }).click(function() {
-    //     if (count < 6) {
-    //          count = count+1;
-    //     }
-    // }).on('mouseout', function() {
-    //     // Uncomment this line if you want to reset the speed on out
-    //     // count = 0;
-    //     clearInterval(interval);
-    // });
-    
-    // //$(document).on('mouseover', '.ca-bottom', function() {
-	// $(document).on('mouseover', '.button-bottom', function() {
-		
-	// 	//var div = $('#container-riepilogo');
-	// 	var div = $('.box');
-
-    //     interval = setInterval(function(){
-    //         count = count || 1;
-    //         var pos = div.scrollTop();
-    //         div.scrollTop(pos - count);
-	// 	}, 10);
-	// 	console.log('interval', interval);
-    // }).click(function() {
-    //     if (count < 6) {
-    //          count = count+1;
-    //     }
-    // }).on('mouseout', function() {
-    //     // Uncomment this line if you want to reset the speed on out
-    //     // count = 0;
-    //     clearInterval(interval);
-    // });
 
 });
 

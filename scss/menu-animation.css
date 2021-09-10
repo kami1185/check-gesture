@@ -1,25 +1,39 @@
-@media screen and (max-width: 700px) {
+/* @media screen and (max-width: 700px) {
   body {
      padding: 170px 0 0 0;
      width: 100%
   }
-}
+} */
 
-.div-title-menu{
-  padding-top: 40px;
-}
+/* @media screen and (min-width: 680px) {
+  .title-main-menu {
+    font-size: 2.0rem;
+    padding-top: 20px;
+    color : #0062fff7; } }
+@media screen and (min-width: 1224px) {
+  .title-main-menu {
+    font-size: 2.2rem;
+    padding-top: 20px;
+    color : #0062fff7; } }
+@media screen and (min-width: 1400px) {
+  .title-main-menu {
+    font-size: 2.6rem;
+    padding-top: 20px;
+    color : #0062fff7; } }
+@media screen and (max-width: 1690px) {
+  .title-main-menu {
+    font-size: 2.6rem;
+    padding-top: 20px;
+    color : #0062fff7; } } */
 
-.title-main-menu{
- 
-  font-size: 2.6rem;
-  
-  /* color: #28BF8D; */
+/* .title-main-menu{
+  font-size: calc(18px + 2vw);
   padding-top: 20px;
+  padding-bottom: 5vh;
   color : #0062fff7;
-  
-}
+} */
 
-a .menu-item {
+/* a .menu-item {
   color: inherit;
 }
 
@@ -117,10 +131,6 @@ a .menu-item {
   -webkit-transform: translate3d(0, 0, 0) rotate(-45deg);
   transform: translate3d(0, 0, 0) rotate(-45deg);
 }
-
-/* .menu-item {
-   transition: all 0.1s ease 0s;
-} */
 
 .menu-item:hover {
   background: #EEEEEE;
@@ -306,4 +316,4 @@ a .menu-item {
 
 .credit a:hover {
   text-decoration: underline;
-}
+} */

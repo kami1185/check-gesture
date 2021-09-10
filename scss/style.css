@@ -7,47 +7,75 @@ body {
   padding: 0px;
   width: 100%;
   height: 100%;
-  /* position: relative; */
   font-size: 14px;
   line-height: 1.6;
   color: #222;
   font-weight: bold;
-  font-family: 'Montserrat';
+  /* font-family: 'Montserrat'; */
   background: #f2f4f4;
-  /* background: #9ec3d4; */
 }
 
 .container, .container-sm, .container-md, .container-lg, .container-xl {
-  max-width: 90%;
+  max-width: 95%;
 }
 
 .row-column-height {
   height: 100%;
 }
 
-
+/************************ Header Logo Policlinico **********************/
+.header-logo {
+  text-align: center;
+  padding: 4vh 1rem;
+}
 
 /********************************** titolo **********************/
 .titolo-div {
-  width: 100%;
+  /* width: 100%;
   height: 50px;
   position: relative;
   top: 20px;
   background: #fff;
-  /* background: #28A3BF */
-  /* background:  #28BF8D; */
+  border-radius: 30px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -o-border-radius: 30px;
+  -ms-border-radius: 30px; */
+  background: #fff;
+  text-align: center;
+  padding: 2vh 1rem;
+
   border-radius: 30px;
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
   -o-border-radius: 30px;
   -ms-border-radius: 30px;
+
 }
 
+
+/* @media screen and (min-width: 680px) {
+  .titolo-checklist {
+    font-size: 1.6rem;
+    color: #007bff; } }
+@media screen and (min-width: 1224px) {
+  .titolo-checklist {
+    font-size: 1.8rem;
+    color: #007bff; } }
+@media screen and (min-width: 1400px) {
+  .titolo-checklist {
+    font-size: 2.0rem;
+    color: #007bff; } }
+@media screen and (max-width: 1690px) {
+  .titolo-checklist {
+    font-size: 2.2rem;
+    color: #007bff; } } */
+
 .titolo-checklist{
-  font-size: 2.0rem;
-  /* color: #28BF8D; */
+  font-size: calc(4px + 2vw);
   color: #007bff;
 }
+
 
 h4, .h4 {
   font-size: 2.2rem;
@@ -56,9 +84,9 @@ h4, .h4 {
 
 /**/
 .container-formulario {
-  top: 10%;
+  top: 5vh;
   width: 100%;
-  height: 600px;
+  height: 82vh;
   position: relative;
   /* border: 20px solid #28BF8D; */
   border: 20px solid #007bffd9;
@@ -76,13 +104,33 @@ h4, .h4 {
   z-index: 0;
 }
 
-/* #wizard {
-  padding: 410px 0;
-  position: relative;
-  z-index: 99;
-  border: 1px solid #ccc;
 
-} */
+.header-domanda{
+  position: relative;
+  height: 15%;
+  width: 95%;
+  /* padding-top: 30px; */
+}
+
+.middle{
+  /* position: absolute;
+  height: 70%;
+  width: 95%;
+  bottom: 60px;
+  top: 60px; */
+  position: relative;
+  max-width: 60%;
+  margin: 10% auto;
+}
+
+.middle-text{
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5vh;
+}
 
 .linea-border{
   border-bottom: 6px solid #28A3BF;
@@ -91,7 +139,7 @@ h4, .h4 {
 /* div che contiene tutte le 3 fasi  */
 .content {
   width: 100%;
-  padding-top: 20px;
+  /* padding-top: 20px; */
   padding-left: 3%;
   padding-right: 3%;
 }
@@ -99,26 +147,38 @@ h4, .h4 {
 /****** messaggio iniziale x ogni fase *********/
 .inizio-fase {
   /* height: 80%; */
-  padding: 120px 0;
-  font-size: 26px;
+  /* padding: 120px 0; */
+  font-size: 3.5vh;
   color: #222;
   font-weight: bold;
-  padding-left: 5%;
-  padding-right: 5%;
+  /* padding-left: 5%;
+  padding-right: 5%; */
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .alert-messaggio {
   padding: 10px 0;
-  font-size: 22px;
+  font-size: 2.5vh;
   color: #222;
   /* font-weight: bold; */
 }
 /***********************************************/
+/******************* alert toast****************/
+
+.alert-messagge{
+  font-size: 2vh;
+}
 
 /******************* icon alert ****************/
 
 #div-alert-asa{
   padding-top: 30px;
+  display: grid;
+  place-items: center;
 }
 
 .fa-exclamation-triangle:before {
@@ -149,17 +209,27 @@ h4, .h4 {
   right: 30px;
   padding-top: 10%;
 } */
-h3 {
-  width: 95%;
-  position: relative;
-  /* padding-left: 40px;
-  padding-right: 40px; */
+.title-fase{
+  width: 100%;
+  /* position: relative; */
   padding-top: 30px;
   padding-bottom: 3px;
-  left: 30px;
-  right: 30px;
   color: #323233;
   text-align: center;
+  font-size: 4vh;
+}
+
+h3 {
+  width: 90%;
+  position: relative;
+  /* padding-top: 30px; */
+  padding-bottom: 3px;
+  /* left: 30px; */
+  /* right: 30px; */
+  color: #323233;
+  text-align: center;
+  /* font-size: calc(18px + (26 - 14) * ((100vw - 300px) / (1600 - 300))); */
+  font-size: 4vh;
 }
 
 h3.titolo-3-2 {
@@ -167,10 +237,11 @@ h3.titolo-3-2 {
 }
 
 #domanda20 > h3 {
-  font-size: 1.4rem;
+  font-size: 3vh;
 }
 
-input.anagrafica[type=text] {
+/* .anagrafica[type=text] { */
+.anagrafica {
   width: 100%;
   border: none;
       border-bottom-color: currentcolor;
@@ -180,8 +251,9 @@ input.anagrafica[type=text] {
   box-sizing: border-box;
   font-family: 'Montserrat';
   font-weight: bold;
-  font-size: 22px;
-
+  /* font-size: 22px; */
+  /* font-size: calc(12px + (26 - 14) * ((100vw - 300px) / (1600 - 300))); */
+  font-size: 2.5vh;
   border-radius: 35px;
   -moz-border-radius: 35px;
   -webkit-border-radius: 35px;
@@ -196,7 +268,7 @@ input.anagrafica[type=text] {
   /* padding-top: 30px; */
   padding-bottom: 3px;
   -webkit-appearance: none;
-  position: relative;
+  /* position: relative; */
 }
 
 label.label-3-2 {
@@ -213,13 +285,13 @@ label.label-3-2 {
 /* label: dei dati paziente */
 .col-form-label {
   padding-left: 30px;
-  font-size: 22px;
+  font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 
 /***************************** non conformita paziente label e button ************************/
-.div-dati-paziente{
-  padding-top: 20px;
-}
+/* .div-dati-paziente{
+  padding-top: 10px;
+} */
 
 .form-group {
   margin-bottom: 0.5rem;
@@ -293,36 +365,346 @@ select {
   padding-bottom: 3px;
 }
 
-
+.toast {
+  max-width: 100%;
+}
 /***************************  checkbox *********************/
 
-.form-check-input{
-  padding-left: 20px;
+@media screen and (min-width: 680px) {
 
-  -ms-transform: scale(2.5); /* IE */
-  -moz-transform: scale(2.5); /* FF */
-  -webkit-transform: scale(2.5); /* Safari and Chrome */
-  -o-transform: scale(2.5); /* Opera */
-  transform: scale(2.5);
-  padding: 10px;
+  .div-dati-paziente {
+    padding-top: 1vh;
+  }
+
+  .form-check-input {
+    position: relative;
+    padding-left: 20px;
+    -ms-transform: scale(1.5); /* IE */
+    -moz-transform: scale(1.5); /* FF */
+    -webkit-transform: scale(1.5); /* Safari and Chrome */
+    -o-transform: scale(1.5); /* Opera */
+    transform: scale(1.5);
+    padding: 10px; } 
+
+  /***** configurare il width dell'alert (notifiche quando non si fa il check)********/
+  #toast-container>div {
+    width: 150px;
+  }
 }
 
-/* input[type=checkbox]{
+@media screen and (min-width: 1224px) {
+
+  .div-dati-paziente {
+    padding-top: 2vh;
+  }
+
+  .form-check-input {
+    position: relative;
+    padding-left: 20px;
+    -ms-transform: scale(2); /* IE */
+    -moz-transform: scale(2); /* FF */
+    -webkit-transform: scale(2); /* Safari and Chrome */
+    -o-transform: scale(2); /* Opera */
+    transform: scale(2);
+    padding: 10px; }
+
+  /***** configurare il width dell'alert (notifiche quando non si fa il check)********/
+  #toast-container>div {
+    width: 200px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .form-check-input {
+    position: relative;
+    padding-left: 20px;
+    -ms-transform: scale(2); /* IE */
+    -moz-transform: scale(2); /* FF */
+    -webkit-transform: scale(2); /* Safari and Chrome */
+    -o-transform: scale(2); /* Opera */
+    transform: scale(2);
+    padding: 10px; } 
+
+  /***** configurare il width dell'alert (notifiche quando non si fa il check)********/
+  #toast-container>div {
+    width: 250px;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+
+  .div-dati-paziente {
+    padding-top: 2vh;
+  }
+
+  .form-check-input {
+    position: relative;
+    padding-left: 20px;
+    -ms-transform: scale(1.5); /* IE */
+    -moz-transform: scale(1.5); /* FF */
+    -webkit-transform: scale(1.5); /* Safari and Chrome */
+    -o-transform: scale(1.5); /* Opera */
+    transform: scale(1.5);
+    padding: 5px; 
+  }
   
+  /***** configurare il width dell'alert (notifiche quando non si fa il check)********/
+  #toast-container>div {
+    width: 300px;
+  }
+}
+
+/* (1440x900) WXGA+ Display */
+@media  screen and (min-width: 1440px) {
+
+  .anagrafica {
+    font-size: 2.5vh;
+  }
+
+  .div-dati-paziente {
+    padding-top: 2vh;
+  }
+
+  .form-check-input {
+    position: relative;
+    padding-left: 20px;
+    -ms-transform: scale(2.5); /* IE */
+    -moz-transform: scale(2.5); /* FF */
+    -webkit-transform: scale(2.5); /* Safari and Chrome */
+    -o-transform: scale(2.5); /* Opera */
+    transform: scale(2.5);
+    padding: 10px; 
+  }
+
+  #div-listapazienti{
+    font-size: 14px;
+  }
+
+  #table-riepilogo_wrapper{
+    font-size: 14px;
+  }
+
+  div.dataTables_wrapper div.dataTables_filter input {
+    font-size: 14px;
+  }
+
+  /***** configurare il width dell'alert (notifiche quando non si fa il check)********/
+  #toast-container>div {
+    width: 300px;
+  }
+
+  /****** classe del label cerca data paziente******/
+  .label-datatable {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    font-size: 14px;
+  }
+  /**************************************************/
+}
+
+/* (1680x1050) WSXGA+ Display */
+@media  screen and (min-width: 1680px) {
+
+  .div-dati-paziente {
+    padding-top: 5vh;
+  }
+
+  .form-check-input {
+    position: relative;
+    padding-left: 20px;
+    -ms-transform: scale(2.5); /* IE */
+    -moz-transform: scale(2.5); /* FF */
+    -webkit-transform: scale(2.5); /* Safari and Chrome */
+    -o-transform: scale(2.5); /* Opera */
+    transform: scale(2.5);
+    padding: 10px; 
+  }
+
+  #div-listapazienti{
+    font-size: 20px;
+  }
+
+  #table-riepilogo_wrapper{
+    font-size: 20px;
+  }
+
+  div.dataTables_wrapper div.dataTables_filter input {
+    font-size: 20px;
+  }
+
+  /***** configurare il width dell'alert (notifiche quando non si fa il check)********/
+  #toast-container>div {
+    width: 350px;
+  }
+
+  /****** classe del label cerca data paziente******/
+  .label-datatable {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    font-size: 20px;
+  }
+  /**************************************************/
+}
+
+/* (1920x1080) Full HD Display */
+@media  screen and (min-width: 1920px) {
+
+  .div-dati-paziente {
+    padding-top: 7vh;
+  }
+
+  .form-check-input {
+    position: relative;
+    padding-left: 20px;
+    -ms-transform: scale(2.5); /* IE */
+    -moz-transform: scale(2.5); /* FF */
+    -webkit-transform: scale(2.5); /* Safari and Chrome */
+    -o-transform: scale(2.5); /* Opera */
+    transform: scale(2.5);
+    padding: 10px; 
+  }
+
+  #div-listapazienti{
+    font-size: 20px;
+  }
+
+  #table-riepilogo_wrapper{
+    font-size: 20px;
+  }
+
+  div.dataTables_wrapper div.dataTables_filter input {
+    font-size: 20px;
+  }
+
+  /***** configurare il width dell'alert (notifiche quando non si fa il check)********/
+  #toast-container>div {
+    width: 400px;
+  }
+
+  /****** classe del label cerca data paziente******/
+  .label-datatable {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    font-size: 20px;
+  }
+  /**************************************************/
+}
+
+/* (2560×1600) Full HD Display */
+@media  screen and (min-width: 2560px) {
+
+  .div-dati-paziente {
+    padding-top: 10vh;
+  }
+
+  .form-check-input {
+    position: relative;
+    padding-left: 20px;
+    -ms-transform: scale(4); /* IE */
+    -moz-transform: scale(4); /* FF */
+    -webkit-transform: scale(4); /* Safari and Chrome */
+    -o-transform: scale(4); /* Opera */
+    transform: scale(4);
+    padding: 10px; 
+  }
+
+  #div-listapazienti{
+    font-size: 30px;
+  }
+
+  #table-riepilogo_wrapper{
+    font-size: 30px;
+  }
+
+  div.dataTables_wrapper div.dataTables_filter input {
+    font-size: 30px;
+  }
+
+  /***** configurare il width dell'alert (notifiche quando non si fa il check)********/
+  #toast-container>div {
+    width: 550px;
+  }
+
+  /****** classe del label cerca data paziente******/
+  .label-datatable {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    font-size: 30px;
+  }
+  /**************************************************/
+}
+
+@media screen and (min-width: 3840px) {
+
+  .div-dati-paziente {
+    padding-top: 14vh;
+  }
+
+  .form-check-input {
+    position: relative;
+    padding-left: 20px;
+    -ms-transform: scale(5); /* IE */
+    -moz-transform: scale(5); /* FF */
+    -webkit-transform: scale(5); /* Safari and Chrome */
+    -o-transform: scale(5); /* Opera */
+    transform: scale(5);
+    padding: 40px; 
+  } 
+
+  #div-listapazienti{
+    font-size: 50px;
+  }
+
+  #table-riepilogo_wrapper{
+    font-size: 50px;
+  }
+
+  div.dataTables_wrapper div.dataTables_filter input {
+    font-size: 42px;
+  }
+
+  /***** configurare il width dell'alert (notifiche quando non si fa il check)********/
+  #toast-container>div {
+    width: 650px;
+  }
+
+  /****** classe del label cerca data paziente******/
+  .label-datatable {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    font-size: 50px;
+  }
+  /**************************************************/
+}
+
+/* .form-check-input{
+  padding-left: 20px;
+
+  -ms-transform: scale(2.5);
+  -moz-transform: scale(2.5);
+  -webkit-transform: scale(2.5);
+  -o-transform: scale(2.5);
+  transform: scale(2.5);
+  padding: 10px;
 } */
 
-/* .check-input-custom{ */
-
 .div-non-conformita label{
-  font-size: 19px;
+  /* font-size: 19px; */
+  /* font-size: calc(18px + (26 - 14) * ((100vw - 300px) / (1600 - 300))); */
+  font-size: 2.5vh;
 }
 
 .div-non-conformita{
-  padding-top: 3%;
+  padding-top: 10%;
 }
 
 .titolo-non-conformita{
-  font-size: 18px;
+  font-size: 2.6vh;
 }
 
 .form-check-label{
@@ -399,7 +781,7 @@ input.error + .form-label {
 
 /********************/
 
-.steps-form {
+/* .steps-form {
   display: table;
   width: 100%;
   position: relative; }
@@ -430,7 +812,7 @@ input.error + .form-label {
   font-size: 12px;
   line-height: 1.428571429;
   border-radius: 15px;
-  margin-top: 0; }
+  margin-top: 0; } */
 
 /******************************************************************************************/
 
@@ -441,47 +823,25 @@ input.error + .form-label {
   padding-top: 20px;
 }
 
-.imagini-fase{
-  width: 200px;
-  height: 200px;
+.imagine-fase{
+  /* width: 200px;
+  height: 200px; */
+  /* max-width: 60%;
+  height: auto; */
+  background-size: contain;
 }
 
-.imagini-fase-2 {
-  width: 300px;
-  height: 300px;
+.imagine-fase-2 {
+  /* width: 300px;
+  height: 300px; */
+  max-width: 50%;
+  height: auto;
 }
 
-.imagini-fase-3 {
-  width: 250px;
-  height: 200px;
+.imagine-fase-3 {
+  max-width: 35%;
+  height: auto;
 }
 
-.imagini-fase-4 {
-  width: 250px;
-  height: 250px;
-}
 
-.imagini-fase-5 {
-  width: 100px;
-  height: 200px;
-}
-.imagini-fase-6 {
-  width: 400px;
-  height: 200px;
-}
-
-.imagini-fase-7 {
-  width: 400px;
-  height: 300px;
-}
-
-.imagini-fase-8 {
-  width: 350px;
-  height: 250px;
-}
-
-.imagini-fase-9 {
-  width: 230px;
-  height: 230px;
-}
 /*****************************************************************************/

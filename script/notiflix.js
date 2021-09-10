@@ -115,7 +115,8 @@
   var reportSettings = {
     ID: 'NotiflixReportWrap', // can not customizable
     className: 'notiflix-report',
-    width: '320px',
+    width: '20vw',
+    // width: '320px',
     backgroundColor: '#f8f8f8',
     borderRadius: '25px',
     rtl: false,
@@ -126,11 +127,11 @@
     fontFamily: 'Quicksand',
     svgSize: '110px',
     plainText: true,
-    titleFontSize: '16px',
+    titleFontSize: '2.5vh',
     titleMaxLength: 34,
-    messageFontSize: '13px',
+    messageFontSize: '2.5vh',
     messageMaxLength: 400,
-    buttonFontSize: '14px',
+    buttonFontSize: '2.2vh',
     buttonMaxLength: 34,
     cssAnimation: true,
     cssAnimationDuration: 360,
@@ -196,16 +197,16 @@
 
 	//Titolo della popup
     titleColor: '#32c682',
-    titleFontSize: '26px',
+    titleFontSize: '4vh',
     titleMaxLength: 34,
 	
 	//testo di conferma
     messageColor: '#1e1e1e',
-    messageFontSize: '23px',
+    messageFontSize: '3.5vh',
     messageMaxLength: 110,
 	
 	//buttons Si - No
-    buttonsFontSize: '22px',
+    buttonsFontSize: '3.2vh',
     buttonsMaxLength: 34,
     okButtonColor: '#f8f8f8',
     okButtonBackground: '#32c682',
@@ -972,7 +973,8 @@
     ntflxReportWrap.innerHTML = reportOverlay + '<div class="' + newReportSettings.className + '-content' + (newReportSettings.cssAnimation ? ' with-animation ' : '') + ' nx-' + newReportSettings.cssAnimationStyle + '" style="width:' + newReportSettings.width + '; background:' + newReportSettings.backgroundColor + '; animation-duration:' + newReportSettings.cssAnimationDuration + 'ms;">' +
       '<div style="width:' + newReportSettings.svgSize + '; height:' + newReportSettings.svgSize + ';" class="' + newReportSettings.className + '-icon">' + svgIcon + '</div>' +
       '<h5 class="' + newReportSettings.className + '-title" style="font-weight:500; font-size:' + newReportSettings.titleFontSize + '; color:' + theType.titleColor + ';">' + title + '</h5>' +
-      '<p class="' + newReportSettings.className + '-message" style="font-size:' + newReportSettings.messageFontSize + '; color:' + theType.messageColor + ';">' + message + '</p>' +
+      // '<p class="' + newReportSettings.className + '-message" style="font-size:' + newReportSettings.messageFontSize + '; color:' + theType.messageColor + ';">' + message + '</p>' +
+      '<p class="' + newReportSettings.className + '-message" style="font-size:2.5vh; color:' + theType.messageColor + ';text-align: center;">' + message + '</p>' +
       '<a id="NXReportButton" class="' + newReportSettings.className + '-button" style="font-weight:500; font-size:' + newReportSettings.buttonFontSize + '; background:' + theType.buttonBackground + '; color:' + theType.buttonColor + ';">' + buttonText + '</a>' +
       '</div>';
 
@@ -1002,7 +1004,25 @@
         // remove element: end
       });
       // callback: end
+      //****************************Modifica mouseenter***************************************** */
+      reportButton.addEventListener('mouseenter', e => {
+        // if callback: begin
+        if (typeof callbackOrOptions === 'function') {
+          callbackOrOptions();
+        }
+        // if callback: end
 
+        // remove element: begin
+        getReportWrap.classList.add('remove');
+        var timeout = setTimeout(function () {
+          if (getReportWrap.parentNode !== null) {
+            getReportWrap.parentNode.removeChild(getReportWrap);
+          }
+          clearTimeout(timeout);
+        }, newReportSettings.cssAnimationDuration);
+        // remove element: end
+      });
+      //**************************************************************************************** */
     }
     // report wrap: end
 

@@ -1,7 +1,5 @@
 
 /*********************************** progress bar orizontale *******************************/
-
-
 .row-progress {
   width: 100%;
 }
@@ -10,7 +8,7 @@
   width: 70%;
   height: 40px;
   position: absolute;
-  top: 10%;
+  top: 5vh;
   z-index: 1;
   margin-left: auto;
   margin-right: auto;
@@ -40,9 +38,228 @@
     z-index: 0;
     border-right: 1px solid #F5F5F5
   }
- 
-/***** posizione del progressbar *****/ 
- 
+
+/***** posizione del progressbar *****/
+
+@media screen and (min-width: 680px) {
+  #progressbar li::before {
+    width: 50px;
+    height: 50px;
+    line-height: 30px;
+    display: block;
+    font-size: 30px;
+    border: 2px solid #28A3BF;
+    border-radius: 50%;
+    margin: auto;
+  }
+
+  #progressbar li.active:before {
+    background: #32c682;
+    /* background: #28A3BF; */
+    /* background: #E53935; */
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+    line-height: 50px;
+    padding-top: 0px;
+
+  }
+}
+
+@media screen and (min-width: 1224px) {
+  #progressbar li::before {
+    width: 50px;
+    height: 50px;
+    line-height: 30px;
+    display: block;
+    font-size: 30px;
+    border: 2px solid #28A3BF;
+    border-radius: 50%;
+    margin: auto;
+  }
+
+  #progressbar li.active:before {
+    background: #32c682;
+    /* background: #28A3BF; */
+    /* background: #E53935; */
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+    line-height: 50px;
+    padding-top: 30px;
+
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  #progressbar li::before {
+    width: 50px;
+    height: 50px;
+    line-height: 30px;
+    display: block;
+    font-size: 30px;
+    border: 2px solid #28A3BF;
+    border-radius: 50%;
+    margin: auto;
+  }
+
+  #progressbar li.active:before {
+    background: #32c682;
+    /* background: #28A3BF; */
+    /* background: #E53935; */
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+    line-height: 50px;
+    padding-top: 30px;
+
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  #progressbar li::before {
+    width: 60px;
+    height: 60px;
+    line-height: 30px;
+    display: block;
+    font-size: 30px;
+    border: 2px solid #28A3BF;
+    border-radius: 50%;
+    margin: auto;
+  }
+
+  #progressbar li.active:before {
+    background: #32c682;
+    /* background: #28A3BF; */
+    /* background: #E53935; */
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+    line-height: 50px;
+    padding-top: 5px;
+
+  }
+}
+
+/* (1440x900) WXGA+ Display */
+@media  screen and (min-width: 1440px) {
+  #progressbar li:before {
+    width: 60px;
+    height: 60px;
+    line-height: 30px;
+    display: block;
+    font-size: 30px;
+    background: #fff;
+    border: 2px solid #28A3BF;
+    border-radius: 50%;
+    margin: auto;
+    line-height: 50px;
+  }
+
+  #progressbar li.active:before {
+    background: #32c682;
+    /* background: #28A3BF; */
+    /* background: #E53935; */
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+    line-height: 50px;
+    padding-top: 5px;
+  }
+}
+
+/* (1680x1050) WSXGA+ Display */
+@media  screen and (min-width: 1680px) {
+  #progressbar li::before {
+    width: 70px;
+    height: 70px;
+    line-height: 30px;
+    display: block;
+    font-size: 40px;
+    border: 2px solid #28A3BF;
+    border-radius: 50%;
+    margin: auto;
+  }
+
+  #progressbar li.active:before {
+    background: #32c682;
+    /* background: #28A3BF; */
+    /* background: #E53935; */
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+    line-height: 50px;
+    padding-top: 10px;
+
+  }
+}
+
+/* (1920x1080) Full HD Display */
+@media  screen and (min-width: 1920px) {
+  #progressbar li::before {
+    width: 80px;
+    height: 80px;
+    line-height: 30px;
+    display: block;
+    font-size: 40px;
+    border: 2px solid #28A3BF;
+    border-radius: 50%;
+    margin: auto;
+  }
+
+  #progressbar li.active:before {
+    background: #32c682;
+    /* background: #28A3BF; */
+    /* background: #E53935; */
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+    line-height: 50px;
+    padding-top: 15px;
+  }
+}
+
+/* (2560×1600) Full HD Display */
+@media  screen and (min-width: 2560px) {
+  #progressbar li::before {
+    width: 120px;
+    height: 120px;
+    line-height: 30px;
+    display: block;
+    font-size: 60px;
+    border: 2px solid #28A3BF;
+    border-radius: 50%;
+    margin: auto;
+  }
+
+  #progressbar li.active:before {
+    background: #32c682;
+    /* background: #28A3BF; */
+    /* background: #E53935; */
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+    line-height: 50px;
+    padding-top: 30px;
+
+  }
+}
+
+@media screen and (min-width: 3440px) {
+  #progressbar li::before {
+    width: 150px;
+    height: 150px;
+    line-height: 30px;
+    display: block;
+    font-size: 60px;
+    border: 2px solid #28A3BF;
+    border-radius: 50%;
+    margin: auto;
+  }
+
+  #progressbar li.active:before {
+    background: #32c682;
+    /* background: #28A3BF; */
+    /* background: #E53935; */
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+    line-height: 50px;
+    padding-top: 50px;
+  } 
+}
+
 #progressbar {
   position: absolute;
   left: 10px;
@@ -55,7 +272,7 @@
   list-style-type: none;
   font-size: 8px;
   font-weight: 400;
-  margin-bottom: 36px /*spazio tra le fasi*/ 
+  margin-bottom: 36px /*spazio tra le fasi*/
 }
 
 #progressbar li:nth-child(3) {
@@ -63,8 +280,8 @@
 }
 
 /* #progressbar .step0:before {
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   justify-content: center"
 } */
 
@@ -73,9 +290,7 @@
   color: #fff
 }
 
-#progressbar li:before {
-  /* width: 30px;
-  height: 30px; */
+/* #progressbar li:before {
   width: 60px;
   height: 60px;
   line-height: 30px;
@@ -83,27 +298,24 @@
   font-size: 30px;
   background: #fff;
   border: 2px solid #28A3BF;
-  /* border: 2px solid #E53935; */
   border-radius: 50%;
   margin: auto;
-
   line-height: 50px;
-}
+} */
 
 /****** ultima pallina fase completata *******/
-#progressbar li:last-child:before {
-  /* width: 40px;
-  height: 40px */
+/* #progressbar li:last-child:before {
   width: 60px;
   height: 60px
-}
+} */
 
 /********************/
 .mb-5, .my-5 {
   margin-bottom: 4.5rem !important;
 }
 h5, .h5 {
-  font-size: 1.65rem;
+  /* font-size: 1.65rem; */
+  font-size: 2.5vh;
   color: #6e6b6b;
 }
 
@@ -158,15 +370,13 @@ h5, .h5 {
   background: #28A3BF;
 }
 
-#progressbar li.active:before {
+/* #progressbar li.active:before {
   background: #32c682;
-  /* background: #28A3BF; */
-  /* background: #E53935; */
   font-family: "Font Awesome 5 Free";
   content: "\f00c";
   line-height: 50px;
   padding-top: 5px;
-}
+} */
 
 .tick {
   width: 100px;

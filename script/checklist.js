@@ -1,22 +1,26 @@
+
+
 function InitChevklist(data){
 
+    Notiflix.Loading.Hourglass('Caricando il paziente...');
 
     var data_paziente = data.split(',');
 
-    var nome = data_paziente[0];
-    var cognome = data_paziente[1];
-    var data_ricovero = data_paziente[2];
+    // var nome = data_paziente[0];
+    // var cognome = data_paziente[1];
+    var codicefiscale = data_paziente[0];
+    var data_ricovero = data_paziente[1];
 
     var paziente = {
-        "nome": nome,
-        "cognome": cognome,
+        "codicefiscale": codicefiscale,
         "data_ricovero": data_ricovero
       }
 
     var jsonString = JSON.stringify(paziente);
 
     $.ajax({
-        'url': 'https://localhost:44366/lista/paziente', // richiesta con checklist web api
+        'url': ''+url+'/lista/paziente',
+        //'url': 'https://localhost:44366/lista/paziente', // richiesta con checklist web api
         'dataType': "json",
         'type': "POST",
         'contentType': "application/json",
@@ -26,11 +30,15 @@ function InitChevklist(data){
             $("#paziente_nome").val(data.nome);
             $("#paziente_cognome").val(data.cognome);
             $("#paziente_data_nascita").val(data.dataNascista);
+            $("#paziente_codicefiscale").val(data.codiceFiscale);
             $("#paziente_percorso").val(data.percorso);
             $("#paziente_diagnosi").val(data.diagnosi);
+            $("#paziente_id").val(data.idpaziente);
 
             $("#div-listapazienti").fadeOut();
             $("#div-checklist").fadeIn(1000);
+
+            Notiflix.Loading.Remove();
            
         },
         error: function (xhRequest, ErrorText, thrownError) {
@@ -38,12 +46,19 @@ function InitChevklist(data){
             console.log('xhRequest: ' + xhRequest + "\n");
             console.log('ErrorText: ' + ErrorText + "\n");
             console.log('thrownError: ' + thrownError + "\n");
+            Notiflix.Loading.Remove();
         }
     });
 
 }
 
+
 $(document).ready(function(){
+
+    // let intViewportHeight = window.innerHeight - 130;
+    // console.log("Tamano formulario: " + intViewportHeight +" screen: "+ screen.height);
+
+    // $(".container-formulario").css({'height': intViewportHeight+'px'});
 
     var cont_field = 0;
     var cont_timeout = 0;
@@ -71,8 +86,11 @@ $(document).ready(function(){
         "processing": true,
         "serverSide": true,
         "filter": true,
+        "font-size": "2vh",
         
         "language": {
+            "loadingRecords": '<span>Caricando dati </span><br> &nbsp;',
+            "processing": '<i class="fa fa-spinner fa-spin" style="font-size:24px;color:rgb(75, 183, 245);"></i>',
             "paginate": {
                 "previous": "indietro",
                 "next": "avanti"
@@ -82,13 +100,19 @@ $(document).ready(function(){
             "emptyTable": "Non ci sono dati disponibili per questa data"
         },
         "ajax": {
-            "url": 'https://localhost:44366/lista/checklist',
+            "url": ''+url+'/lista/checklist',
+            //"url": 'https://localhost:44366/lista/checklist',
             "type": "POST",
             "dataType": "JSON",
             // passiamo i parametri x la query 
             // "data": { "dateinit": "01/05/2021", 
             //           "dateend":"05/05/2021"
-            "data": { "dateinit": null }
+            "data": { "dateinit": null },
+            "error": function (xhr, error, code)
+            {
+                alert(xhr);
+                alert(code);
+            }
         },
         "pageLength": 10,
         "responsivePriority": 1,
@@ -107,8 +131,8 @@ $(document).ready(function(){
             //{ "data": "id","name": "Id", "autoWidth": true },
             { "data": "nome", "name": "Nome", "autoWidth": true },
             { "data": "cognome", "name": "Cognome", "autoWidth": true },
+            { "data": "codiceFiscale", "name": "Codice Fiscale", "autoWidth": true },
             { "data": "dataRicovero", "name": "Data Ricovero", "autoWidth": true },
-            // { "data": "diagnosi", "name": "Diagnosi", "autoWidth": true },
             { "data": "percorso", "name": "Percorso", "autoWidth": true },
             {
                 // prendiamo il valore id dell'oggetto data impostato in columns 
@@ -116,7 +140,12 @@ $(document).ready(function(){
                 // valore dell'id al metodo ViewRiepilogo
                 // con render impostiamo un button con l'id 
                 "data": 'identifier',
-                "render": function (data, type, row, meta) { return "<a href='#' class='btn btn-success' onclick=InitChevklist(\'" + data + "\'); >Inizia Checklist</a>";   }
+                "render": function (data, type, row, meta) {
+                    if(data!='true') 
+                        return "<a href='#' class='btn btn-success button-lista' onclick=InitChevklist(\'" + data + "\'); >Inizia Checklist</a>";   
+                    else
+                        return "<a href='#' class='btn btn-error button-lista'; >Checklist Terminata</a>";
+                }
             },
         ]
     } );
@@ -145,11 +174,9 @@ $(document).ready(function(){
 
 
 
-
-
     // faccio un select e deselect dei checkbox
     // eccetto uno, quando non trova un problema o non conformità
-    $(" input[type=checkbox]").mouseenter(function(){
+    $("input[type=checkbox]").mouseenter(function(){
 
         var id = $(this).attr('idnnc');
         console.log("id ::: "+ id);
@@ -197,6 +224,7 @@ $(document).ready(function(){
     });
 
     function next_step_checklist(){
+
         id_fase = $('#content_fasi').children('.fase_active').attr('id');
         //console.log("id_fase::::::: ", id_fase);
         fase_element = $('#content_fasi').children('.fase_active');
@@ -218,6 +246,8 @@ $(document).ready(function(){
 
             first_show_element = first_hide_element.next();
 
+            console.log("NEXTTTTTTTTTTTT: ",first_show_element.attr("id"));
+
             // si cerca la classe alert-asa e si chiama alla funzione alert_asa
             // per creare e inserire i checkbox a seconda l'opzioni selezionate 
             // con el alert asa della fase sign in 
@@ -225,9 +255,17 @@ $(document).ready(function(){
                 alert_asa();
             }
 
-            // si è inserito una classe checkboxes in un div in cui ci sono tutti
-            // i checkbox, in cui si fa una ricerca di questa classe e si ottiene l'id
-            // del div. con l'id del div si verifica ogni checkbox se sono stati selezionate
+            // quando sta per concludere una delle fasi mostro una popup
+            // indicando che la fase sta x terminare e chiedo di confermare il passo
+            // successivo alla seguente fase  
+            if(first_show_element.hasClass("fase_completata")){
+
+                
+            }
+
+            // si ha inserito una classe checkboxes in un div in cui ci sono tutti
+            // i checkbox, si fa una ricerca di questa classe e si ottiene l'id
+            // del div. con l'id del div si verifica ogni checkbox se sono stati selezionati
             // delle non conformità se non sono state selezionate asegno como checked al
             // checkbox nascosto che vuol dire che non sono stati selezionate le non conformità
             var check ="";
@@ -239,7 +277,7 @@ $(document).ready(function(){
 
             if(check != undefined || check != null){
 
-                // cerco dentro il div i checkbox che sono stati selezionati (checked)
+                // cerco dentro nel div i checkbox che sono stati selezionati (checked)
                 // verifico con length se qualcuno è stato selezionato
                 var checked1 = $("#"+check+" input[type=checkbox]:checked").length;
                 // se trova uno o più di uno checkbox > 0
@@ -247,6 +285,11 @@ $(document).ready(function(){
                 if (checked1 > 0 || check === 'checkbox-paziente') {
 
                     if(id_fase == "SignIn"){
+                        // quando trova l'id checkbox-paziente dell'elemento che contiene 
+                        // la classe checkboxes inizia il contatore a 0
+                        if(check === 'checkbox-paziente')
+                            cont_field = 0;
+
                         cont_field ++;
                         setProgressBar(cont_field, 12);
                     }
@@ -287,6 +330,10 @@ $(document).ready(function(){
                     // a settare l'ora d'inizio di ogni fase
                     // nascondere i button de avanti e indietro
                     if(first_show_element.hasClass("fase_completata")){
+
+                        // nascondo il button-referto, lo mostro 
+                        // quando inizio una fase 
+                        $("#button-referto").removeClass("show-content").addClass("hide-content");
 
                         // settare l'inzio di ogni fase con l'ora e data
                         if(id_fase == "SignIn")
@@ -338,9 +385,11 @@ $(document).ready(function(){
                     if(first_show_element.hasClass('activate-prev'))
                         $('.prev').show();
 
-                    if(first_hide_element.hasClass('fase-init'))
+                    if(first_hide_element.hasClass('fase-init')){
+                        // mostro il button-referto quando inizio una fase timeout o signout
+                        $("#button-referto").removeClass("hide-content").addClass("show-content");
                         setOraFase(first_hide_element.attr("setora"));
-
+                    }
                     // nascondiamo l'alert lanciato quando non trova nessuno dei checkbox
                     // selezionati
                     toastr.clear()
@@ -351,7 +400,8 @@ $(document).ready(function(){
                     // se nessuno dei checkbox sono stati selezionati compare un alert
                     // indicando che deveno selezionare una opzione 
                     // usando il plugin toastr
-                    toastr["error"]("Selezionare una opzione <i class='fas fa-check-square'></i>", "Attenzione!")
+                    toastr["error"]("<p class='alert-messagge'>Selezionare una opzione <i class='fas fa-check-square'></i></p>","<p class='alert-messagge'>'Attenzione!'</p>")
+                    // toastr["error"]("Selezionare una opzione <i class='fas fa-check-square'></i>","Attenzione!")
                     toastr.options = {
                         "closeButton": false,
                         "debug": false,
@@ -360,8 +410,8 @@ $(document).ready(function(){
                         "positionClass": "toast-top-right",
                         "preventDuplicates": true,
                         "onclick": null,
-                        "showDuration": "300",
-                        "hideDuration": "1000",
+                        "showDuration": "9000000",
+                        "hideDuration": "100000",
                         "timeOut": "3200",
                         "extendedTimeOut": "500",
                         "showEasing": "linear",
@@ -403,7 +453,7 @@ $(document).ready(function(){
 
         if(id_fase == "SignIn"){
             cont_field --;
-            setProgressBar(cont_field, 12);
+            setProgressBar(cont_field, 11);
         }
 
         if(id_fase == "TimeOut"){
@@ -438,37 +488,8 @@ $(document).ready(function(){
                 $('.prev').hide();
 
         });
-
-        //$("#fieldset"+cont_hide).css('display', 'none');
-        //$("#fieldset"+cont_field).css('display', 'block');
-
-        //setProgressBar(cont_field);
-
-    //     current_fs = $(this).parent().parent();
-    //     previous_fs = $(this).parent().parent().prev();
-
-    //     $(current_fs).removeClass("show");
-    //     $(previous_fs).addClass("show");
-
-    //     current_fs.animate({}, {
-    //         step: function() {
-
-    //             current_fs.css({
-    //             'display': 'none',
-    //             'position': 'relative'
-    //             });
-
-    //             previous_fs.css({
-    //             'display': 'block'
-    //             });
-    //         }
-    //     });
+        
     });
-
-    function finishcheck(){
-        // $('input[type="checkbox"]:checked').prop('checked',false);
-        // location.reload(true);
-    }
 
     function initcheck(fase){
 
@@ -476,6 +497,10 @@ $(document).ready(function(){
         // fase_active e poi cerco il div che fa iniziare la checklist
         // con la classe show-content
         if(fase == 'button-signin'){
+
+            //mostro il button referto e lo nascondo quando trovo la classe 
+            // fase-completata in ogni fase
+            $("#button-referto").removeClass("hide-content").addClass("show-content");
 
             setOraFase('signin_ora_inizio');
 
@@ -499,6 +524,7 @@ $(document).ready(function(){
 
     function setProgressBar(curStep,num_passi) {
 
+        console.log(curStep + " "+ num_passi);
         //console.log("curstep: ",curStep);
         var percent = parseFloat(100 / num_passi) * curStep;
         //console.log("%%%%%%%: ",percent);
@@ -523,10 +549,10 @@ $(document).ready(function(){
             var asa = "";
             // $("input:checkbox[name=1asa:checked").each(function() {
             $("input[name='risposta11[]']:checked").each(function () {
-                if($(this).val() == "34,ASA 3" || $(this).val() == "35,ASA 4"){
+                if($(this).val() == "32,ASA 1" || $(this).val() == "33,ASA 2" || $(this).val() == "34,ASA 3" || $(this).val() == "35,ASA 4" || $(this).val() == "74,ASA 5"){
                     //array.push($(this).val().split(',')[1]);
                     asa = $(this).val().split(',')[1];
-                    $('#div-alert-asa').append("<label class='text-center alert-messaggio ' for='paziente_id' ><i class='fas fa-exclamation-triangle fa-2x icon-alert'></i> Attenzione nella fase Sign In il paziente è un "+asa+" </label>" );
+                    $('#div-alert-asa').append("<div><label class='text-center alert-messaggio ' for='paziente_id' ><i class='fas fa-exclamation-triangle fa-2x icon-alert'></i> Attenzione nella fase Sign In il paziente è un "+asa+" </label></div>" );
                     //$('#checkbox-asa').append('<input type="checkbox" name="risposta15[]" class="form-check-input"  checked="true" value="'+ $(this).val() +'"></input>').prop('checked',true);
                 }
                 // si creano i checkboxes per inviare al database, i checkbox sono nascosti
@@ -536,6 +562,7 @@ $(document).ready(function(){
             if(asa.length > 0 ){
                 $('#div-alert-asa-image').addClass("hide-content");
             }
+            
             // if (array && array.length > 0)
             //     $('#div-alert-asa-image').addClass("hide-content");
 
@@ -566,53 +593,5 @@ $(document).ready(function(){
 
         $('#'+fase_set_ora+'').val(datetime);
     }
-
-    // button x aprire la popup del paziente
-    // $("#modal_popup_paziente").mouseenter(function( event ){
-    //     $("#non-conformita-paziente").modal('show');
-    // });
-
-    // $("#modal_popup_sensi").mouseenter(function( event ){
-    //     $("#non-conformita-sensi").modal('show');
-    // });
-
-    // $("#modal_popup_conta").mouseenter(function( event ){
-    //     $("#non-conformita-conta").modal('show');
-    // });
-
-    // button x chiudere tutte le popup
-    // $('.close_popup').mouseenter(function( event ){
-
-    //     if($(this).attr('id') == "close_popup_paziente"){
-    //         $('input[name=paziente]').prop('checked', false);
-    //         $("#non-conformita-paziente").modal('hide');
-    //     }
-    //     if($(this).attr('id') == "close_popup_sensi"){
-    //         $('input[name=consensi]').prop('checked', false);
-    //         $("#non-conformita-sensi").modal('hide');
-    //     }
-
-    //     if($(this).attr('id') == "close_popup_conta"){
-    //         $('input[name=conta]').prop('checked', false);
-    //         $("#non-conformita-conta").modal('hide');
-    //     }
-    // });
-
-    // $('.salva-dati').mouseenter(function( event ){
-
-    //     if($(this).attr('id') == "salva-dati-paziente"){
-    //         validatecheckbox('div-hide-paziente','checkbox-modal-paziente');
-    //         $("#non-conformita-paziente").modal('hide');
-    //     }
-    //     if($(this).attr('id') == "salva-dati-consensi"){
-    //         validatecheckbox('div-hide-consensi','checkbox-modal-consensi');
-    //         $("#non-conformita-sensi").modal('hide');
-    //     }
-
-    //     if($(this).attr('id') == "salva-dati-conta"){
-    //         validatecheckbox('div-hide-conta','checkbox-modal-conta');
-    //         $("#non-conformita-conta").modal('hide');
-    //     }
-    // });
 
 });

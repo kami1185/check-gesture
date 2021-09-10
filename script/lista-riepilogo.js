@@ -22,7 +22,8 @@ $(document).ready(function(){
             "emptyTable": "Non ci sono dati disponibili per questa data"
         },
         "ajax": {
-            "url": 'https://localhost:44366/riepilogo/getpatient',
+            "url": ''+url+'/riepilogo/getpatient',
+            //"url": 'https://localhost:44366/riepilogo/getpatient',
             "type": "POST",
             "dataType": "JSON",
             // passiamo i parametri x la query 
@@ -51,12 +52,10 @@ $(document).ready(function(){
                 // valore dell'id al metodo ViewRiepilogo
                 // con render impostiamo un button con l'id 
                 "data": 'id',
-                "render": function (data, type, row, meta) { return "<a href='#' class='btn btn-success' onclick=ViewRiepilogo('" + data + "'); >Visualizza</a>";   }
+                "render": function (data, type, row, meta) { return "<a href='#' class='btn btn-success button-lista' onclick=ViewRiepilogo('" + data + "'); >Visualizza</a>";   }
             },
         ]
     } );
-
-    
 
     $('#sandbox-container1 .input-group.date').datepicker({
         format: "dd/mm/yyyy",
@@ -81,7 +80,8 @@ $(document).ready(function(){
         var lastValue = null;
         if(lastValue !== e.target.value){
             lastValue = e.target.value;
-            GetDatePatient(lastValue,'https://localhost:44366/riepilogo/getpatient');
+            GetDatePatient(lastValue,''+url+'/riepilogo/getpatient');
+            //GetDatePatient(lastValue,'https://localhost:44366/riepilogo/getpatient');
         }
     })
 
@@ -140,7 +140,7 @@ $(document).ready(function(){
                     // con render impostiamo un button con l'id 
                     //"data": 'id',
                     "data": 'idchecklist',
-                    "render": function (data, type, row, meta) { return "<a href='#' class='btn btn-success' onclick=ViewRiepilogo('"+data+"'); >Visualizza</a>";   }
+                    "render": function (data, type, row, meta) { return "<a href='#' class='btn btn-success button-lista' onclick=ViewRiepilogo('"+data+"'); >Visualizza</a>";   }
                 },
             ]
         } );
@@ -151,7 +151,8 @@ $(document).ready(function(){
 
 function ViewRiepilogo(id){
     var request = new XMLHttpRequest(), file, fileURL;
-    request.open("POST", 'https://localhost:44366/riepilogo/getsummarypatient');
+    request.open("POST", ''+url+'/riepilogo/getsummarypatient');
+    //request.open("POST", 'https://localhost:44366/riepilogo/getsummarypatient');
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.responseType = "arraybuffer";
     request.send(id);

@@ -1,308 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="author" content="camilo duarte">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form</title>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="author" content="camilo duarte">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Sign Up Form</title>
 
-    <!-- jquery 3.5.1 -->
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> -->
-    <script src="script/jquery-3.5.1.min.js"></script>
+      <!-- jquery 3.5.1 -->
+      <!-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> -->
+      <script src="script/jquery-3.5.1.min.js"></script>
 
-    <!-- bootstrap 4.4.1 e validator-->
-    <link rel="stylesheet" href="scss/bootstrap.css">
-    <script src="script/bootstrap.js"></script>
-    <link rel="stylesheet" href="dist/css/bootstrapValidator.min.css"></script>
+      <!-- bootstrap 4.4.1 e validator-->
+      <link rel="stylesheet" href="scss/bootstrap.css">
+      <script src="script/bootstrap.js"></script>
+      <link rel="stylesheet" href="dist/css/bootstrapValidator.min.css"></script>
 
-    <!-- css personalizzati -->
-    <link rel="stylesheet" href="scss/style.css">
-    <!-- <link rel="stylesheet" href="scss/progressbar.css"> -->
-    <link rel="stylesheet" href="scss/button.css">
-    <!-- <link rel="stylesheet" href="scss/riepilogo.css"> -->
-    <link rel="stylesheet" href="scss/menu-animation.css">
-    <!-- notiflix plugin notifiche, alert, loader -->
-    <link rel="stylesheet" href="scss/notiflix.css">
-    <!-- menu index plugin  -->
-    <link rel="stylesheet" href="scss/index-menu.css">
-    <!-- autocomplete plugin search database name patient -->
-    <link rel="stylesheet" href="scss/auto-complete.css">
-    <!-- datepicker plugin in riepilogo -->
-    <link rel="stylesheet" href="scss/bootstrap-datepicker.css">
+      <!-- css personalizzati -->
+      <link rel="stylesheet" href="scss/style.css">
+      <!-- <link rel="stylesheet" href="scss/progressbar.css"> -->
+      <link rel="stylesheet" href="scss/button.css">
+      <!-- <link rel="stylesheet" href="scss/riepilogo.css"> -->
+      <link rel="stylesheet" href="scss/menu-animation.css">
+      <!-- notiflix plugin notifiche, alert, loader -->
+      <link rel="stylesheet" href="scss/notiflix.css">
+      <!-- menu index plugin  -->
+      <link rel="stylesheet" href="scss/index-menu.css">
+      <!-- autocomplete plugin search database name patient -->
+      <link rel="stylesheet" href="scss/auto-complete.css">
+      <!-- datepicker plugin in riepilogo -->
+      <link rel="stylesheet" href="scss/bootstrap-datepicker.css">
 
-    <!-- Font Icon -->
-    <link href="fontawesome5.13.0/css/fontawesome.css" rel="stylesheet">
-    <link href="fontawesome5.13.0/css/brands.css" rel="stylesheet">
-    <link href="fontawesome5.13.0/css/solid.css" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+      <!-- Font Icon -->
+      <link href="fontawesome5.13.0/css/fontawesome.css" rel="stylesheet">
+      <link href="fontawesome5.13.0/css/brands.css" rel="stylesheet">
+      <link href="fontawesome5.13.0/css/solid.css" rel="stylesheet">
+      <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" integrity="sha256-dHf/YjH1A4tewEsKUSmNnV05DDbfGN3g7NMq86xgGh8=" crossorigin="anonymous"></script> -->
-    <script src="dist/js/bootstrapValidator.min.js"></script>
-    <!-- validation.js-->
-    <script src="script/index.js"></script>
-    <!-- <script src="script/form-check-data.js"></script> -->
-    <!-- <script src="script/riepilogo.js"></script> -->
-    <script src="script/jquery.serializejson.js"></script>
-    <!-- notiflix plugin notifiche, alert, loader -->
-    <script src="script/notiflix.js"></script>
-    <!-- autocomplete plugin search database name patient -->
-    <script src="script/auto-complete.js"></script>
-    <!-- datepicker plugin in riepilogo -->
-    <script src="script/bootstrap-datepicker.js"></script>
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" integrity="sha256-dHf/YjH1A4tewEsKUSmNnV05DDbfGN3g7NMq86xgGh8=" crossorigin="anonymous"></script> -->
+      <script src="dist/js/bootstrapValidator.min.js"></script>
+      <!-- validation.js-->
+      <script src="script/index.js"></script>
+      <!-- <script src="script/form-check-data.js"></script> -->
+      <!-- <script src="script/riepilogo.js"></script> -->
+      <script src="script/jquery.serializejson.js"></script>
+      <!-- notiflix plugin notifiche, alert, loader -->
+      <script src="script/notiflix.js"></script>
+      <!-- autocomplete plugin search database name patient -->
+      <script src="script/auto-complete.js"></script>
+      <!-- datepicker plugin in riepilogo -->
+      <script src="script/bootstrap-datepicker.js"></script>
 
-</head>
+  </head>
 <!-- <body class="row align-items-center justify-content-center vh-100"> -->
-<body>
-  <div class="container-lg">
+  <body>
+    <div class="container-lg">
 
-    <div id="menu-main" class="show-content">
-      <div class="div-title-menu">
-        <img style="width: 200px; height: 200px;" class=" mx-auto d-block" src="img/title-main-menu.png">
-        <h5 class="title-main-menu text-center">Check List in Sala Operatoria </h5>
+
+      <div id="menu-main" class="show-content">
+        <!-- <div class="div-title-menu"> -->
+          <!-- <img style="width: 200px; height: 200px;" class=" mx-auto d-block" src="img/title-main-menu.png"> -->
+          <!-- <h5 class="title-main-menu text-center">Check List in Sala Operatoria </h5> -->
+        <!-- </div> -->
+
+        <header class="header-logo">
+          <img style="width: 15%" class="mx-auto d-block" src="img/title-main-menu.png">
+        </header>
+		
+        <section>
+          <h5 class="title-main-menu text-center">Check List in Sala Operatoria </h5>
+        </section>
+      
+        <section>
+          <ul class="menu-ul">
+            <li class="menu-li"><a id="lista-pazienti" href="#">
+                <div class="icon"><i class="fas fa-home" aria-hidden="true"></i><i class="fas fa-home" aria-hidden="true"></i></div>
+                <div class="name"><span data-text="Lista Pazienti">Lista Pazienti</span></div>
+              </a></li>
+            <li class="menu-li"><a id="edit-pazienti" href="#">
+                <div class="icon"><i class="fas fa-file-alt" aria-hidden="true"></i><i class="fas fa-file-alt" aria-hidden="true"></i></div>
+                <div class="name"><span data-text="Inserire Paziente">Inserire Paziente</span></div>
+              </a></li>
+            <li class="menu-li"><a id="lista-riepilogo" href="#">
+                <div class="icon"><i class="fas fa-cogs" aria-hidden="true"></i><i class="fas fa-cogs" aria-hidden="true"></i></div>
+                <div class="name"><span data-text="Riepiloghi Pazienti">Riepiloghi Pazienti</span></div>
+              </a></li>
+            <!-- <li class="menu-li"><a id="lista-temporal" href="#">
+                <div class="icon"><i class="far fa-image" aria-hidden="true"></i><i class="far fa-image" aria-hidden="true"></i></div>
+                <div class="name"><span data-text="Cerca Paziente">Cerca Paziente</span></div>
+              </a></li> -->
+          </ul>
+        </section>
+        
+
+        <!-- <nav class="menu-init" >
+          <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
+          <label class="menu-open-button" for="menu-open">
+          <span class="lines line-1"></span>
+          <span class="lines line-2"></span>
+          <span class="lines line-3"></span>
+          </label>
+
+          <a href="#" id="edit-pazienti" class="menu-item blue" > <i class="fas fa-edit"></i> </a>
+          <a href="#" class="menu-item green" style="display:none"> <i class="fa fa-coffee"></i> </a> 
+          <a href="#" class="menu-item red" style="display:none"> <i class="fa fa-heart"></i> </a>
+          <a href="#" id="lista-pazienti" class="menu-item green"> <i class="fas fa-clipboard-list"></i> </a>
+          <a href="#" class="menu-item orange" style="display:none"> <i class="fa fa-star"></i> </a>
+          <a href="#" class="menu-item lightblue" style="display:none"> <i class="fa fa-diamond"></i> </a>
+        </nav> -->
+
+        
+
       </div>
 
-      <!-- <nav class="menu-init" >
-        <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
-        <label class="menu-open-button" for="menu-open">
-        <span class="lines line-1"></span>
-        <span class="lines line-2"></span>
-        <span class="lines line-3"></span>
-        </label>
+      <!-- <div class="row nav-bar-checklist hide-content"> -->
+        <!-- <div class="titolo-div text-center nav-bar-checklist hide-content">
+          <p><span class="titolo-checklist"></span>
+              <button id="button-back-home" type="button" class="btn btn-success btn-circle btn-sl float-left">
+                  <i id="icon-back-home" class="fas fa-times"></i>
+              </button>
+          </p>
+        </div> -->
+      <!-- </div> -->
+      <header class="titolo-div nav-bar-checklist hide-content">
+        <span class="titolo-checklist"></span>
+        <button id="button-back-home" type="button" class="btn btn-success btn-circle btn-sl float-left">
+          <i id="icon-back-home" class="fas fa-times"></i>
+        </button>
+        
+      </header>
 
-        <a href="#" id="edit-pazienti" class="menu-item blue" > <i class="fas fa-edit"></i> </a>
-        <a href="#" class="menu-item green" style="display:none"> <i class="fa fa-coffee"></i> </a> 
-        <a href="#" class="menu-item red" style="display:none"> <i class="fa fa-heart"></i> </a>
-        <a href="#" id="lista-pazienti" class="menu-item green"> <i class="fas fa-clipboard-list"></i> </a>
-        <a href="#" class="menu-item orange" style="display:none"> <i class="fa fa-star"></i> </a>
-        <a href="#" class="menu-item lightblue" style="display:none"> <i class="fa fa-diamond"></i> </a>
-      </nav> -->
-
-      <ul class="menu-ul">
-        <li class="menu-li"><a id="lista-pazienti" href="#">
-            <div class="icon"><i class="fas fa-home" aria-hidden="true"></i><i class="fas fa-home" aria-hidden="true"></i></div>
-            <div class="name"><span data-text="Lista Pazienti">Lista Pazienti</span></div>
-          </a></li>
-        <li class="menu-li"><a id="edit-pazienti" href="#">
-            <div class="icon"><i class="fas fa-file-alt" aria-hidden="true"></i><i class="fas fa-file-alt" aria-hidden="true"></i></div>
-            <div class="name"><span data-text="Inserire Paziente">Inserire Paziente</span></div>
-          </a></li>
-        <li class="menu-li"><a id="lista-riepilogo" href="#">
-            <div class="icon"><i class="fas fa-cogs" aria-hidden="true"></i><i class="fas fa-cogs" aria-hidden="true"></i></div>
-            <div class="name"><span data-text="Riepilogo Pazienti">Riepiloghi Pazienti</span></div>
-          </a></li>
-        <li class="menu-li"><a id="lista-temporal" href="#">
-            <div class="icon"><i class="far fa-image" aria-hidden="true"></i><i class="far fa-image" aria-hidden="true"></i></div>
-            <div class="name"><span data-text="Cerca Paziente">Cerca Paziente</span></div>
-          </a></li>
-      </ul>
-
-    </div>
-
-    <div class="row nav-bar-checklist hide-content">
-      <div class="titolo-div text-center">
-        <p><span class="titolo-checklist"></span>
-            <!-- <span class="titolo-fase"></span> -->
-            <button id="button-back-home" type="button" class="btn btn-success btn-circle btn-sl float-left">
-                <i id="icon-back-home" class="fas fa-times"></i>
-            </button>
-        </p>
+      <div id="data">
+        
       </div>
-    </div>
-
-    <div id="data">
       
     </div>
-    
-  </div>
 
-  <!----------------------------------non conformita paziente --------------------------------------->
-  <div class="modal " id="non-conformita-paziente" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="staticBackdropLabel">Non conformità con i dati del paziente</h3>
-                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button> -->
-                <button type="button" class="btn btn-secondary close_popup" id="close_popup_paziente" data-dismiss="modal">Chiudi</button>
-            </div>
-            
-            <div class="modal-body">
-                <!-- <div id="checkbox-modal-paziente" class="container-fluid"> -->
-                <div id="checkbox-modal-paziente" class="container-fluid">
-                    <div class="row">
-                        <div class="form-check">
-                            <input type="checkbox" name ="paziente_conformita[]" class="form-check-input asa4"  value="Identità non corrisponde con braccialetto" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                            Identità non corrisponde con braccialetto
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div class="form-check">
-                            <input type="checkbox" name ="paziente_conformita[]" class="form-check-input paziente asa4" value="Identità non corrisponde con la cartella" id="defaultCheck2">
-                            <label class="form-check-label" for="defaultCheck2">
-                            Identità non corrisponde con la cartella
-                            </label>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="form-check">
-                            <input type="checkbox" name ="paziente_conformita[]" class="form-check-input paziente asa4" value="Identità non corrisponde con barcode/nosologico" id="defaultCheck3">
-                            <label class="form-check-label" for="defaultCheck3">
-                            Identità non corrisponde con barcode/nosologico
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-check">
-                            <input type="checkbox" name ="paziente_conformita[]" class="form-check-input paziente asa4" value="Identità non corrisponde con nosologico" id="defaultCheck4">
-                            <label class="form-check-label" for="defaultCheck4">
-                            Identità non corrisponde con nosologico
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-            <!-- <button type="button" class="btn btn-secondary close_popup" id="close_popup_paziente" data-dismiss="modal">Chiudere</button> -->
-                <button type="button" class="btn btn-primary salva-dati" id="salva-dati-paziente">Salva Dati</button>
-            </div>
-        </div>
-    </div>
-  </div>
-
-  <!----------------------------------- non conformita sensi ------------------------------------------>
-  <div class="modal fade" id="non-conformita-sensi" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="staticBackdropLabel">Non conformità con i consensi</h3>
-          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button> -->
-          <button type="button" class="btn btn-secondary close_popup" id="close_popup_sensi" data-dismiss="modal">Chiudi</button>
-        </div>
-        <div class="modal-body">
-          <div id="checkbox-modal-consensi" class="container-fluid">
-            <div class="row">
-              <div class="form-check">
-                <input class="form-check-input asa4" type="checkbox" name ="consensi_conformita[]"  value="Non conferma della procedura" id="sensi1">
-                <label class="form-check-label" for="sensi1">
-                  Non conferma della procedura
-                </label>
-              </div>
-            </div>
-            <div class="row ">
-              <div class="form-check">
-                <input class="form-check-input asa4" type="checkbox" name ="consensi_conformita[]" value="Mancata firma del consenso anestesiologico" id="sensi2">
-                <label class="form-check-label" for="sensi2">
-                  Mancata firma del consenso anestesiologico
-                </label>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="form-check">
-                <input class="form-check-input asa4" type="checkbox" name ="consensi_conformita[]" value="Mancata firma del consenso emocomponenti" id="sensi3">
-                <label class="form-check-label" for="sensi3">
-                  Mancata firma del consenso emocomponenti
-                </label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-check">
-                <input class="form-check-input asa4" type="checkbox" name ="consensi_conformita[]" value="Mancata firma del consenso chirurgico" id="senso4">
-                <label class="form-check-label" for="senso4">
-                  Mancata firma del consenso chirurgico
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary salva-dati" id="salva-dati-consensi">Salva Dati</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!------------------------------------------- nuova conta ------------------------------------------>
-  <div class="modal fade" id="non-conformita-conta" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="staticBackdropLabel">Procedura in caso di non corrispondenza della conta materiale chirurgico</h3>
-          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button> -->
-          <button type="button" class="btn btn-secondary close_popup" id="close_popup_conta" data-dismiss="modal">Chiudi</button>
-        </div>
-        <div class="modal-body">
-          <div id="checkbox-modal-conta" class="container-fluid">
-            <div class="row">
-              <div class="form-check">
-                <input class="form-check-input asa4" type="checkbox" name ="conta[]" value="Nuova Conta" id="so_popup_conta">
-                <label class="form-check-label" for="so_popup_conta">
-                  Nuova Conta
-                </label>
-              </div>
-            </div>
-            <div class="row ">
-              <div class="form-check">
-                <input class="form-check-input asa4" type="checkbox" name ="conta[]" value="Ispezione sito operatorio" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                  Ispezione sito operatorio
-                </label>
-              </div>
-            </div>
-            <div class="row">
-                <div class="form-check form-check-inline">
-                  <label class="form-check-label" for="Controllo Radiologico">Controllo Radiologico</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <label class="form-check-label" for="inlineCheckbox2">Si: <span style="color:white"> s </span></label>
-                  <input class="form-check-input asa4" type="checkbox" name ="conta[]" id="inlineCheckbox2" value="Controllo Radiologico: si">
-                </div>
-                <div class="form-check form-check-inline">
-                  <label class="form-check-label" for="inlineCheckbox2">No: <span style="color:white"> s </span></label>
-                  <input class="form-check-input asa4" type="checkbox" name ="conta[]" id="inlineCheckbox2" value="Controllo Radiologico: no">
-                </div>
-            </div>
-            <div class="row">
-              <div class="form-check">
-                <input class="form-check-input asa4" type="checkbox" name ="conta[]" value="Segnalato al chirurgo" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                  Segnalato al chirurgo
-                </label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-check">
-                <input class="form-check-input asa4" type="checkbox" name ="conta[]" value="Ispezione area circostante campo operatorio" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                  Ispezione area circostante campo operatorio
-                </label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-check">
-                <input class="form-check-input asa4" type="checkbox" name ="conta[]" value="Registrazione registro operatorio" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                  Registrazione registro operatorio
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary salva-dati" id="salva-dati-conta" >Salva Dati</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</body>
+  </body>
 </html>

@@ -42,7 +42,8 @@ function save_data_server(jsonArray){
 
     paziente.push({ nome : results.paziente_nome,
                     cognome : results.paziente_cognome,
-                    datanascita : results.paziente_data_nascita
+                    datanascita : results.paziente_data_nascita,
+                    codicefiscale: results.paziente_codicefiscale
                      });
 
 	checklist.push({ signinInit : results.signin_ora_inizio,
@@ -136,8 +137,8 @@ $(document).ready(function(){
         console.log('saveDataServer :',saveDataServer);
 
         $.ajax({
-            'url': 'https://localhost:44366/check/save',
-            //'url':'http://127.0.0.1:8080/crud/save',
+            'url': ''+url+'/check/save',
+            //'url':'https://localhost:44366/check/save',
             'method':'POST',
             'dataType': 'json',
              //processData: false,

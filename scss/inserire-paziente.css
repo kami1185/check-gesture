@@ -112,9 +112,11 @@
     -ms-border-radius: 13px;
 
     font-family: 'Lato', sans-serif;
-    font-size: 1.7em;
+    /* font-size: 1.7em; */
+    font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
     width: 90%;
-    height: 50px;
+    /* height: 50px; */
+    height: 6vh;
     padding: 0px 15px 0px 15px;
     
     background: transparent;
@@ -203,4 +205,13 @@
   
   #submit:hover {
     color: #e2dedb;
+  }
+
+  .button-salva-paziente{
+    padding-top:3vh;
+  }
+
+  #button-inserire-paziente{
+    font-size: 2.5vh;
+    font-weight: 700;
   }
